@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SPL_PROJECT
 {
-    internal class Cart
+    public class Cart
     {
-        List<product> products=new List<product>();
+        List<product> products = new List<product>();
 
         void CalculatePrize()
         {
