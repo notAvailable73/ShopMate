@@ -6,3 +6,10 @@ C:\ClassResources Sem-03\SPL\New folder\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PR
 C:\ClassResources Sem-03\SPL\New folder\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.csproj.CoreCompileInputs.cache
 C:\ClassResources Sem-03\SPL\New folder\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.exe
 C:\ClassResources Sem-03\SPL\New folder\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.pdb
+C:\Users\User\Downloads\Compressed\SPL1_Project-main\SPL_PROJECT\SPL_PROJECT\bin\Debug\SPL_PROJECT.exe.config
+C:\Users\User\Downloads\Compressed\SPL1_Project-main\SPL_PROJECT\SPL_PROJECT\bin\Debug\SPL_PROJECT.exe
+C:\Users\User\Downloads\Compressed\SPL1_Project-main\SPL_PROJECT\SPL_PROJECT\bin\Debug\SPL_PROJECT.pdb
+C:\Users\User\Downloads\Compressed\SPL1_Project-main\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.csproj.AssemblyReference.cache
+C:\Users\User\Downloads\Compressed\SPL1_Project-main\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.csproj.CoreCompileInputs.cache
+C:\Users\User\Downloads\Compressed\SPL1_Project-main\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.exe
+C:\Users\User\Downloads\Compressed\SPL1_Project-main\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.pdb
