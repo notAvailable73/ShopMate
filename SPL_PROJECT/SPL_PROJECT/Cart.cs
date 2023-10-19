@@ -4,7 +4,7 @@ namespace SPL_PROJECT
 {
     public class Cart
     {
-        List<product> products = new List<product>();
+        List<IProduct> products = new List<IProduct>();
 
         void CalculatePrize()
         {
