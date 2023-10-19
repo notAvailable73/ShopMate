@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.IO;
 
 namespace SPL_PROJECT
@@ -22,6 +23,7 @@ namespace SPL_PROJECT
             int inp = 0;
             Console.WriteLine("Press 1 to Create New Account");
             Console.WriteLine("Press 2 to Sign In to Existing Account");
+            Console.WriteLine("Press 3 to log In as admin");
             try
             {
                 inp = int.Parse(Console.ReadLine());
@@ -35,11 +37,60 @@ namespace SPL_PROJECT
             {
                 case 1: createAcc(); break;
                 case 2: signIN(); break;
+                case 3: AdminLogIn(); break; 
                 default:
                     Console.WriteLine("Invalid input.");
                     mainMenu();
                     break;
             }
+        }
+
+        public static void AdminLogIn()
+        {
+            Console.WriteLine("Enter password:");
+            string pass=Console.ReadLine();
+
+            string admin_file = @"C:\ShopMate\adminpassword.txt";
+            if(File.Exists(admin_file))
+            {
+                StreamReader sr = new StreamReader(admin_file);
+                string line;
+                line= sr.ReadLine();
+                sr.Close();
+
+                if(line==pass)
+                {
+                    Database.current_admin=new Admin();
+                    Console.WriteLine("Logged in as admin");
+                    adminDashboard();
+                }
+            }
+        }
+
+        public static void adminDashboard()
+        {
+            Console.WriteLine("Enter 1 to add product");
+            Console.WriteLine("Enter 2 to Log out");
+
+            int input = 0;
+
+            try
+            {
+                input = int.Parse(Console.ReadLine());
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            switch(input)
+            {
+                case 1: Database.current_admin.AddProduct(); break;
+                case 2: Database.current_admin=null; mainMenu(); break;
+                default : Console.WriteLine("Invalid Input"); break;
+            }
+
         }
         public static void loadUser()
         {
@@ -135,6 +186,7 @@ namespace SPL_PROJECT
 
         public static void Dashboard(user Current_User)
         {
+            int input=0;
             Console.WriteLine("Enter 1 to Browse Products");
             //Call load products and print all in console
             Console.WriteLine("Enter 2 to Edit Profile");
@@ -142,6 +194,26 @@ namespace SPL_PROJECT
             //Edit Profile
             //Load orders
             //Browse Products
+            try
+            {
+                input = int.Parse(Console.ReadLine());
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
+            switch(input) 
+            {
+                case 1:
+                    loadproducts();
+                    break;
+                default:
+                    Console.WriteLine("Invalid Input");
+                    Dashboard(Current_User);
+                    break;
+            }
 
         }
 
@@ -225,21 +297,21 @@ namespace SPL_PROJECT
 
         public static void loadproducts()
         {
-            Console.WriteLine("Electronic Product:");
+            Console.WriteLine("Electronic Products:");
 
             foreach(ElectronicProducts ep in Database.ElectronicProducts) 
             {
                 Console.WriteLine($"{ep.id}\t{ep.name}\t{ep.price}\t{ep.description}");
             }
 
-            Console.WriteLine("Clothing Product:");
+            Console.WriteLine("Clothing Products:");
 
             foreach (Cloth cloth in Database.cloths)
             {
                 Console.WriteLine($"{cloth.id}\t{cloth.name}\t{cloth.price}\t{cloth.description}");
             }
 
-            Console.WriteLine("HomeApplience Product:");
+            Console.WriteLine("HomeApplience Products:");
 
             foreach (HomeAppliences ha in Database.HomeAppliences)
             {
