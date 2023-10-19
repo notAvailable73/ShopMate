@@ -14,6 +14,7 @@ namespace SPL_PROJECT
             Console.WriteLine("Enter 1 to add Electronic Product");
             Console.WriteLine("Enter 2 to add Cloth Product");
             Console.WriteLine("Enter 3 to add HomeAppliences");
+            Console.WriteLine("Enter 4 to return to menu");
 
             int input = 0;
             try
@@ -25,6 +26,28 @@ namespace SPL_PROJECT
             {
                 Console.WriteLine(e.Message);
             }
+            //switch(input) 
+            //{
+            //    case 1:
+            //         Database.CreateElectronicProduct(id,name,price,description);
+            //        AddProduct();
+            //        break;
+            //    case 2:
+            //         Database.CreatClothingeProduct(id,name,price,description);
+            //        AddProduct();
+            //        break;
+            //    case 3:
+            //        Database.CreateHomeAppliences(id,name,price,description);
+            //        AddProduct();
+            //        break;
+
+            //    case 4:
+            //        utility.adminDashboard();
+            //        break;
+            //    default:
+            //        Console.WriteLine("Invalid Input");
+            //        break;
+            //}
 
             string name, description;
             double price;
@@ -41,21 +64,6 @@ namespace SPL_PROJECT
 
             
 
-            switch(input) 
-            {
-                case 1:
-                     Database.CreateElectronicProduct(id,name,price,description);
-                    break;
-                case 2:
-                     Database.CreatClothingeProduct(id,name,price,description);
-                    break;
-                case 3:
-                    Database.CreateHomeAppliences(id,name,price,description);
-                    break;
-                default:
-                    Console.WriteLine("Invalid Input");
-                    break;
-            }
         }
     }
 }
