@@ -13,6 +13,8 @@ namespace SPL_PROJECT
         public static List<ElectronicProducts> ElectronicProducts = new List<ElectronicProducts>();
         public static List<Cloth> cloths = new List<Cloth>();
         public static List<HomeAppliences> HomeAppliences = new List<HomeAppliences>();
+
+        //public static Admin current_admin;
         public static user CreateUser(string username,string name,string password,string mail, DateTime date)
         {
             user newUser=new user(username,name, password, mail, date);
@@ -32,6 +34,7 @@ namespace SPL_PROJECT
             File.AppendAllText(productfile, info);
             ElectronicProducts.Add(ep);
             Console.WriteLine($"Product added Successfully.");
+           
         }
         public static void CreatClothingeProduct(int id,string name,double price,string description) 
         {
@@ -41,6 +44,7 @@ namespace SPL_PROJECT
             File.AppendAllText(productfile, info);
             cloths.Add(cloth);
             Console.WriteLine($"Product added Successfully.");
+            
         }
         public static void CreateHomeAppliences(int id,string name,double price,string description) 
         {
@@ -50,6 +54,7 @@ namespace SPL_PROJECT
             File.AppendAllText(productfile, info);
             HomeAppliences.Add(ha);
             Console.WriteLine($"Product added Successfully.");
+            
         }
     }
 }
