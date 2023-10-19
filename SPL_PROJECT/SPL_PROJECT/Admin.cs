@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SPL_PROJECT
 {
-    public class Admin
+    public class Admin : IAccount
     {
+
         public void AddProduct()
         {
+            IAdder productAdder;
             Console.WriteLine("Enter 1 to add Electronic Product");
             Console.WriteLine("Enter 2 to add Cloth Product");
             Console.WriteLine("Enter 3 to add HomeAppliences");
@@ -22,47 +19,71 @@ namespace SPL_PROJECT
                 input = int.Parse(Console.ReadLine());
 
             }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input.");
+                AddProduct();
+                return;
+            }
+            switch (input)
+            {
+                case 1:
+                    productAdder = new ElectronicProductsAdder();
+                    Database.addProduct(productAdder);
+                    break;
+                case 2:
+                    productAdder = new ClothingProductsAdder();
+                    Database.addProduct(productAdder);
+                    break;
+                case 3:
+                    productAdder = new HomeAppliencesAdder();
+                    Database.addProduct(productAdder);
+                    break;
+
+                case 4:
+                    dashboard();
+                    return;
+                default:
+                    Console.WriteLine("Invalid Input");
+                    AddProduct();
+                    return;
+            }
+        }
+
+        public void dashboard()
+        {
+            Console.WriteLine("Enter 1 to add product");
+            Console.WriteLine("Enter 2 to Log out");
+
+            int input = 0;
+
+            try
+            {
+                input = int.Parse(Console.ReadLine());
+
+            }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-            //switch(input) 
-            //{
-            //    case 1:
-            //         Database.CreateElectronicProduct(id,name,price,description);
-            //        AddProduct();
-            //        break;
-            //    case 2:
-            //         Database.CreatClothingeProduct(id,name,price,description);
-            //        AddProduct();
-            //        break;
-            //    case 3:
-            //        Database.CreateHomeAppliences(id,name,price,description);
-            //        AddProduct();
-            //        break;
 
-            //    case 4:
-            //        utility.adminDashboard();
-            //        break;
-            //    default:
-            //        Console.WriteLine("Invalid Input");
-            //        break;
-            //}
+            switch (input)
+            {
+                case 1: AddProduct(); break;
+                case 2: //log out break;
+                default: Console.WriteLine("Invalid Input"); break;
+            }
+        }
 
-            string name, description;
-            double price;
-            //Id dekhte hobe
-            int id=0;
-            Console.WriteLine("Enter Name of the product:");
-            name= Console.ReadLine();
+        public void logOut()
+        {
+            Console.WriteLine("logged out successfully");
+            utility.mainMenu();
+            return;
+        }
 
-            Console.WriteLine("Enter Price of the product");
-            price=Convert.ToDouble(Console.ReadLine());
-
-            Console.WriteLine("Enter Description of the product");
-            description=Console.ReadLine();
-
-            
+        public void signIN()
+        {
 
         }
     }
