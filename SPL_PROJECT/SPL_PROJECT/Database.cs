@@ -1,23 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SPL_PROJECT
 {
     public static class Database
     {
         public static List<user> userList = new List<user>();
-        public static List<ElectronicProducts> ElectronicProducts = new List<ElectronicProducts>();
-        public static List<Cloth> cloths = new List<Cloth>();
-        public static List<HomeAppliences> HomeAppliences = new List<HomeAppliences>();
+        public static List<ElectronicProducts> ElectronicProductList = new List<ElectronicProducts>();
+        public static List<Cloth> clothList = new List<Cloth>();
+        public static List<HomeAppliences> HomeApplienceList = new List<HomeAppliences>();
 
-        //public static Admin current_admin;
-        public static user CreateUser(string username,string name,string password,string mail, DateTime date)
+        public static user CreateUser(string username, string name, string password, string mail, DateTime date)
         {
-            user newUser=new user(username,name, password, mail, date);
+            user newUser = new user(username, name, password, mail, date);
             string user_file = @"C:\ShopMate\user.txt.txt";
             string info = $"{username},{name},{password},{mail},{date}\n";
             File.AppendAllText(user_file, info);
@@ -25,36 +21,41 @@ namespace SPL_PROJECT
             Console.WriteLine($"User Created Successfully with username:{username}");
             return newUser;
         }
+        public static void addProduct(IAdder adder)
+        {
+            string name, description;
+            double price = 0;
 
-        public static void CreateElectronicProduct(int id,string name,double price,string description) 
-        {
-            ElectronicProducts ep=new ElectronicProducts(id,name,price,description);
-            string productfile = @"C:\ShopMate\electronicproduct.txt";
-            string info = $"{id},{name},{price},{description}\n";
-            File.AppendAllText(productfile, info);
-            ElectronicProducts.Add(ep);
-            Console.WriteLine($"Product added Successfully.");
-           
+            Console.WriteLine("Enter Name of the product:");
+            name = Console.ReadLine();
+
+            Console.WriteLine("Enter Price of the product");
+            try
+            {
+                price = Convert.ToDouble(Console.ReadLine());
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input.");
+                addProduct(adder);
+            }
+            Console.WriteLine("Enter Description of the product");
+            description = Console.ReadLine();
+            adder.addProduct(name, price, description);
+
         }
-        public static void CreatClothingeProduct(int id,string name,double price,string description) 
+        public static bool DoesUserExist(string username)
         {
-            Cloth cloth=new Cloth(id,name,price,description);
-            string productfile = @"C:\ShopMate\clothingproduct.txt";
-            string info = $"{id},{name},{price},{description}\n";
-            File.AppendAllText(productfile, info);
-            cloths.Add(cloth);
-            Console.WriteLine($"Product added Successfully.");
-            
+            foreach (user Temp_user in Database.userList)
+            {
+                if (Temp_user.userName == username)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
-        public static void CreateHomeAppliences(int id,string name,double price,string description) 
-        {
-            HomeAppliences ha= new HomeAppliences(id,name,price,description);
-            string productfile = @"C:\ShopMate\homeapplienceproduct.txt";
-            string info = $"{id},{name},{price},{description}\n";
-            File.AppendAllText(productfile, info);
-            HomeAppliences.Add(ha);
-            Console.WriteLine($"Product added Successfully.");
-            
-        }
+
+
     }
 }

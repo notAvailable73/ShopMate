@@ -12,6 +12,7 @@ namespace SPL_PROJECT
     {
         static void Main(string[] args)
         {
+            Starter starter = new Starter();
             utility.mainMenu();   
             Console.ReadLine();
         }
