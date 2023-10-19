@@ -5,7 +5,7 @@ namespace SPL_PROJECT
 {
     public static class utility
     {
-        public static Database db = new Database();
+        
         static utility()
         {
             loadDatabase();
@@ -13,6 +13,9 @@ namespace SPL_PROJECT
         public static void loadDatabase()
         {
             loadUser();
+            loadClothingProduct();
+            loadElectronicProduct();
+            loadHomeApplienceProduct();
         }
         public static void mainMenu()
         {
@@ -57,7 +60,7 @@ namespace SPL_PROJECT
                     string mail = s[3];
                     DateTime date = Convert.ToDateTime(s[4]);
                     user tempUser = new user(userName, name, pass, mail, date);
-                    db.userList.Add(tempUser);
+                    Database.userList.Add(tempUser);
                 }
 
                 sr.Close();
@@ -85,7 +88,10 @@ namespace SPL_PROJECT
             string date_of_birth = Console.ReadLine();
             DateTime date = Convert.ToDateTime(date_of_birth);
 
-            db.CreateUser(username, Name, password, mail, date);
+            user Current_User= Database.CreateUser(username, Name, password, mail, date);
+
+            Dashboard(Current_User);
+
         }
         public static void signIN()
         {
@@ -96,11 +102,11 @@ namespace SPL_PROJECT
             string password = Console.ReadLine();
             if (userExist(username))
             {
-                foreach (user Temp_user in db.userList)
+                foreach (user Temp_user in Database.userList)
                 {
                     if (Temp_user.userName == username && password == Temp_user.password)
                     {
-                        //login
+                        Dashboard(Temp_user);
                     }
                     else if (Temp_user.userName == username && password != Temp_user.password)
                     {
@@ -117,7 +123,7 @@ namespace SPL_PROJECT
         }
         public static bool userExist(string username)
         {
-            foreach (user Temp_user in db.userList)
+            foreach (user Temp_user in Database.userList)
             {
                 if (Temp_user.userName == username)
                 {
@@ -125,6 +131,120 @@ namespace SPL_PROJECT
                 }
             }
             return false;
+        }
+
+        public static void Dashboard(user Current_User)
+        {
+            Console.WriteLine("Enter 1 to Browse Products");
+            //Call load products and print all in console
+            Console.WriteLine("Enter 2 to Edit Profile");
+            //Load Cart
+            //Edit Profile
+            //Load orders
+            //Browse Products
+
+        }
+
+        public static void loadElectronicProduct()
+        {
+            string product_file = @"C:\ShopMate\electonicproduct.txt";
+            if (File.Exists(product_file))
+            {
+                StreamReader sr = new StreamReader(product_file);
+                string line;
+
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] s = null;
+                    s = line.Split(',');
+
+                    int id = Convert.ToInt32(s[0]);
+                    string name = s[1];
+                    double price = Convert.ToDouble(s[2]);
+                    string description = s[3];
+                    
+                    ElectronicProducts temp = new ElectronicProducts(id, name, price, description);
+                    Database.ElectronicProducts.Add(temp);
+                }
+
+                sr.Close();
+            }
+        }
+
+        public static void loadClothingProduct()
+        {
+            string product_file = @"C:\ShopMate\clothingproduct.txt";
+            if (File.Exists(product_file))
+            {
+                StreamReader sr = new StreamReader(product_file);
+                string line;
+
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] s = null;
+                    s = line.Split(',');
+
+                    int id = Convert.ToInt32(s[0]);
+                    string name = s[1];
+                    double price = Convert.ToDouble(s[2]);
+                    string description = s[3];
+
+                    Cloth temp = new Cloth(id, name, price, description);
+                    Database.cloths.Add(temp);
+                }
+
+                sr.Close();
+            }
+        }
+
+        public static void loadHomeApplienceProduct()
+        {
+            string product_file = @"C:\ShopMate\homeapplienceproduct.txt";
+            if (File.Exists(product_file))
+            {
+                StreamReader sr = new StreamReader(product_file);
+                string line;
+
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] s = null;
+                    s = line.Split(',');
+
+                    int id = Convert.ToInt32(s[0]);
+                    string name = s[1];
+                    double price = Convert.ToDouble(s[2]);
+                    string description = s[3];
+
+                    HomeAppliences temp = new HomeAppliences(id, name, price, description);
+                    Database.HomeAppliences.Add(temp);
+                }
+
+                sr.Close();
+            }
+        }
+
+        public static void loadproducts()
+        {
+            Console.WriteLine("Electronic Product:");
+
+            foreach(ElectronicProducts ep in Database.ElectronicProducts) 
+            {
+                Console.WriteLine($"{ep.id}\t{ep.name}\t{ep.price}\t{ep.description}");
+            }
+
+            Console.WriteLine("Clothing Product:");
+
+            foreach (Cloth cloth in Database.cloths)
+            {
+                Console.WriteLine($"{cloth.id}\t{cloth.name}\t{cloth.price}\t{cloth.description}");
+            }
+
+            Console.WriteLine("HomeApplience Product:");
+
+            foreach (HomeAppliences ha in Database.HomeAppliences)
+            {
+                Console.WriteLine($"{ha.id}\t{ha.name}\t{ha.price}\t{ha.description}");
+            }
         }
 
     }
