@@ -17,12 +17,7 @@ namespace SPL_PROJECT
             this.password = password;
             this.email = email;
             this.date_of_birth = date;
-            cart = new Cart();
-        }
-
-        public void signIN()
-        {
-            
+            cart = new Cart(userName);
         }
 
         public void dashboard()
