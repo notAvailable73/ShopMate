@@ -82,9 +82,5 @@ namespace SPL_PROJECT
             return;
         }
 
-        public void signIN()
-        {
-
-        }
     }
 }

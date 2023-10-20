@@ -48,6 +48,7 @@
     <Compile Include="Cart.cs" />
     <Compile Include="IAccount.cs" />
     <Compile Include="IAdder.cs" />
+    <Compile Include="ILogInManager.cs" />
     <Compile Include="product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,7 +8,6 @@ namespace SPL_PROJECT
 {
     public interface IAccount
     {
-        void signIN();
         void dashboard();
         void logOut();
         //void editProfile();
