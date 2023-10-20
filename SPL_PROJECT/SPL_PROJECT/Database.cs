@@ -55,7 +55,10 @@ namespace SPL_PROJECT
             }
             return false;
         }
-
+        public static void createCart(string userName)
+        {
+            //txt create korte hbe. "userName_cart.txt"
+        }
 
     }
 }
