@@ -12,6 +12,7 @@ namespace SPL_PROJECT
             Console.WriteLine("Press 1 to Create New Account");
             Console.WriteLine("Press 2 to Sign In to Existing Account");
             Console.WriteLine("Press 3 to log In as admin");
+            Console.WriteLine("Press 4 to exit");
             try
             {
                 inp = int.Parse(Console.ReadLine());
@@ -31,6 +32,9 @@ namespace SPL_PROJECT
                 case 3:
                     ILogInManager adminlogInManager = new AdminLogin();
                     adminlogInManager.logIn();
+                    break;
+                case 4:
+                    Environment.Exit(0);
                     break;
                 default:
                     Console.WriteLine("Invalid input.");

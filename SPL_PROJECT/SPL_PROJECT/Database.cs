@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Xml.Linq;
 
 namespace SPL_PROJECT
 {
@@ -44,6 +45,31 @@ namespace SPL_PROJECT
             adder.addProduct(name, price, description);
 
         }
+        public static IProduct getProduct(int id)
+        {
+            foreach (ElectronicProducts item in ElectronicProductList)
+            {
+                if (item.id==id)
+                {
+                    return item;
+                }
+            }
+            foreach (Cloth item in clothList)
+            {
+                if (item.id==id)
+                {
+                    return item;
+                }
+            }
+            foreach (HomeAppliences item in HomeApplienceList)
+            {
+                if (item.id==id)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
         public static bool DoesUserExist(string username)
         {
             foreach (user Temp_user in Database.userList)
@@ -57,7 +83,57 @@ namespace SPL_PROJECT
         }
         public static void createCart(string userName)
         {
-            //txt create korte hbe. "userName_cart.txt"
+            string path = $@"C:\ShopMate\Carts\{userName}_cart.txt";
+            StreamWriter sw = File.CreateText(path);
+            sw.Close();
+        }
+        public static void addProductToCart(string userName, IProduct product)
+        {
+            string path = $@"C:\ShopMate\Carts\{userName}_cart.txt";
+            string info = product.id.ToString();
+            File.AppendAllText(path, info);
+        }
+        public static void deleteProductFromCart(string userName, string productId)
+        {
+            string path = $@"C:\ShopMate\Carts\{userName}_cart.txt";
+            StreamReader sr = new StreamReader(path);
+            string line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                if (productId == line)
+                {
+                    line = "removed";
+                }
+            }
+            sr.Close();
+
+        }
+        public static void clearCart(string userName)
+        {
+            string path = $@"C:\ShopMate\Carts\{userName}_cart.txt";
+            File.WriteAllText(path, String.Empty);
+
+        }
+        public static Cart getCart(string userName)
+        {
+            string path = $@"C:\ShopMate\Carts\{userName}_cart.txt";
+            if (!File.Exists(path))
+            {
+                createCart(userName);
+            }
+            Cart newCart = new Cart();
+            StreamReader sr = new StreamReader(path);
+            string line;
+
+            while ((line = sr.ReadLine()) != null)
+            {
+                int id = int.Parse(line);
+                IProduct product = getProduct(id);
+                newCart.AddProductToCart(product);
+            }
+
+            sr.Close();
+            return newCart;
         }
 
     }

@@ -5,8 +5,10 @@ namespace SPL_PROJECT
     public class Cart
     {
         List<IProduct> products = new List<IProduct>();
-        public Cart(string userName) {
-            Database.createCart(userName);
+        public void AddProductToCart(string userName,IProduct product)
+        {
+            products.Add(product);
+            Database.addProductToCart(userName, product);
         }
         public void AddProductToCart(IProduct product)
         {
@@ -21,13 +23,15 @@ namespace SPL_PROJECT
             }
             return price;
         }
-        public void deleteProduct(IProduct product)
+        public void deleteProduct(string userName, IProduct product)
         {
             products.Remove(product);
+            Database.deleteProductFromCart(userName, product.id.ToString());
         }
-        public void clearCart()
+        public void clearCart(string userName)
         {
             products.Clear();
+            Database.clearCart(userName);
         }
 
     }
