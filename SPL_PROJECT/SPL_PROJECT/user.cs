@@ -17,7 +17,7 @@ namespace SPL_PROJECT
             this.password = password;
             this.email = email;
             this.date_of_birth = date;
-            cart = new Cart(userName);
+            cart =Database.getCart(userName);
         }
 
         public void dashboard()
@@ -26,6 +26,7 @@ namespace SPL_PROJECT
             Console.WriteLine("Enter 1 to Browse Products");
             //Call load products and print all in console
             Console.WriteLine("Enter 2 to Edit Profile");
+            Console.WriteLine("Enter 3 to see your Cart");
             //Load Cart
             //Edit Profile
             //Load orders
@@ -57,6 +58,10 @@ namespace SPL_PROJECT
             Console.WriteLine("logged out successfully");
             utility.mainMenu();
             return;
+        }
+        public void addToCart(IProduct product)
+        {
+            cart.AddProductToCart(userName,product);
         }
     }
 }

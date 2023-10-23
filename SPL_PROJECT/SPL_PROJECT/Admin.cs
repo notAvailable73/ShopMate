@@ -70,7 +70,7 @@ namespace SPL_PROJECT
             switch (input)
             {
                 case 1: AddProduct(); break;
-                case 2: //log out break;
+                case 2: logOut(); break;
                 default: Console.WriteLine("Invalid Input"); break;
             }
         }
