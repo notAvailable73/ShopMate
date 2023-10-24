@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SPL_PROJECT
 {
     public class Cart
     {
         List<IProduct> products = new List<IProduct>();
-        public void AddProductToCart(string userName,IProduct product)
+        public void AddProductToCart(string userName, IProduct product)
         {
             products.Add(product);
             Database.addProductToCart(userName, product);
@@ -32,6 +33,15 @@ namespace SPL_PROJECT
         {
             products.Clear();
             Database.clearCart(userName);
+        }
+        public void showCart()
+        {
+            int index = 1;
+            foreach (IProduct item in products)
+            {
+                Console.WriteLine($"{index}. {item.name}");
+                index++;
+            }
         }
 
     }
