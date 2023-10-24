@@ -15,7 +15,7 @@ namespace SPL_PROJECT
         {
             products.Add(product);
         }
-        public double price()
+        public double calculatePrice()
         {
             double price = 0;
             foreach (IProduct product in products)
@@ -37,7 +37,7 @@ namespace SPL_PROJECT
         public void showCart()
         {
             int index = 1;
-            foreach (IProduct item in products)
+            foreach (var item in products)
             {
                 Console.WriteLine($"{index}. {item.name}");
                 index++;
