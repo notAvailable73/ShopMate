@@ -41,16 +41,13 @@ namespace SPL_PROJECT
                 Console.WriteLine(e.Message);
             }
 
-            //switch (input)
-            //{
-            //    case 1:
-            //        loadproducts();
-            //        break;
-            //    default:
-            //        Console.WriteLine("Invalid Input");
-            //        Dashboard(Current_User);
-            //        break;
-            //}
+            switch (input)
+            {
+                case 1:
+                    Database.loadProducts();
+                    break;
+               
+            }
         }
 
         public void logOut()

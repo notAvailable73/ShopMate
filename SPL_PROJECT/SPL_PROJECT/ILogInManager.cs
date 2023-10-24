@@ -12,15 +12,16 @@ namespace SPL_PROJECT
         public void logIn()
         {
             Console.WriteLine("Enter password:");
-            string pass = Console.ReadLine();
-
             string admin_file = @"C:\ShopMate\adminpassword.txt";
+            string pass = Console.ReadLine();
+            
             if (File.Exists(admin_file))
             {
                 StreamReader sr = new StreamReader(admin_file);
                 string line;
                 line = sr.ReadLine();
                 sr.Close();
+                //Console.WriteLine($"{pass} {line}");
 
                 if (line == pass)
                 {
