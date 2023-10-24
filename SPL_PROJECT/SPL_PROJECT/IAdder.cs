@@ -11,7 +11,7 @@ namespace SPL_PROJECT
     {
         public void addProduct(string name, double price, string description)
         {
-            int id = (Database.ElectronicProductList.Count + 1) * 100 + 1;
+            int id = (Database.ElectronicProductList.Count + 1)  + 10000;
             ElectronicProducts product = new ElectronicProducts(id, name, price, description);
             string productfile = @"C:\ShopMate\electronicproduct.txt";
             string info = $"{product.id},{product.name},{product.price},{product.description}\n";
@@ -24,7 +24,7 @@ namespace SPL_PROJECT
     {
         public void addProduct(string name, double price, string description)
         {
-            int id = (Database.clothList.Count + 1) * 100 + 1;
+            int id = (Database.clothList.Count + 1)  + 20000;
 
             string productfile = @"C:\ShopMate\clothingproduct.txt";
             Cloth product = new Cloth(id, name, price, description);
@@ -38,7 +38,7 @@ namespace SPL_PROJECT
     {
         public void addProduct(string name, double price, string description)
         {
-            int id = (Database.HomeApplienceList.Count + 1) * 100 + 1;
+            int id = (Database.HomeApplienceList.Count + 1)  + 30000;
 
             HomeAppliences product = new HomeAppliences(id, name, price, description);
             string productfile = @"C:\ShopMate\homeapplienceproduct.txt";
