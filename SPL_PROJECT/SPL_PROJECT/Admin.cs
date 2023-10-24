@@ -30,18 +30,24 @@ namespace SPL_PROJECT
                 case 1:
                     productAdder = new ElectronicProductsAdder();
                     Database.addProduct(productAdder);
+                    Console.Clear();
+                    Console.WriteLine("--------------Product Added Successfully-------------");
                     Console.WriteLine();
                     dashboard();
                     break;
                 case 2:
                     productAdder = new ClothingProductsAdder();
                     Database.addProduct(productAdder);
+                    Console.Clear();
+                    Console.WriteLine("--------------Product Added Successfully-------------");
                     Console.WriteLine();
                     dashboard();
                     break;
                 case 3:
                     productAdder = new HomeAppliencesAdder();
                     Database.addProduct(productAdder);
+                    Console.Clear();
+                    Console.WriteLine("--------------Product Added Successfully-------------");
                     Console.WriteLine();
                     dashboard();
                     break;
@@ -58,6 +64,7 @@ namespace SPL_PROJECT
 
         public void dashboard()
         {
+           
             Console.WriteLine("Enter 1 to add product");
             Console.WriteLine("Enter 2 to Log out");
 
@@ -75,8 +82,10 @@ namespace SPL_PROJECT
 
             switch (input)
             {
-                case 1: AddProduct(); break;
-                case 2: logOut(); break;
+                case 1:
+                    Console.Clear(); AddProduct(); break;
+                case 2:
+                    Console.Clear(); logOut(); break;
                 default: Console.WriteLine("Invalid Input"); break;
             }
         }
@@ -84,6 +93,7 @@ namespace SPL_PROJECT
         public void logOut()
         {
             Console.WriteLine("logged out successfully");
+            Console.WriteLine();
             utility.mainMenu();
             return;
         }

@@ -13,7 +13,7 @@ namespace SPL_PROJECT
         public static List<Cloth> clothList = new List<Cloth>();
         public static List<HomeAppliences> HomeApplienceList = new List<HomeAppliences>();
 
-        public static user CreateUser(string username, string name, string password, string mail, DateTime date)
+        public static user CreateUser(string username, string name, string password, string mail, string date)
         {
             user newUser = new user(username, name, password, mail, date);
             string user_file = @"C:\ShopMate\user.txt.txt";
@@ -138,6 +138,7 @@ namespace SPL_PROJECT
         }
         public static void loadProducts()
         {
+            Console.Clear();
             Console.WriteLine("Enter 1 to browse Electronic Products");
             Console.WriteLine("Enter 2 to browse Cloth");
             Console.WriteLine("Enter 3 to browse Home Appliences");
@@ -159,7 +160,9 @@ namespace SPL_PROJECT
                 
 
                 case 1:
-
+                    Console.Clear();
+                    Console.WriteLine("-------------------------Electronic Products--------------------------");
+                    Console.WriteLine();
                     foreach (ElectronicProducts Item in ElectronicProductList)
                     {
                         Console.WriteLine(Item.id + " " + Item.name);
@@ -169,6 +172,8 @@ namespace SPL_PROJECT
 
                      input = int.Parse(Console.ReadLine());
                     index = input - 10001;
+                    Console.Clear();
+                    Console.WriteLine("------------------Product Details------------------");
                     if (ElectronicProductList[index] !=null )
                     {
                         Console.WriteLine("Name: " + ElectronicProductList[index].name);
@@ -182,7 +187,9 @@ namespace SPL_PROJECT
             break;
 
                 case 2:
-
+                    Console.Clear();
+                    Console.WriteLine("-------------------------Clothing Products--------------------------");
+                    Console.WriteLine();
                     foreach (Cloth Item in clothList)
                     {
                         Console.WriteLine(Item.id + " " + Item.name);
@@ -191,6 +198,8 @@ namespace SPL_PROJECT
 
                     input = int.Parse(Console.ReadLine());
                     index = input - 20001;
+                    Console.Clear();
+                    Console.WriteLine("------------------Product Details------------------");
                     if (clothList[index] != null)
                     {
                         Console.WriteLine("Name: " + clothList[index].name);
@@ -203,7 +212,9 @@ namespace SPL_PROJECT
                     }
                     break;
                 case 3:
-
+                    Console.Clear();
+                    Console.WriteLine("-------------------------Home Appliences--------------------------");
+                    Console.WriteLine();
                     foreach (HomeAppliences Item in HomeApplienceList)
                     {
                         Console.WriteLine(Item.id + " " + Item.name);
@@ -212,6 +223,8 @@ namespace SPL_PROJECT
 
                     input = int.Parse(Console.ReadLine());
                     index = input - 30001;
+                    Console.Clear();
+                    Console.WriteLine("------------------Product Details------------------");
                     if (HomeApplienceList[index] != null)
                     {
                         Console.WriteLine("Name: " + HomeApplienceList[index].name);

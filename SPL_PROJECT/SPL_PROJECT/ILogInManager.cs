@@ -12,10 +12,12 @@ namespace SPL_PROJECT
 
         public void logIn()
         {
+            Console.Clear();
             Console.WriteLine("Enter password:");
             string admin_file = @"C:\ShopMate\adminpassword.txt";
             string pass = utility.EncryptPassword();
             Console.WriteLine();
+            pass = utility.hashing(pass);
 
 
             if (File.Exists(admin_file))
@@ -29,7 +31,9 @@ namespace SPL_PROJECT
 
                 if (line == pass)
                 {
-                    Console.WriteLine("Logged in as admin");
+                    Console.Clear();
+                    Console.WriteLine("----------Logged in as admin----------");
+                    Console.WriteLine();
                     Admin admin = new Admin();
                     admin.dashboard();
                 }
@@ -43,6 +47,7 @@ namespace SPL_PROJECT
                     }
                     else
                     {
+                        Console.Clear();
                         utility.mainMenu();
                         return;
                     }
@@ -54,18 +59,23 @@ namespace SPL_PROJECT
     {
         public void logIn()
         {
+            Console.Clear();
             Console.WriteLine("Enter UserName:");
             string username = Console.ReadLine();
 
             Console.WriteLine("Enter Password:");
             string password = utility.EncryptPassword();
             Console.WriteLine();
+            password = utility.hashing(password);
             if (Database.DoesUserExist(username))
             {
                 foreach (user Temp_user in Database.userList)
                 {
                     if (Temp_user.userName == username && password == Temp_user.password)
                     {
+                        Console.Clear();
+                        Console.WriteLine($"------------Logged In As {username}---------------");
+                        Console.WriteLine();
                         Temp_user.dashboard();
                     }
                     else if (Temp_user.userName == username && password != Temp_user.password)

@@ -24,12 +24,16 @@ namespace SPL_PROJECT
             }
             switch (inp)
             {
-                case 1: createAcc(); break;
+                case 1:
+                    Console.Clear();
+                        createAcc(); break;
                 case 2:
+                    Console.Clear();
                     ILogInManager customerlogInManager = new CustomerLogIn();
                     customerlogInManager.logIn();
                     break;
                 case 3:
+                    Console.Clear();
                     ILogInManager adminlogInManager = new AdminLogin();
                     adminlogInManager.logIn();
                     break;
@@ -44,6 +48,7 @@ namespace SPL_PROJECT
         }
         public static void createAcc()
         {
+            Console.WriteLine();
             Console.WriteLine("Enter UserName:");
             string username = Console.ReadLine();
             if (Database.DoesUserExist(username))
@@ -57,16 +62,20 @@ namespace SPL_PROJECT
             Console.WriteLine("Enter Password:");
             string password = utility.EncryptPassword();
             Console.WriteLine();
+            password = utility.hashing(password);
 
             Console.WriteLine("Enter E-mail:");
             string mail = Console.ReadLine();
 
             Console.WriteLine("Enter Date of Birth");
-            string date_of_birth = Console.ReadLine();
-            DateTime date = Convert.ToDateTime(date_of_birth);
+            string date = Console.ReadLine();
 
+            Console.Clear();
             user Current_User = Database.CreateUser(username, Name, password, mail, date);
-            Current_User.dashboard();
+            
+            
+
+            utility.mainMenu();
         }
 
         public static string EncryptPassword()
@@ -90,6 +99,19 @@ namespace SPL_PROJECT
             }
             while (key != '\r');
             return password;
+        }
+        public static string hashing(string password)
+        {
+            char[] passwordArray = password.ToCharArray();
+
+            for (int i = 0; i < passwordArray.Length; i++)
+            {
+                passwordArray[i] = (char)(passwordArray[i] + 5);
+            }
+
+            string hashedPassword = new string(passwordArray);
+
+            return hashedPassword;
         }
 
     }
