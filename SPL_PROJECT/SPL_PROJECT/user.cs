@@ -45,13 +45,16 @@ namespace SPL_PROJECT
             switch (input)
             {
                 case 1:
-                    Database.loadProducts();
+                    Database.browseProduct(userName);
+                    dashboard();
                     break;
                 case 2:
                     Console.WriteLine("edit profile didn't implemented");
+                    dashboard();
                     break;
                 case 3:
-                    cart.showCart();
+                    //cart.showCart();
+                    Console.WriteLine("cart not implemented.");
                     Console.WriteLine("Enter any key to go back");
                     Console.ReadKey();
                     dashboard();
