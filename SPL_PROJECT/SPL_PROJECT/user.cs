@@ -10,14 +10,14 @@ namespace SPL_PROJECT
         public string email { get; set; }
         public DateTime date_of_birth { get; set; }
         public Cart cart;
-        public user(string userName,string name, string password, string email, DateTime date)
+        public user(string userName, string name, string password, string email, DateTime date)
         {
             this.userName = userName;
             this.name = name;
             this.password = password;
             this.email = email;
             this.date_of_birth = date;
-            cart =Database.getCart(userName);
+            cart = Database.getCart(userName);
         }
 
         public void dashboard()
@@ -27,6 +27,7 @@ namespace SPL_PROJECT
             //Call load products and print all in console
             Console.WriteLine("Enter 2 to Edit Profile");
             Console.WriteLine("Enter 3 to see your Cart");
+            Console.WriteLine("Enter 4 to log out");
             //Load Cart
             //Edit Profile
             //Load orders
@@ -46,7 +47,22 @@ namespace SPL_PROJECT
                 case 1:
                     Database.loadProducts();
                     break;
-               
+                case 2:
+                    Console.WriteLine("edit profile didn't implemented");
+                    break;
+                case 3:
+                    cart.showCart();
+                    Console.WriteLine("Enter any key to go back");
+                    Console.ReadKey();
+                    dashboard();
+                    break;
+                case 4:
+                    logOut();
+                    break;
+                default:
+                    Console.WriteLine("Invalid input."); dashboard();
+                    break;
+
             }
         }
 
@@ -58,7 +74,7 @@ namespace SPL_PROJECT
         }
         public void addToCart(IProduct product)
         {
-            cart.AddProductToCart(userName,product);
+            cart.AddProductToCart(userName, product);
         }
     }
 }
