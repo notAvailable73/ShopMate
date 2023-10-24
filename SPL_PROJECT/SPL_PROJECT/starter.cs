@@ -36,7 +36,6 @@ namespace SPL_PROJECT
         }
         public void loadElectronicProduct()
         {
-            Console.WriteLine("adding electronic");
             string product_file = @"C:\ShopMate\electronicproduct.txt";
             if (File.Exists(product_file))
             {
