@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Xml.Linq;
 
 namespace SPL_PROJECT
 {
@@ -50,21 +48,21 @@ namespace SPL_PROJECT
         {
             foreach (ElectronicProducts item in ElectronicProductList)
             {
-                if (item.id==id)
+                if (item.id == id)
                 {
                     return item;
                 }
             }
             foreach (Cloth item in clothList)
             {
-                if (item.id==id)
+                if (item.id == id)
                 {
                     return item;
                 }
             }
             foreach (HomeAppliences item in HomeApplienceList)
             {
-                if (item.id==id)
+                if (item.id == id)
                 {
                     return item;
                 }
@@ -136,18 +134,18 @@ namespace SPL_PROJECT
             sr.Close();
             return newCart;
         }
-        public static void loadProducts()
+        public static void browseProduct(string userName)
         {
             Console.WriteLine("Enter 1 to browse Electronic Products");
             Console.WriteLine("Enter 2 to browse Cloth");
             Console.WriteLine("Enter 3 to browse Home Appliences");
-        
-            int inp = 0;
 
+            int inp = 0;
+            IProduct product=null;
             try
             {
-                inp= int.Parse(Console.ReadLine());
-                
+                inp = int.Parse(Console.ReadLine());
+
             }
             catch (Exception e)
             {
@@ -156,7 +154,7 @@ namespace SPL_PROJECT
             int input, index;
             switch (inp)
             {
-                
+
 
                 case 1:
 
@@ -167,10 +165,11 @@ namespace SPL_PROJECT
 
                     Console.WriteLine("Enter Product Id To See Details");
 
-                     input = int.Parse(Console.ReadLine());
+                    input = int.Parse(Console.ReadLine());
                     index = input - 10001;
-                    if (ElectronicProductList[index] !=null )
+                    if (ElectronicProductList[index] != null)
                     {
+                        product = ElectronicProductList[index];
                         Console.WriteLine("Name: " + ElectronicProductList[index].name);
                         Console.WriteLine("Price: " + ElectronicProductList[index].price);
                         Console.WriteLine("Description: " + ElectronicProductList[index].description);
@@ -179,7 +178,7 @@ namespace SPL_PROJECT
                     {
                         Console.WriteLine("Invalid Input");
                     }
-            break;
+                    break;
 
                 case 2:
 
@@ -193,6 +192,8 @@ namespace SPL_PROJECT
                     index = input - 20001;
                     if (clothList[index] != null)
                     {
+                        product = clothList[index];
+
                         Console.WriteLine("Name: " + clothList[index].name);
                         Console.WriteLine("Price: " + clothList[index].price);
                         Console.WriteLine("Description: " + clothList[index].description);
@@ -214,6 +215,8 @@ namespace SPL_PROJECT
                     index = input - 30001;
                     if (HomeApplienceList[index] != null)
                     {
+                        product = HomeApplienceList[index];
+
                         Console.WriteLine("Name: " + HomeApplienceList[index].name);
                         Console.WriteLine("Price: " + HomeApplienceList[index].price);
                         Console.WriteLine("Description: " + HomeApplienceList[index].description);
@@ -225,7 +228,8 @@ namespace SPL_PROJECT
                     break;
 
             }
-            Console.WriteLine("Press 1 to go to MainMenu");
+            Console.WriteLine("press 1 to add to cart");
+            Console.WriteLine("Press 2 to go to Dashboard");
 
             try
             {
@@ -236,14 +240,17 @@ namespace SPL_PROJECT
             {
                 Console.WriteLine(e.Message);
             }
-
-          /*  switch(inp)
+            switch (inp)
             {
                 case 1:
-                    
-            }*/
-
-
+                    addProductToCart(userName, product);
+                    Console.WriteLine("product added successfully");
+                    return;
+                case 2: return;
+                default:
+                    Console.WriteLine("invalid input");
+                    break;
+            }
         }
 
     }
