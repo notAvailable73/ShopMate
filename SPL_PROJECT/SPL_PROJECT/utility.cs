@@ -55,7 +55,8 @@ namespace SPL_PROJECT
             string Name = Console.ReadLine();
 
             Console.WriteLine("Enter Password:");
-            string password = Console.ReadLine();
+            string password = utility.EncryptPassword();
+            Console.WriteLine();
 
             Console.WriteLine("Enter E-mail:");
             string mail = Console.ReadLine();
@@ -66,6 +67,29 @@ namespace SPL_PROJECT
 
             user Current_User = Database.CreateUser(username, Name, password, mail, date);
             Current_User.dashboard();
+        }
+
+        public static string EncryptPassword()
+        {
+            string password = "";
+            char key;
+
+            do
+            {
+                key = Console.ReadKey(true).KeyChar;
+                if (key != '\b' && key != '\r')
+                {
+                    password += key;
+                    Console.Write("*");
+                }
+                else if (key == '\b' && password.Length > 0)
+                {
+                    password = password.Substring(0, password.Length - 1);
+                    Console.Write("\b \b");
+                }
+            }
+            while (key != '\r');
+            return password;
         }
 
     }
