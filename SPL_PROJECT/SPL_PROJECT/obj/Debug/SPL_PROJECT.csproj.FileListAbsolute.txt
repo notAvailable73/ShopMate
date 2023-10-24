@@ -49,3 +49,10 @@ C:\Users\User\Desktop\New folder (2)\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJE
 C:\Users\User\Desktop\New folder (2)\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\New folder (2)\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.exe
 C:\Users\User\Desktop\New folder (2)\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.pdb
+C:\Users\Administrator\Desktop\SPL1_Project - Copy\SPL1_Project\SPL_PROJECT\SPL_PROJECT\bin\Debug\SPL_PROJECT.exe.config
+C:\Users\Administrator\Desktop\SPL1_Project - Copy\SPL1_Project\SPL_PROJECT\SPL_PROJECT\bin\Debug\SPL_PROJECT.exe
+C:\Users\Administrator\Desktop\SPL1_Project - Copy\SPL1_Project\SPL_PROJECT\SPL_PROJECT\bin\Debug\SPL_PROJECT.pdb
+C:\Users\Administrator\Desktop\SPL1_Project - Copy\SPL1_Project\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\SPL1_Project - Copy\SPL1_Project\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\SPL1_Project - Copy\SPL1_Project\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.exe
+C:\Users\Administrator\Desktop\SPL1_Project - Copy\SPL1_Project\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.pdb
