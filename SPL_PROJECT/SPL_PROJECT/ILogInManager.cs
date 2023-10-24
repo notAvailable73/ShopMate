@@ -68,7 +68,7 @@ namespace SPL_PROJECT
 
                         Console.WriteLine("Wrong password. Back to main menu? (Y/N)");
                         string line = Console.ReadLine();
-                        if (line == "N")
+                        if (line == "N"||line=="n")
                         {
                             logIn();
                         }

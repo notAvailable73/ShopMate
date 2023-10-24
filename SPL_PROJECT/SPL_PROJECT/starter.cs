@@ -36,7 +36,8 @@ namespace SPL_PROJECT
         }
         public void loadElectronicProduct()
         {
-            string product_file = @"C:\ShopMate\electonicproduct.txt";
+            Console.WriteLine("adding electronic");
+            string product_file = @"C:\ShopMate\electronicproduct.txt";
             if (File.Exists(product_file))
             {
                 StreamReader sr = new StreamReader(product_file);
@@ -57,6 +58,10 @@ namespace SPL_PROJECT
                 }
 
                 sr.Close();
+            }
+            else
+            {
+                Console.WriteLine("electronic file not found");
             }
         }
         public void loadClothingProduct()
@@ -83,6 +88,10 @@ namespace SPL_PROJECT
 
                 sr.Close();
             }
+            else
+            {
+                Console.WriteLine("cloth file not found");
+            }
         }
         public void loadHomeApplienceProduct()
         {
@@ -108,13 +117,17 @@ namespace SPL_PROJECT
 
                 sr.Close();
             }
+            else
+            {
+                Console.WriteLine("home file not found");
+            }
         }
         public Starter()
         {
             loadUser();
             loadElectronicProduct();
             loadHomeApplienceProduct();
-            loadElectronicProduct();
+            loadClothingProduct();
         }
        
     }
