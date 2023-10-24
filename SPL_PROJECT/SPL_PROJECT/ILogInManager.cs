@@ -9,17 +9,21 @@ namespace SPL_PROJECT
     }
     public class AdminLogin : ILogInManager
     {
+
         public void logIn()
         {
             Console.WriteLine("Enter password:");
             string admin_file = @"C:\ShopMate\adminpassword.txt";
-            string pass = Console.ReadLine();
-            
+            string pass = utility.EncryptPassword();
+            Console.WriteLine();
+
+
             if (File.Exists(admin_file))
             {
                 StreamReader sr = new StreamReader(admin_file);
                 string line;
                 line = sr.ReadLine();
+
                 sr.Close();
                 //Console.WriteLine($"{pass} {line}");
 
@@ -54,7 +58,8 @@ namespace SPL_PROJECT
             string username = Console.ReadLine();
 
             Console.WriteLine("Enter Password:");
-            string password = Console.ReadLine();
+            string password = utility.EncryptPassword();
+            Console.WriteLine();
             if (Database.DoesUserExist(username))
             {
                 foreach (user Temp_user in Database.userList)
