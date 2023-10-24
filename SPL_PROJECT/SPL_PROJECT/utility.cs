@@ -56,6 +56,7 @@ namespace SPL_PROJECT
 
             Console.WriteLine("Enter Password:");
             string password = Console.ReadLine();
+            password= utility.hashing(password);
 
             Console.WriteLine("Enter E-mail:");
             string mail = Console.ReadLine();
@@ -68,5 +69,18 @@ namespace SPL_PROJECT
             Current_User.dashboard();
         }
 
+        public static string hashing(string password)
+        {
+            char[] passwordArray = password.ToCharArray();
+
+            for (int i = 0; i < passwordArray.Length; i++)
+            {
+                passwordArray[i] = (char)(passwordArray[i] + 5);
+            }
+
+            string hashedPassword = new string(passwordArray);
+
+            return hashedPassword;
+        }
     }
 }

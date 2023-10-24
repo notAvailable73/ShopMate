@@ -14,6 +14,7 @@ namespace SPL_PROJECT
             Console.WriteLine("Enter password:");
             string admin_file = @"C:\ShopMate\adminpassword.txt";
             string pass = Console.ReadLine();
+            pass = utility.hashing(pass);
             
             if (File.Exists(admin_file))
             {
@@ -55,6 +56,8 @@ namespace SPL_PROJECT
 
             Console.WriteLine("Enter Password:");
             string password = Console.ReadLine();
+            password = utility.hashing(password);
+
             if (Database.DoesUserExist(username))
             {
                 foreach (user Temp_user in Database.userList)

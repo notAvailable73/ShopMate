@@ -167,17 +167,19 @@ namespace SPL_PROJECT
 
                     Console.WriteLine("Enter Product Id To See Details");
 
-                     input = int.Parse(Console.ReadLine());
+                    input = int.Parse(Console.ReadLine());
                     id = 1;
                     if (ElectronicProductList[id] !=null )
                     {
                         Console.WriteLine(ElectronicProductList[1]);
-            }
+                    }
+
                     else
-            {
-                Console.WriteLine("Invalid Input");
-            }
-            break;
+                    {
+                        Console.WriteLine("Invalid Input");
+                    }
+                   
+                    break;
 
                 case 2:
 

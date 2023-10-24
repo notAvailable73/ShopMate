@@ -49,3 +49,11 @@ C:\Users\User\Desktop\New folder (2)\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJE
 C:\Users\User\Desktop\New folder (2)\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\New folder (2)\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.exe
 C:\Users\User\Desktop\New folder (2)\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.pdb
+C:\ClassResources Sem-03\SPL-Final\SPL_PROJECT\SPL_PROJECT\bin\Debug\SPL_PROJECT.exe.config
+C:\ClassResources Sem-03\SPL-Final\SPL_PROJECT\SPL_PROJECT\bin\Debug\SPL_PROJECT.exe
+C:\ClassResources Sem-03\SPL-Final\SPL_PROJECT\SPL_PROJECT\bin\Debug\SPL_PROJECT.pdb
+C:\ClassResources Sem-03\SPL-Final\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.csproj.AssemblyReference.cache
+C:\ClassResources Sem-03\SPL-Final\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.csproj.SuggestedBindingRedirects.cache
+C:\ClassResources Sem-03\SPL-Final\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.csproj.CoreCompileInputs.cache
+C:\ClassResources Sem-03\SPL-Final\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.exe
+C:\ClassResources Sem-03\SPL-Final\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.pdb
