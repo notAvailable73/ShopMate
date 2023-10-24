@@ -141,7 +141,7 @@ namespace SPL_PROJECT
             Console.WriteLine("Enter 1 to browse Electronic Products");
             Console.WriteLine("Enter 2 to browse Cloth");
             Console.WriteLine("Enter 3 to browse Home Appliences");
-            Console.WriteLine(Database.ElectronicProductList.Count);
+        
             int inp = 0;
 
             try
@@ -153,7 +153,7 @@ namespace SPL_PROJECT
             {
                 Console.WriteLine(e.Message);
             }
-            int input, id;
+            int input, index;
             switch (inp)
             {
                 
@@ -168,15 +168,17 @@ namespace SPL_PROJECT
                     Console.WriteLine("Enter Product Id To See Details");
 
                      input = int.Parse(Console.ReadLine());
-                    id = 1;
-                    if (ElectronicProductList[id] !=null )
+                    index = input - 10001;
+                    if (ElectronicProductList[index] !=null )
                     {
-                        Console.WriteLine(ElectronicProductList[1]);
-            }
+                        Console.WriteLine("Name: " + ElectronicProductList[index].name);
+                        Console.WriteLine("Price: " + ElectronicProductList[index].price);
+                        Console.WriteLine("Description: " + ElectronicProductList[index].description);
+                    }
                     else
-            {
-                Console.WriteLine("Invalid Input");
-            }
+                    {
+                        Console.WriteLine("Invalid Input");
+                    }
             break;
 
                 case 2:
@@ -188,10 +190,12 @@ namespace SPL_PROJECT
                     Console.WriteLine("Enter Product Id To See Details");
 
                     input = int.Parse(Console.ReadLine());
-                    id = (input - 1) / 100 - 1;
-                    if (clothList[id] != null)
+                    index = input - 20001;
+                    if (clothList[index] != null)
                     {
-                        Console.WriteLine(clothList[id]);
+                        Console.WriteLine("Name: " + clothList[index].name);
+                        Console.WriteLine("Price: " + clothList[index].price);
+                        Console.WriteLine("Description: " + clothList[index].description);
                     }
                     else
                     {
@@ -207,17 +211,39 @@ namespace SPL_PROJECT
                     Console.WriteLine("Enter Product Id To See Details");
 
                     input = int.Parse(Console.ReadLine());
-                    id = (input - 1) / 100 - 1;
-                    if (HomeApplienceList[id] != null)
+                    index = input - 30001;
+                    if (HomeApplienceList[index] != null)
                     {
-                        Console.WriteLine(HomeApplienceList[id]);
+                        Console.WriteLine("Name: " + HomeApplienceList[index].name);
+                        Console.WriteLine("Price: " + HomeApplienceList[index].price);
+                        Console.WriteLine("Description: " + HomeApplienceList[index].description);
                     }
                     else
                     {
                         Console.WriteLine("Invalid Input");
                     }
                     break;
+
             }
+            Console.WriteLine("Press 1 to go to MainMenu");
+
+            try
+            {
+                inp = int.Parse(Console.ReadLine());
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+          /*  switch(inp)
+            {
+                case 1:
+                    
+            }*/
+
+
         }
 
     }
