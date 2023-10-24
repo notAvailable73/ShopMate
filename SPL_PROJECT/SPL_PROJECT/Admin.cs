@@ -30,14 +30,20 @@ namespace SPL_PROJECT
                 case 1:
                     productAdder = new ElectronicProductsAdder();
                     Database.addProduct(productAdder);
+                    Console.WriteLine();
+                    dashboard();
                     break;
                 case 2:
                     productAdder = new ClothingProductsAdder();
                     Database.addProduct(productAdder);
+                    Console.WriteLine();
+                    dashboard();
                     break;
                 case 3:
                     productAdder = new HomeAppliencesAdder();
                     Database.addProduct(productAdder);
+                    Console.WriteLine();
+                    dashboard();
                     break;
 
                 case 4:
