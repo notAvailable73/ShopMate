@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Xml.Linq;
 
 namespace SPL_PROJECT
@@ -134,6 +135,89 @@ namespace SPL_PROJECT
 
             sr.Close();
             return newCart;
+        }
+        public static void loadProducts()
+        {
+            Console.WriteLine("Enter 1 to browse Electronic Products");
+            Console.WriteLine("Enter 2 to browse Cloth");
+            Console.WriteLine("Enter 3 to browse Home Appliences");
+            Console.WriteLine(Database.ElectronicProductList.Count);
+            int inp = 0;
+
+            try
+            {
+                inp= int.Parse(Console.ReadLine());
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            int input, id;
+            switch (inp)
+            {
+                
+
+                case 1:
+
+                    foreach (ElectronicProducts Item in ElectronicProductList)
+                    {
+                        Console.WriteLine(Item.id + " " + Item.name);
+                    }
+
+                    Console.WriteLine("Enter Product Id To See Details");
+
+                     input = int.Parse(Console.ReadLine());
+                    id = 1;
+                    if (ElectronicProductList[id] !=null )
+                    {
+                        Console.WriteLine(ElectronicProductList[1]);
+            }
+                    else
+            {
+                Console.WriteLine("Invalid Input");
+            }
+            break;
+
+                case 2:
+
+                    foreach (Cloth Item in clothList)
+                    {
+                        Console.WriteLine(Item.id + " " + Item.name);
+                    }
+                    Console.WriteLine("Enter Product Id To See Details");
+
+                    input = int.Parse(Console.ReadLine());
+                    id = (input - 1) / 100 - 1;
+                    if (clothList[id] != null)
+                    {
+                        Console.WriteLine(clothList[id]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid Input");
+                    }
+                    break;
+                case 3:
+
+                    foreach (HomeAppliences Item in HomeApplienceList)
+                    {
+                        Console.WriteLine(Item.id + " " + Item.name);
+                    }
+                    Console.WriteLine("Enter Product Id To See Details");
+
+                    input = int.Parse(Console.ReadLine());
+                    id = (input - 1) / 100 - 1;
+                    if (HomeApplienceList[id] != null)
+                    {
+                        Console.WriteLine(HomeApplienceList[id]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid Input");
+                    }
+                    break;
+            }
         }
 
     }
