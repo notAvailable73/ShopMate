@@ -11,7 +11,7 @@ namespace SPL_PROJECT
         public static List<Cloth> clothList = new List<Cloth>();
         public static List<HomeAppliences> HomeApplienceList = new List<HomeAppliences>();
 
-        public static user CreateUser(string username, string name, string password, string mail, DateTime date)
+        public static user CreateUser(string username, string name, string password, string mail, string date)
         {
             user newUser = new user(username, name, password, mail, date);
             string user_file = @"C:\ShopMate\user.txt.txt";
@@ -152,78 +152,132 @@ namespace SPL_PROJECT
                 Console.WriteLine(e.Message);
             }
             int input, index;
+            Console.Clear();
             switch (inp)
             {
-
+               
 
                 case 1:
+                
+                    
+                    Console.WriteLine("--------------------ELectronic Products---------------------");
+                    Console.WriteLine();
+                Retry:
+
 
                     foreach (ElectronicProducts Item in ElectronicProductList)
                     {
                         Console.WriteLine(Item.id + " " + Item.name);
                     }
+                    Console.WriteLine();
 
                     Console.WriteLine("Enter Product Id To See Details");
 
                     input = int.Parse(Console.ReadLine());
                     index = input - 10001;
-                    if (ElectronicProductList[index] != null)
+                    Console.Clear();
+                    Console.WriteLine("---------------------Product Details------------------------");
+                    Console.WriteLine();
+                    try
                     {
-                        product = ElectronicProductList[index];
-                        Console.WriteLine("Name: " + ElectronicProductList[index].name);
-                        Console.WriteLine("Price: " + ElectronicProductList[index].price);
-                        Console.WriteLine("Description: " + ElectronicProductList[index].description);
+                        if (ElectronicProductList[index] != null)
+                        {
+                            product = ElectronicProductList[index];
+                            Console.WriteLine("Name: " + ElectronicProductList[index].name);
+                            Console.WriteLine("Price: " + ElectronicProductList[index].price);
+                            Console.WriteLine("Description: " + ElectronicProductList[index].description);
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        }
                     }
-                    else
-                    {
-                        Console.WriteLine("Invalid Input");
-                    }
+                    catch(Exception e) { Console.WriteLine("Invalid Input");
+                        Console.WriteLine();
+                        goto Retry;
+                }
                     break;
 
                 case 2:
+                    
+                    Console.WriteLine("--------------------Clothings---------------------");
+                    Console.WriteLine();
+                RetryCloth:
 
                     foreach (Cloth Item in clothList)
                     {
                         Console.WriteLine(Item.id + " " + Item.name);
                     }
+                    Console.WriteLine();
                     Console.WriteLine("Enter Product Id To See Details");
 
                     input = int.Parse(Console.ReadLine());
                     index = input - 20001;
-                    if (clothList[index] != null)
+                    Console.Clear();
+                    Console.WriteLine("---------------------Product Details------------------------");
+                    Console.WriteLine();
+                    try
                     {
-                        product = clothList[index];
+                        if (clothList[index] != null)
+                        {
+                            product = clothList[index];
 
-                        Console.WriteLine("Name: " + clothList[index].name);
-                        Console.WriteLine("Price: " + clothList[index].price);
-                        Console.WriteLine("Description: " + clothList[index].description);
+                            Console.WriteLine("Name: " + clothList[index].name);
+                            Console.WriteLine("Price: " + clothList[index].price);
+                            Console.WriteLine("Description: " + clothList[index].description);
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        }
                     }
-                    else
+                    catch (Exception e)
                     {
                         Console.WriteLine("Invalid Input");
+                        Console.WriteLine();
+                        goto RetryCloth;
                     }
                     break;
                 case 3:
-
+                    
+                    Console.WriteLine("--------------------Home Appliences---------------------");
+                    Console.WriteLine();
+                RetryHomeAppliences:
                     foreach (HomeAppliences Item in HomeApplienceList)
                     {
                         Console.WriteLine(Item.id + " " + Item.name);
                     }
+                    Console.WriteLine();
                     Console.WriteLine("Enter Product Id To See Details");
 
                     input = int.Parse(Console.ReadLine());
                     index = input - 30001;
-                    if (HomeApplienceList[index] != null)
+                    Console.Clear();
+                    Console.WriteLine("---------------------Product Details------------------------");
+                    Console.WriteLine();
+                    try
                     {
-                        product = HomeApplienceList[index];
+                        if (HomeApplienceList[index] != null)
+                        {
+                            product = HomeApplienceList[index];
 
-                        Console.WriteLine("Name: " + HomeApplienceList[index].name);
-                        Console.WriteLine("Price: " + HomeApplienceList[index].price);
-                        Console.WriteLine("Description: " + HomeApplienceList[index].description);
+                            Console.WriteLine("Name: " + HomeApplienceList[index].name);
+                            Console.WriteLine("Price: " + HomeApplienceList[index].price);
+                            Console.WriteLine("Description: " + HomeApplienceList[index].description);
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        }
                     }
-                    else
+                    catch (Exception e)
                     {
                         Console.WriteLine("Invalid Input");
+                        Console.WriteLine();
+                        goto RetryHomeAppliences;
                     }
                     break;
 
@@ -243,10 +297,12 @@ namespace SPL_PROJECT
             switch (inp)
             {
                 case 1:
+                    Console.Clear();
                     addProductToCart(userName, product);
-                    Console.WriteLine("product added successfully");
+                    Console.WriteLine("--------------Product Added To Cart Successfully---------------");
+                    Console.WriteLine();
                     return;
-                case 2: return;
+                case 2: Console.Clear(); return;
                 default:
                     Console.WriteLine("invalid input");
                     break;
