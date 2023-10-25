@@ -13,11 +13,7 @@ namespace SPL_PROJECT
         static void Main(string[] args)
         {
             Starter starter = new Starter();
-            //utility.mainMenu();
-            user ask = new user("ria", "ra", "123", "asd", DateTime.Today);
-            ElectronicProducts ep = new ElectronicProducts(1001, "a", 1234, "a");
-            ask.addToCart(ep);
-            ask.cart.showCart();
+            utility.mainMenu();
             Console.ReadLine();
         }
     }

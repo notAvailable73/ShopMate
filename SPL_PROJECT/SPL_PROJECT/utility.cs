@@ -24,7 +24,8 @@ namespace SPL_PROJECT
             }
             switch (inp)
             {
-                case 1: createAcc(); break;
+                case 1:Console.Clear(); createAcc();
+                     break;
                 case 2:
                     ILogInManager customerlogInManager = new CustomerLogIn();
                     customerlogInManager.logIn();
@@ -44,11 +45,14 @@ namespace SPL_PROJECT
         }
         public static void createAcc()
         {
+
+            
             Console.WriteLine("Enter UserName:");
             string username = Console.ReadLine();
             if (Database.DoesUserExist(username))
             {
                 Console.WriteLine("Username already exist. Try a new userName.");
+                
                 createAcc();
             }
             Console.WriteLine("Enter Name:");
@@ -62,12 +66,13 @@ namespace SPL_PROJECT
             Console.WriteLine("Enter E-mail:");
             string mail = Console.ReadLine();
 
-            Console.WriteLine("Enter Date of Birth");
-            string date_of_birth = Console.ReadLine();
-            DateTime date = Convert.ToDateTime(date_of_birth);
+            Console.WriteLine("Enter Date of Birth(DD-MM-YYYY)");
+            string date = Console.ReadLine();
+            Console.Clear() ;
 
             user Current_User = Database.CreateUser(username, Name, password, mail, date);
-            Current_User.dashboard();
+            Console.WriteLine();
+            utility.mainMenu();
         }
 
         public static string EncryptPassword()
