@@ -23,39 +23,29 @@ namespace SPL_PROJECT
 
         public void dashboard()
         {
-            int input = 0;
-            Console.WriteLine("Enter 1 to Browse Products");
+            string[] userDashboardOption = { "Browse Products", "Edit Profile", "Cart", "Log Out" };
+            Menu menu = new Menu(userDashboardOption);
+
+            int input = menu.Run();
+
             //Call load products and print all in console
-            Console.WriteLine("Enter 2 to Edit Profile");
-            Console.WriteLine("Enter 3 to see your Cart");
-            Console.WriteLine("Enter 4 to log out");
             //Load Cart
             //Edit Profile
             //Load orders
             //Browse Products
-            try
-            {
-                input = int.Parse(Console.ReadLine());
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
             switch (input)
             {
-                case 1:
+                case 0:
                     Console.Clear();
                     Database.browseProduct(userName);
                     dashboard();
                     break;
-                case 2:
+                case 1:
                     Console.Clear();
                     Console.WriteLine("--------------Did Not Implement Edit Profile------------------");
                     dashboard();
                     break;
-                case 3:
+                case 2:
                     //cart.showCart();
                     Console.Clear();
                     Console.WriteLine("---------------cart not implemented.--------------");
@@ -63,7 +53,7 @@ namespace SPL_PROJECT
                     Console.ReadKey();
                     dashboard();
                     break;
-                case 4:
+                case 3:
                     Console.Clear();
                     logOut();
                     break;
