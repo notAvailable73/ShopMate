@@ -1,40 +1,32 @@
 ﻿using System;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 namespace SPL_PROJECT
 {
     public static class utility
     {
-
         public static void mainMenu()
         {
-            int inp = 0;
-            Console.WriteLine("Press 1 to Create New Account");
-            Console.WriteLine("Press 2 to Sign In to Existing Account");
-            Console.WriteLine("Press 3 to log In as admin");
-            Console.WriteLine("Press 4 to exit");
-            try
-            {
-                inp = int.Parse(Console.ReadLine());
+            string[] mainmenuOptions = { "Sign Up", "Sign In", "Admin Sign In", "Log Out" };
 
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            Menu menu=new Menu(mainmenuOptions);
+
+            int inp = menu.Run();
+
             switch (inp)
             {
-                case 1:Console.Clear(); createAcc();
-                     break;
-                case 2:
+                case 0: Console.Clear(); createAcc();
+                    break;
+                case 1:
                     ILogInManager customerlogInManager = new CustomerLogIn();
                     customerlogInManager.logIn();
                     break;
-                case 3:
+                case 2:
                     ILogInManager adminlogInManager = new AdminLogin();
                     adminlogInManager.logIn();
                     break;
-                case 4:
+                case 3:
                     Environment.Exit(0);
                     break;
                 default:
@@ -46,13 +38,13 @@ namespace SPL_PROJECT
         public static void createAcc()
         {
 
-            
+
             Console.WriteLine("Enter UserName:");
             string username = Console.ReadLine();
             if (Database.DoesUserExist(username))
             {
                 Console.WriteLine("Username already exist. Try a new userName.");
-                
+
                 createAcc();
             }
             Console.WriteLine("Enter Name:");
@@ -68,7 +60,7 @@ namespace SPL_PROJECT
 
             Console.WriteLine("Enter Date of Birth(DD-MM-YYYY)");
             string date = Console.ReadLine();
-            Console.Clear() ;
+            Console.Clear();
 
             user Current_User = Database.CreateUser(username, Name, password, mail, date);
             Console.WriteLine();
@@ -112,5 +104,6 @@ namespace SPL_PROJECT
             return hashedPassword;
         }
 
+        
     }
 }

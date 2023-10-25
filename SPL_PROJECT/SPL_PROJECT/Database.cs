@@ -89,7 +89,7 @@ namespace SPL_PROJECT
         public static void addProductToCart(string userName, IProduct product)
         {
             string path = $@"C:\ShopMate\Carts\{userName}_cart.txt";
-            string info = product.id.ToString();
+            string info = $"{product.id}\n";
             File.AppendAllText(path, info);
         }
         public static void deleteProductFromCart(string userName, string productId)
@@ -136,28 +136,21 @@ namespace SPL_PROJECT
         }
         public static void browseProduct(string userName)
         {
-            Console.WriteLine("Enter 1 to browse Electronic Products");
-            Console.WriteLine("Enter 2 to browse Cloth");
-            Console.WriteLine("Enter 3 to browse Home Appliences");
+            string[] browseProductOptions = { "Electronic Products", "Clothing products", "Home Appliences" };
 
-            int inp = 0;
+            Menu menu = new Menu(browseProductOptions);
+
+            int inp = menu.Run();
+
             IProduct product=null;
-            try
-            {
-                inp = int.Parse(Console.ReadLine());
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            
             int input, index;
             Console.Clear();
             switch (inp)
             {
                
 
-                case 1:
+                case 0:
                 
                     
                     Console.WriteLine("--------------------ELectronic Products---------------------");
@@ -193,13 +186,13 @@ namespace SPL_PROJECT
                             throw new Exception();
                         }
                     }
-                    catch(Exception e) { Console.WriteLine("Invalid Input");
+                    catch(Exception e) { Console.WriteLine(e.Message);
                         Console.WriteLine();
                         goto Retry;
                 }
                     break;
 
-                case 2:
+                case 1:
                     
                     Console.WriteLine("--------------------Clothings---------------------");
                     Console.WriteLine();
@@ -235,12 +228,12 @@ namespace SPL_PROJECT
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine("Invalid Input");
+                        Console.WriteLine(e.Message);
                         Console.WriteLine();
                         goto RetryCloth;
                     }
                     break;
-                case 3:
+                case 2:
                     
                     Console.WriteLine("--------------------Home Appliences---------------------");
                     Console.WriteLine();
@@ -275,34 +268,29 @@ namespace SPL_PROJECT
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine("Invalid Input");
+                        Console.WriteLine(e.Message);
                         Console.WriteLine();
                         goto RetryHomeAppliences;
                     }
                     break;
 
             }
-            Console.WriteLine("press 1 to add to cart");
-            Console.WriteLine("Press 2 to go to Dashboard");
 
-            try
-            {
-                inp = int.Parse(Console.ReadLine());
+            string[] options = { "Add to Cart", "Dashboard" };
+            Menu menu1=new Menu(options);
 
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            inp = menu.Run();
+
+            
             switch (inp)
             {
-                case 1:
+                case 0:
                     Console.Clear();
                     addProductToCart(userName, product);
                     Console.WriteLine("--------------Product Added To Cart Successfully---------------");
                     Console.WriteLine();
                     return;
-                case 2: Console.Clear(); return;
+                case 1: Console.Clear(); return;
                 default:
                     Console.WriteLine("invalid input");
                     break;

@@ -7,46 +7,40 @@ namespace SPL_PROJECT
 
         public void AddProduct()
         {
+            string[] addProductOptions = { "Electronic Product", "Clothing Product", "Home Appliences", "Menu" };
             IAdder productAdder;
-            Console.WriteLine("Enter 1 to add Electronic Product");
-            Console.WriteLine("Enter 2 to add Cloth Product");
-            Console.WriteLine("Enter 3 to add HomeAppliences");
-            Console.WriteLine("Enter 4 to return to menu");
 
-            int input = 0;
-            try
-            {
-                input = int.Parse(Console.ReadLine());
+            Menu menu=new Menu(addProductOptions);
 
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input.");
-                AddProduct();
-                return;
-            }
+            //Console.WriteLine("Enter 1 to add Electronic Product");
+            //Console.WriteLine("Enter 2 to add Cloth Product");
+            //Console.WriteLine("Enter 3 to add HomeAppliences");
+            //Console.WriteLine("Enter 4 to return to menu");
+
+            int input = menu.Run();
+            
             switch (input)
             {
-                case 1:
+                case 0:
                     productAdder = new ElectronicProductsAdder();
                     Database.addProduct(productAdder);
                     Console.WriteLine();
                     dashboard();
                     break;
-                case 2:
+                case 1:
                     productAdder = new ClothingProductsAdder();
                     Database.addProduct(productAdder);
                     Console.WriteLine();
                     dashboard();
                     break;
-                case 3:
+                case 2:
                     productAdder = new HomeAppliencesAdder();
                     Database.addProduct(productAdder);
                     Console.WriteLine();
                     dashboard();
                     break;
 
-                case 4:
+                case 3:
                     dashboard();
                     return;
                 default:
@@ -58,25 +52,20 @@ namespace SPL_PROJECT
 
         public void dashboard()
         {
-            Console.WriteLine("Enter 1 to add product");
-            Console.WriteLine("Enter 2 to Log out");
+            string[] adminDashBoardOptions = { "Add Product", "Log Out" };
+            Menu menu=new Menu(adminDashBoardOptions);
 
-            int input = 0;
+            //Console.WriteLine("Enter 1 to add product");
+            //Console.WriteLine("Enter 2 to Log out");
 
-            try
-            {
-                input = int.Parse(Console.ReadLine());
+            int input = menu.Run();
 
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            
 
             switch (input)
             {
-                case 1: AddProduct(); break;
-                case 2: logOut(); break;
+                case 0: AddProduct(); break;
+                case 1: logOut(); break;
                 default: Console.WriteLine("Invalid Input"); break;
             }
         }

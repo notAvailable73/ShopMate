@@ -50,6 +50,7 @@
     <Compile Include="IAdder.cs" />
     <Compile Include="ILogInManager.cs" />
     <Compile Include="Iproduct.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="starter.cs" />
