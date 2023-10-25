@@ -26,7 +26,7 @@ namespace SPL_PROJECT
                     string name = s[1];
                     string pass = s[2];
                     string mail = s[3];
-                    DateTime date = Convert.ToDateTime(s[4]);
+                    string date = s[4];
                     user tempUser = new user(userName, name, pass, mail, date);
                     Database.userList.Add(tempUser);
                 }

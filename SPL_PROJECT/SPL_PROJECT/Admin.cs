@@ -83,7 +83,8 @@ namespace SPL_PROJECT
 
         public void logOut()
         {
-            Console.WriteLine("logged out successfully");
+            Console.Clear();
+            Console.WriteLine("------------Logged out successfully-------------");
             utility.mainMenu();
             return;
         }
