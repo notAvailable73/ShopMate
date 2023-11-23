@@ -38,7 +38,7 @@ namespace SPL_PROJECT
                 case 0:
                     Console.Clear();
                     Database.browseProduct(userName);
-                    dashboard();
+                    //dashboard();
                     break;
                 case 1:
                     Console.Clear();
