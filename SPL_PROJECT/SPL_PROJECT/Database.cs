@@ -46,28 +46,30 @@ namespace SPL_PROJECT
         }
         public static IProduct getProduct(int id)
         {
+            IProduct product = null;
             foreach (ElectronicProducts item in ElectronicProductList)
             {
                 if (item.id == id)
                 {
-                    return item;
+                    product = item;
                 }
             }
             foreach (Cloth item in clothList)
             {
                 if (item.id == id)
                 {
-                    return item;
+                    product = item;
                 }
             }
             foreach (HomeAppliences item in HomeApplienceList)
             {
                 if (item.id == id)
                 {
-                    return item;
+                    product = item;
+
                 }
             }
-            return null;
+            return product;
         }
         public static bool DoesUserExist(string username)
         {
@@ -97,14 +99,17 @@ namespace SPL_PROJECT
             string path = $@"C:\ShopMate\Carts\{userName}_cart.txt";
             StreamReader sr = new StreamReader(path);
             string line;
+            string info = "";
             while ((line = sr.ReadLine()) != null)
             {
                 if (productId == line)
                 {
-                    line = "removed";
+                    continue;
                 }
+                 info += $"{line}\n";
             }
             sr.Close();
+            File.WriteAllText(path, info);
 
         }
         public static void clearCart(string userName)
@@ -126,15 +131,16 @@ namespace SPL_PROJECT
 
             while ((line = sr.ReadLine()) != null)
             {
-                int id = int.Parse(line);
+                int id = Convert.ToInt32(line);
                 IProduct product = getProduct(id);
+
                 newCart.AddProductToCart(product);
             }
 
             sr.Close();
             return newCart;
         }
-        
+
         public static void browseProduct(string userName)
         {
             string[] browseProductOptions = { "Electronic Products", "Clothing products", "Home Appliences" };
@@ -149,14 +155,14 @@ namespace SPL_PROJECT
 
             switch (inp)
             {
-               
+
 
                 case 0:
-                
-                    
+
+
                     Console.WriteLine("--------------------ELectronic Products---------------------");
                     Console.WriteLine();
-               // Retry:
+                    // Retry:
 
 
                     foreach (ElectronicProducts Item in ElectronicProductList)
@@ -165,15 +171,15 @@ namespace SPL_PROJECT
                     }
                     Console.WriteLine();
 
-                    electronicdetails(userName,product);
-                    
+                    electronicdetails(userName, product);
+
                     break;
 
                 case 1:
-                    
+
                     Console.WriteLine("--------------------Clothings---------------------");
                     Console.WriteLine();
-                
+
 
                     foreach (Cloth Item in clothList)
                     {
@@ -181,21 +187,21 @@ namespace SPL_PROJECT
                     }
                     Console.WriteLine();
 
-                    clothingdetails(userName,product);
+                    clothingdetails(userName, product);
 
                     break;
                 case 2:
-                    
+
                     Console.WriteLine("--------------------Home Appliences---------------------");
                     Console.WriteLine();
-               
+
                     foreach (HomeAppliences Item in HomeApplienceList)
                     {
                         Console.WriteLine(Item.id + " " + Item.name);
                     }
                     Console.WriteLine();
 
-                    homeappliencesdetails(userName,product);
+                    homeappliencesdetails(userName, product);
 
                     break;
 
@@ -205,11 +211,11 @@ namespace SPL_PROJECT
 
             }
 
-   
+
         }
 
 
-        public static void electronicdetails(string userName,IProduct product)
+        public static void electronicdetails(string userName, IProduct product)
         {
             Console.WriteLine("Enter Product Id To See Details");
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 namespace SPL_PROJECT
 {
@@ -99,6 +100,45 @@ namespace SPL_PROJECT
                     }
                 }
             }
+            
+            else
+            {
+                Console.WriteLine("Invalid Username.");
+            }
+        }
+        public void logIn(string username, string password)
+        {
+            password = utility.hashing(password);
+            if (Database.DoesUserExist(username))
+            {
+                foreach (user Temp_user in Database.userList)
+                {
+                    if (Temp_user.userName == username && password == Temp_user.password)
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"------------------Logged In As {username}----------------------");
+                        Console.WriteLine();
+                        Temp_user.dashboard();
+                    }
+                    else if (Temp_user.userName == username && password != Temp_user.password)
+                    {
+
+                        Console.WriteLine("Wrong password. Back to main menu? (Y/N)");
+                        string line = Console.ReadLine();
+                        if (line == "N" || line == "n")
+                        {
+                            logIn();
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            utility.mainMenu();
+                            return;
+                        }
+                    }
+                }
+            }
+
             else
             {
                 Console.WriteLine("Invalid Username.");

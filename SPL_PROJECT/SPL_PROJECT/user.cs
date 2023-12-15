@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 
 namespace SPL_PROJECT
 {
@@ -23,16 +22,16 @@ namespace SPL_PROJECT
 
         public void dashboard()
         {
+            
+            cart = Database.getCart(userName);
             string[] userDashboardOption = { "Browse Products", "Edit Profile", "Cart", "Log Out" };
             Menu menu = new Menu(userDashboardOption);
 
             int input = menu.Run();
 
-            //Call load products and print all in console
-            //Load Cart
+
             //Edit Profile
-            //Load orders
-            //Browse Products
+            //Load order
             switch (input)
             {
                 case 0:
@@ -43,15 +42,12 @@ namespace SPL_PROJECT
                 case 1:
                     Console.Clear();
                     Console.WriteLine("--------------Did Not Implement Edit Profile------------------");
+                    Console.ReadKey();
                     dashboard();
                     break;
                 case 2:
-                    //cart.showCart();
                     Console.Clear();
-                    Console.WriteLine("---------------cart not implemented.--------------");
-                    Console.WriteLine("------------Enter any key to go back--------------");
-                    Console.ReadKey();
-                    dashboard();
+                    loadCart();
                     break;
                 case 3:
                     Console.Clear();
@@ -63,7 +59,43 @@ namespace SPL_PROJECT
 
             }
         }
+        public void loadCart()
+        {
+            string cartlist= cart.load();
+            if (cartlist == "")
+            {
+                Console.Clear();
+                Console.WriteLine("Empty Cart!\nPress any key to go to dashboard.");
+                Console.ReadKey(true);
+                dashboard();
+                return;
+            } 
+            string[] cartOptions = { "Remove item from cart", "Clear cart", "Proceed to checkout", "Goto Dashboard" };
+            Menu menu = new Menu(cartOptions);
 
+            int input = menu.Run(cartlist);
+            switch (input)
+            {
+                case 0:
+                    cart.deleteProduct(userName, cartlist); loadCart();
+                    break;
+                case 1:
+                    cart.clearCart(userName); loadCart();
+                    break;
+                case 2:
+                    checkout();
+
+                    break;
+                case 3:
+                    dashboard();
+                    break;
+                default:
+                    Console.WriteLine("Invalid input.") ; loadCart();
+                    break;
+
+            }
+            
+        }
         public void logOut()
         {
             Console.WriteLine("logged out successfully");
@@ -73,6 +105,31 @@ namespace SPL_PROJECT
         public void addToCart(IProduct product)
         {
             cart.AddProductToCart(userName, product);
+        }
+        public void checkout()
+        {
+            string cartlist = cart.load();
+            double price = cart.calculatePrice();
+            string[] checkoutOptions = { "Confirm Order","Go Back" };
+            Menu menu = new Menu(checkoutOptions);
+            string s= cartlist + "\n\nTotal Price: $" + price+"\n\n";
+            int input = menu.Run(s);
+            switch (input)
+            {
+                case 0:
+                    cart.clearCart(userName);
+                    Console.WriteLine("Ordered Successfully!\n\nPress any key to visit dashboard.");
+                    Console.ReadKey();
+                    dashboard();
+                    return; 
+                case 1:
+                    loadCart();
+                    break; 
+                default:
+                    Console.WriteLine("Invalid input."); loadCart();
+                    break;
+
+            }
         }
     }
 }

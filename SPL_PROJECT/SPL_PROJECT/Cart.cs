@@ -24,24 +24,31 @@ namespace SPL_PROJECT
             }
             return price;
         }
-        public void deleteProduct(string userName, IProduct product)
+        public void deleteProduct(string userName,string fullList)
         {
+            Console.Clear();
+            Console.WriteLine(fullList);
+            IProduct product;
+            Console.WriteLine("Enter ID of the Product!");
+            product = Database.getProduct(int.Parse(Console.ReadLine()));
             products.Remove(product);
             Database.deleteProductFromCart(userName, product.id.ToString());
+            Console.WriteLine("Removed Successfully.\n Press any button to go back.");
+            Console.ReadKey();
         }
         public void clearCart(string userName)
         {
             products.Clear();
             Database.clearCart(userName);
         }
-        public void showCart()
+        public string load()
         {
-            int index = 1;
+            string s=""; 
             foreach (var item in products)
             {
-                Console.WriteLine($"{index}. {item.name}");
-                index++;
+                s += $"{item.id} {item.name}\n";
             }
+            return s;
         }
 
     }
