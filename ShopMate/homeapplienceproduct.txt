@@ -1,0 +1,6 @@
+30001,Refrigerator,799.99,Spacious and energy-efficient refrigerator with advanced cooling technology.
+30002,Washing Machine,499.99,High-capacity washing machine with multiple wash programs for efficient laundry.
+30003,Microwave Oven,149.99,Compact microwave oven with quick cooking features and modern design.
+30004,Coffee Maker,79.99,Programmable coffee maker for brewing your favorite coffee blends with ease.
+30005,Toaster,39.99,Stylish toaster with multiple browning settings and convenient crumb tray.
+30006,Iron,12.99,Steam iron for wrinkle-free clothes with adjustable temperature settings

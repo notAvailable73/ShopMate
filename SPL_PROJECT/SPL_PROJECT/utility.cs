@@ -8,7 +8,7 @@ namespace SPL_PROJECT
     {
         public static void mainMenu()
         {
-            string[] mainmenuOptions = { "Sign Up", "Sign In", "Admin Sign In", "Log Out" };
+            string[] mainmenuOptions = { "Sign Up", "Sign In", "Admin Sign In", "Quit" };
 
             Menu menu=new Menu(mainmenuOptions);
 

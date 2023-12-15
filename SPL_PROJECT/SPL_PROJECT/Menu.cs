@@ -27,7 +27,7 @@ namespace SPL_PROJECT
 
                 if(i==selectedIndex) 
                 {
-                    prefix = "-->";
+                    prefix = "-->  ";
                     Console.ForegroundColor = ConsoleColor.Black;
                     Console.BackgroundColor = ConsoleColor.White;
                 }
@@ -76,7 +76,40 @@ namespace SPL_PROJECT
 
             return selectedIndex;
         }
+        public int Run(string s)
+        {
+            ConsoleKey keypressed;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine(s);
+                Displayoptions();
 
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                keypressed = keyInfo.Key;
+
+                if (keypressed == ConsoleKey.UpArrow)
+                {
+                    selectedIndex--;
+                    if (selectedIndex == -1)
+                    {
+                        selectedIndex = options.Length - 1;
+                    }
+                }
+
+                else if (keypressed == ConsoleKey.DownArrow)
+                {
+                    selectedIndex++;
+                    if (selectedIndex == options.Length)
+                    {
+                        selectedIndex = 0;
+                    }
+                }
+
+            } while (keypressed != ConsoleKey.Enter);
+
+            return selectedIndex;
+        }
         public int Run(IProduct product)
         {
             ConsoleKey keypressed;

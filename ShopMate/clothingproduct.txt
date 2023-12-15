@@ -1,0 +1,10 @@
+20001, Casual Denim Jacket, 49.99, Stylish denim jacket for everyday wear.
+20002, Cozy Knit Sweater, 39.95, Keep warm with this comfortable knit sweater.
+20003, Elegant Black Dress, 89.99, Perfect for formal occasions, a classic black dress.
+20004, Sporty Jogging Pants, 29.99, Stay active and comfortable in these joggers.
+20005, Graphic T-shirt, 19.99, Express yourself with a trendy graphic tee.
+20006, Summer Shorts, 24.95, Stay cool in these stylish summer shorts.
+20007, Classic White Shirt, 34.99, A versatile wardrobe essential for any occasion.
+20008, Plaid Flannel Shirt, 44.95, Embrace a timeless look with this cozy flannel shirt.
+20009, Leather Biker Jacket, 99.99, Make a bold statement with this edgy biker jacket.
+20010, Floral Print Maxi Dress, 79.95, Step out in style with this elegant floral maxi dress.
