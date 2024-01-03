@@ -101,3 +101,10 @@ C:\Users\SANI\Desktop\backup\SPL1_Project\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_
 C:\Users\SANI\Desktop\backup\SPL1_Project\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.csproj.CoreCompileInputs.cache
 C:\Users\SANI\Desktop\backup\SPL1_Project\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.exe
 C:\Users\SANI\Desktop\backup\SPL1_Project\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.pdb
+C:\ClassResources Sem-03\SPL-Final2\SPL_PROJECT\SPL_PROJECT\bin\Debug\SPL_PROJECT.exe.config
+C:\ClassResources Sem-03\SPL-Final2\SPL_PROJECT\SPL_PROJECT\bin\Debug\SPL_PROJECT.exe
+C:\ClassResources Sem-03\SPL-Final2\SPL_PROJECT\SPL_PROJECT\bin\Debug\SPL_PROJECT.pdb
+C:\ClassResources Sem-03\SPL-Final2\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.csproj.AssemblyReference.cache
+C:\ClassResources Sem-03\SPL-Final2\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.csproj.CoreCompileInputs.cache
+C:\ClassResources Sem-03\SPL-Final2\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.exe
+C:\ClassResources Sem-03\SPL-Final2\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.pdb
