@@ -89,6 +89,13 @@ namespace SPL_PROJECT
             StreamWriter sw = File.CreateText(path);
             sw.Close();
         }
+
+        public static void createInbox(string userName)
+        {
+            string path = $@"C:\ShopMate\Inbox\{userName}_inbox.txt";
+            StreamWriter sw = File.CreateText(path);
+            sw.Close();
+        }
         public static void addProductToCart(string userName, IProduct product)
         {
             string path = $@"C:\ShopMate\Carts\{userName}_cart.txt";
