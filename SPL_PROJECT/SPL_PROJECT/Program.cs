@@ -15,9 +15,9 @@ namespace SPL_PROJECT
  
             Starter starter = new Starter();
 
-            //utility.mainMenu();
-            CustomerLogIn logIn = new CustomerLogIn();
-            logIn.logIn("Mainul", "1234");
+            utility.mainMenu();
+           /* CustomerLogIn logIn = new CustomerLogIn();
+            logIn.logIn("Mainul", "1234");*/
             Console.ReadLine();
         }
     }

@@ -94,3 +94,10 @@ C:\Users\User\Desktop\SPL1_Project-main\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PR
 C:\Users\User\Desktop\SPL1_Project-main\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\SPL1_Project-main\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.exe
 C:\Users\User\Desktop\SPL1_Project-main\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.pdb
+C:\Users\SANI\Desktop\backup\SPL1_Project\SPL_PROJECT\SPL_PROJECT\bin\Debug\SPL_PROJECT.exe.config
+C:\Users\SANI\Desktop\backup\SPL1_Project\SPL_PROJECT\SPL_PROJECT\bin\Debug\SPL_PROJECT.exe
+C:\Users\SANI\Desktop\backup\SPL1_Project\SPL_PROJECT\SPL_PROJECT\bin\Debug\SPL_PROJECT.pdb
+C:\Users\SANI\Desktop\backup\SPL1_Project\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.csproj.AssemblyReference.cache
+C:\Users\SANI\Desktop\backup\SPL1_Project\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.csproj.CoreCompileInputs.cache
+C:\Users\SANI\Desktop\backup\SPL1_Project\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.exe
+C:\Users\SANI\Desktop\backup\SPL1_Project\SPL_PROJECT\SPL_PROJECT\obj\Debug\SPL_PROJECT.pdb
