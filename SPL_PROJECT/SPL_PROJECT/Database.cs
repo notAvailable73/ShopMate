@@ -150,8 +150,6 @@ namespace SPL_PROJECT
 
             int inp = menu.Run();
 
-            IProduct product = null;
-
             Console.Clear();
 
             switch (inp)
