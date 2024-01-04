@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace SPL_PROJECT
 {
@@ -157,223 +158,23 @@ namespace SPL_PROJECT
             {
 
 
+
                 case 0:
-
-
-                    Console.WriteLine("--------------------ELectronic Products---------------------");
-                    Console.WriteLine();
-                    // Retry:
-
-
-                    foreach (ElectronicProducts Item in ElectronicProductList)
-                    {
-                        Console.WriteLine(Item.id + " " + Item.name);
-                    }
-                    Console.WriteLine();
-
-                    electronicdetails(userName, product);
-
+                    IProductDisplay displayElectronicProduct = new ProductDisplay();
+                    displayElectronicProduct.DisplayProducts(ElectronicProductList.Cast<IProduct>().ToList(), "ElectronicProduct", userName);
                     break;
 
                 case 1:
-
-                    Console.WriteLine("--------------------Clothings---------------------");
-                    Console.WriteLine();
-
-
-                    foreach (Cloth Item in clothList)
-                    {
-                        Console.WriteLine(Item.id + " " + Item.name);
-                    }
-                    Console.WriteLine();
-
-                    clothingdetails(userName, product);
-
+                    IProductDisplay displayclothList = new ProductDisplay();
+                    displayclothList.DisplayProducts(clothList.Cast<IProduct>().ToList(), "Clothings", userName);
                     break;
+
                 case 2:
-
-                    Console.WriteLine("--------------------Home Appliences---------------------");
-                    Console.WriteLine();
-
-                    foreach (HomeAppliences Item in HomeApplienceList)
-                    {
-                        Console.WriteLine(Item.id + " " + Item.name);
-                    }
-                    Console.WriteLine();
-
-                    homeappliencesdetails(userName, product);
-
-                    break;
-
-                default:
-                    Console.WriteLine("Invalid Input");
-                    break;
-
-            }
-
-
-        }
-
-
-        public static void electronicdetails(string userName, IProduct product)
-        {
-            Console.WriteLine("Enter Product Id To See Details");
-
-            int input = int.Parse(Console.ReadLine());
-            Console.WriteLine(input);
-            int index = input - 10001;
-
-            Console.Clear();
-
-            Console.WriteLine("---------------------Product Details------------------------");
-            Console.WriteLine();
-            try
-            {
-                if (ElectronicProductList[index] != null)
-                {
-                    //Console.WriteLine("Ken pera ditesos?");
-                    product = ElectronicProductList[index];
-                    Console.WriteLine("Name: " + ElectronicProductList[index].name);
-                    Console.WriteLine("Price: " + ElectronicProductList[index].price);
-                    Console.WriteLine("Description: " + ElectronicProductList[index].description);
-                    Console.WriteLine();
-                }
-                else
-                {
-                    throw new Exception();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                Console.WriteLine();
-                //goto Retry;
-            }
-
-            string[] options = { "Add to Cart", "Dashboard" };
-            Menu menu1 = new Menu(options);
-
-            int inp = menu1.Run(product);
-
-
-            switch (inp)
-            {
-                case 0:
-                    Console.Clear();
-                    addProductToCart(userName, product);
-                    Console.WriteLine("--------------Product Added To Cart Successfully---------------");
-                    Console.WriteLine();
-                    return;
-                case 1: Console.Clear(); return;
-                default:
-                    Console.WriteLine("invalid input");
+                    IProductDisplay displayHomeApplienceList = new ProductDisplay();
+                    displayHomeApplienceList.DisplayProducts(HomeApplienceList.Cast<IProduct>().ToList(), "Home Appliences", userName);
                     break;
             }
-        }
-
-        public static void clothingdetails(String userName, IProduct product)
-        {
-            Console.WriteLine("Enter Product Id To See Details");
-
-            int input = int.Parse(Console.ReadLine());
-            int index = input - 20001;
-            Console.Clear();
-            Console.WriteLine("---------------------Product Details------------------------");
-            Console.WriteLine();
-            try
-            {
-                if (clothList[index] != null)
-                {
-                    product = clothList[index];
-
-                    Console.WriteLine("Name: " + clothList[index].name);
-                    Console.WriteLine("Price: " + clothList[index].price);
-                    Console.WriteLine("Description: " + clothList[index].description);
-                    Console.WriteLine();
-                }
-                else
-                {
-                    throw new Exception();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                Console.WriteLine();
-            }
-
-            string[] options = { "Add to Cart", "Dashboard" };
-            Menu menu1 = new Menu(options);
-
-            int inp = menu1.Run(product);
-
-
-            switch (inp)
-            {
-                case 0:
-                    Console.Clear();
-                    addProductToCart(userName, product);
-                    Console.WriteLine("--------------Product Added To Cart Successfully---------------");
-                    Console.WriteLine();
-                    return;
-                case 1: Console.Clear(); return;
-                default:
-                    Console.WriteLine("invalid input");
-                    break;
-            }
-        }
-
-        public static void homeappliencesdetails(String userName, IProduct product)
-        {
-            Console.WriteLine("Enter Product Id To See Details");
-
-            int input = int.Parse(Console.ReadLine());
-            int index = input - 30001;
-            Console.Clear();
-            Console.WriteLine("---------------------Product Details------------------------");
-            Console.WriteLine();
-            try
-            {
-                if (HomeApplienceList[index] != null)
-                {
-                    product = HomeApplienceList[index];
-
-                    Console.WriteLine("Name: " + HomeApplienceList[index].name);
-                    Console.WriteLine("Price: " + HomeApplienceList[index].price);
-                    Console.WriteLine("Description: " + HomeApplienceList[index].description);
-                    Console.WriteLine();
-                }
-                else
-                {
-                    throw new Exception();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                Console.WriteLine();
-            }
-
-            string[] options = { "Add to Cart", "Dashboard" };
-            Menu menu1 = new Menu(options);
-
-            int inp = menu1.Run(product);
-
-
-            switch (inp)
-            {
-                case 0:
-                    Console.Clear();
-                    addProductToCart(userName, product);
-                    Console.WriteLine("--------------Product Added To Cart Successfully---------------");
-                    Console.WriteLine();
-                    return;
-                case 1: Console.Clear(); return;
-                default:
-                    Console.WriteLine("invalid input");
-                    break;
-            }
-        }
-
+        
+        }      
     }
 }
