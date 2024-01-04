@@ -46,6 +46,7 @@
     <Compile Include="Admin.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Cart.cs" />
+    <Compile Include="EmailSender.cs" />
     <Compile Include="IAccount.cs" />
     <Compile Include="IAdder.cs" />
     <Compile Include="ILogInManager.cs" />
