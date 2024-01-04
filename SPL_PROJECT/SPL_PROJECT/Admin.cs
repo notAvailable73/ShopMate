@@ -8,7 +8,7 @@ namespace SPL_PROJECT
         public void AddProduct()
         {
             string[] addProductOptions = { "Electronic Product", "Clothing Product", "Home Appliences", "Menu" };
-            IAdder productAdder;
+            IProductAdder productAdder;
 
             Menu menu=new Menu(addProductOptions);
 

@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\SPL_PROJECT",
+    "\\SPL_PROJECT\\SPL_PROJECT"
   ],
-  "SelectedNode": "\\SPL_PROJECT.sln",
+  "SelectedNode": "\\SPL_PROJECT\\SPL_PROJECT\\EmailSender.cs",
   "PreviewInSolutionExplorer": false
 }

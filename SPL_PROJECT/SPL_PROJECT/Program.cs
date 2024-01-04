@@ -12,12 +12,12 @@ namespace SPL_PROJECT
     {
         static void Main(string[] args)
         {
- 
+
             Starter starter = new Starter();
 
             utility.mainMenu();
-           /* CustomerLogIn logIn = new CustomerLogIn();
-            logIn.logIn("Mainul", "1234");*/
+            //CustomerLogIn logIn = new CustomerLogIn();
+            //logIn.logIn("Mainul", "1234");
             Console.ReadLine();
         }
     }

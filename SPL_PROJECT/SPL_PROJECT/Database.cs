@@ -22,7 +22,7 @@ namespace SPL_PROJECT
             Console.WriteLine($"User Created Successfully with username:{username}");
             return newUser;
         }
-        public static void addProduct(IAdder adder)
+        public static void addProduct(IProductAdder adder)
         {
             string name, description;
             double price = 0;
@@ -96,15 +96,15 @@ namespace SPL_PROJECT
             StreamWriter sw = File.CreateText(path);
             sw.Close();
         }
-        public static void addProductToCart(string userName, IProduct product)
+        public static void addProductToCart(IProduct product)
         {
-            string path = $@"C:\ShopMate\Carts\{userName}_cart.txt";
+            string path = $@"C:\ShopMate\Carts\{Session.CurrentUser.userName}_cart.txt";
             string info = $"{product.id}\n";
             File.AppendAllText(path, info);
         }
-        public static void deleteProductFromCart(string userName, string productId)
+        public static void deleteProductFromCart(string productId)
         {
-            string path = $@"C:\ShopMate\Carts\{userName}_cart.txt";
+            string path = $@"C:\ShopMate\Carts\{Session.CurrentUser.userName}_cart.txt";
             StreamReader sr = new StreamReader(path);
             string line;
             string info = "";
@@ -114,15 +114,15 @@ namespace SPL_PROJECT
                 {
                     continue;
                 }
-                 info += $"{line}\n";
+                info += $"{line}\n";
             }
             sr.Close();
             File.WriteAllText(path, info);
 
         }
-        public static void clearCart(string userName)
+        public static void clearCart()
         {
-            string path = $@"C:\ShopMate\Carts\{userName}_cart.txt";
+            string path = $@"C:\ShopMate\Carts\{Session.CurrentUser.userName}_cart.txt";
             File.WriteAllText(path, String.Empty);
 
         }
@@ -142,46 +142,38 @@ namespace SPL_PROJECT
                 int id = Convert.ToInt32(line);
                 IProduct product = getProduct(id);
 
-                newCart.AddProductToCart(product);
+                newCart.AddProductToThisCart(product);
             }
 
             sr.Close();
             return newCart;
         }
-
-        public static void browseProduct(string userName)
+        public static void browseProduct()
         {
-            string[] browseProductOptions = { "Electronic Products", "Clothing products", "Home Appliences" };
-
+            string[] browseProductOptions = { "Electronic Products", "Clothing products", "Home Appliences", "Go Back to dashboard" };
             Menu menu = new Menu(browseProductOptions);
-
-            int inp = menu.Run();
-
-            IProduct product = null;
-
+            int inp = menu.Run();             
+            IProductDisplay productDisplay;
             Console.Clear();
-
             switch (inp)
             {
-
-
-
                 case 0:
-                    IProductDisplay displayElectronicProduct = new ProductDisplay();
-                    displayElectronicProduct.DisplayProducts(ElectronicProductList.Cast<IProduct>().ToList(), "ElectronicProduct", userName);
+                    productDisplay = new ElectronicProductDisplay(); 
                     break;
 
                 case 1:
-                    IProductDisplay displayclothList = new ProductDisplay();
-                    displayclothList.DisplayProducts(clothList.Cast<IProduct>().ToList(), "Clothings", userName);
+                    productDisplay = new ClothingProductDisplay();  
                     break;
 
                 case 2:
-                    IProductDisplay displayHomeApplienceList = new ProductDisplay();
-                    displayHomeApplienceList.DisplayProducts(HomeApplienceList.Cast<IProduct>().ToList(), "Home Appliences", userName);
+                    productDisplay = new HomeApplienceProductDisplay();  
                     break;
+                case 3:
+                    Session.CurrentUser.dashboard();
+                    return;
+                default: return;
             }
-        
-        }      
+            productDisplay.DisplayProducts();
+        }
     }
 }

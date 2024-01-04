@@ -3,11 +3,11 @@ using System.IO;
 
 namespace SPL_PROJECT
 {
-    public interface IAdder
+    public interface IProductAdder
     {
         void addProduct(string name, double price, string description);
     }
-    public class ElectronicProductsAdder : IAdder
+    public class ElectronicProductsAdder : IProductAdder
     {
         public void addProduct(string name, double price, string description)
         {
@@ -20,7 +20,7 @@ namespace SPL_PROJECT
             Console.WriteLine($"Product added Successfully.");
         }
     }
-    public class ClothingProductsAdder : IAdder
+    public class ClothingProductsAdder : IProductAdder
     {
         public void addProduct(string name, double price, string description)
         {
@@ -34,7 +34,7 @@ namespace SPL_PROJECT
             Console.WriteLine($"Product added Successfully.");
         }
     }
-    public class HomeAppliencesAdder : IAdder
+    public class HomeAppliencesAdder : IProductAdder
     {
         public void addProduct(string name, double price, string description)
         {

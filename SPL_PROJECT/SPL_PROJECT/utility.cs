@@ -46,6 +46,7 @@ namespace SPL_PROJECT
                 Console.WriteLine("Username already exist. Try a new userName.");
 
                 createAcc();
+                return;
             }
             Console.WriteLine("Enter Name:");
             string Name = Console.ReadLine();

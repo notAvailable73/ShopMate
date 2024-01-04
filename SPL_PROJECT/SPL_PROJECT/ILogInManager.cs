@@ -41,17 +41,27 @@ namespace SPL_PROJECT
                 }
                 else
                 {
-                    Console.WriteLine("Wrong password. Back to main menu? (Y/N)");
-                    line = Console.ReadLine();
-                    if (line == "N")
+                    //Console.WriteLine("Wrong password. Back to main menu?");
+                    string[] Options = { "Yes", "No" };
+
+                    Menu menu = new Menu(Options);
+
+                    int inp = menu.Run("Wrong password. Try Again?");
+
+                    switch (inp)
                     {
-                        logIn();
-                    }
-                    else
-                    {
-                        Console.Clear();
-                        utility.mainMenu();
-                        return;
+                        case 0:
+                            Console.Clear();
+                            logIn();
+                            break;
+                        case 1:
+                            Console.Clear();
+                            utility.mainMenu();
+                            break;
+                        default:
+                            Console.WriteLine("Invalid input.");
+
+                            break;
                     }
                 }
             }
@@ -64,7 +74,7 @@ namespace SPL_PROJECT
             Console.Clear();
             Console.WriteLine("-----------------------User Login----------------------");
             Console.WriteLine("Enter UserName:");
-            string username = Console.ReadLine();
+            string username =  Console.ReadLine().ToLower();
 
             Console.WriteLine("Enter Password:");
             string password = utility.EncryptPassword();
@@ -80,7 +90,8 @@ namespace SPL_PROJECT
                         Console.Clear();
                         Console.WriteLine($"------------------Logged In As {username}----------------------");
                         Console.WriteLine();
-                        Temp_user.dashboard();
+                        Session.CurrentUser = Temp_user;
+                        Session.CurrentUser.dashboard();
                     }
                     else if (Temp_user.userName == username && password != Temp_user.password)
                     {
@@ -103,7 +114,29 @@ namespace SPL_PROJECT
             
             else
             {
-                Console.WriteLine("Invalid Username.");
+                Console.WriteLine("Invalid Username. Press any key to Continue...");
+                Console.ReadKey();
+                string[] Options = { "Yes", "No" };
+
+                Menu menu = new Menu(Options);
+
+                int inp = menu.Run("Try again?");
+
+                switch (inp)
+                {
+                    case 0:
+                        Console.Clear();
+                        logIn();
+                        break;
+                    case 1:
+                        Console.Clear();
+                        utility.mainMenu();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid input.");
+                        
+                        break;
+                }
             }
         }
         public void logIn(string username, string password)
@@ -123,17 +156,27 @@ namespace SPL_PROJECT
                     else if (Temp_user.userName == username && password != Temp_user.password)
                     {
 
-                        Console.WriteLine("Wrong password. Back to main menu? (Y/N)");
-                        string line = Console.ReadLine();
-                        if (line == "N" || line == "n")
+                        Console.WriteLine("Wrong password. Try again? ");
+                        string[] Options = { "Yes", "No" };
+
+                        Menu menu = new Menu(Options);
+
+                        int inp = menu.Run("Wrong password. Try again? ");
+
+                        switch (inp)
                         {
-                            logIn();
-                        }
-                        else
-                        {
-                            Console.Clear();
-                            utility.mainMenu();
-                            return;
+                            case 0:
+                                Console.Clear();
+                                logIn();
+                                break;
+                            case 1:
+                                Console.Clear();
+                                utility.mainMenu();
+                                break;
+                            default:
+                                Console.WriteLine("Invalid input.");
+
+                                break;
                         }
                     }
                 }

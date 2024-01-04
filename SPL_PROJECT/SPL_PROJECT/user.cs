@@ -27,17 +27,12 @@ namespace SPL_PROJECT
             string[] userDashboardOption = { "Browse Products", "Edit Profile", "Cart", "Log Out" };
             Menu menu = new Menu(userDashboardOption);
 
-            int input = menu.Run();
-
-
-            //Edit Profile
-            //Load order
+            int input = menu.Run(); 
             switch (input)
             {
                 case 0:
                     Console.Clear();
-                    Database.browseProduct(userName);
-                    //dashboard();
+                    Database.browseProduct(); 
                     break;
                 case 1:
                     Console.Clear();
@@ -77,10 +72,10 @@ namespace SPL_PROJECT
             switch (input)
             {
                 case 0:
-                    cart.deleteProduct(userName, cartlist); loadCart();
+                    cart.deleteProduct(cartlist); loadCart();
                     break;
                 case 1:
-                    cart.clearCart(userName); loadCart();
+                    cart.clearCart(); loadCart();
                     break;
                 case 2:
                     checkout();
@@ -104,7 +99,7 @@ namespace SPL_PROJECT
         }
         public void addToCart(IProduct product)
         {
-            cart.AddProductToCart(userName, product);
+            cart.AddProductToCart(product);
         }
         public void checkout()
         {
@@ -117,7 +112,7 @@ namespace SPL_PROJECT
             switch (input)
             {
                 case 0:
-                    cart.clearCart(userName);
+                    cart.clearCart();
                     Console.WriteLine("Ordered Successfully!\n\nPress any key to visit dashboard.");
                     Console.ReadKey();
                     dashboard();

@@ -6,12 +6,12 @@ namespace SPL_PROJECT
     public class Cart
     {
         List<IProduct> products = new List<IProduct>();
-        public void AddProductToCart(string userName, IProduct product)
-        {
-            products.Add(product);
-            Database.addProductToCart(userName, product);
-        }
         public void AddProductToCart(IProduct product)
+        {
+            AddProductToThisCart(product);
+            Database.addProductToCart( product);
+        }
+        public void AddProductToThisCart(IProduct product)
         {
             products.Add(product);
         }
@@ -24,7 +24,7 @@ namespace SPL_PROJECT
             }
             return price;
         }
-        public void deleteProduct(string userName,string fullList)
+        public void deleteProduct(string fullList)
         {
             Console.Clear();
             Console.WriteLine(fullList);
@@ -32,14 +32,14 @@ namespace SPL_PROJECT
             Console.WriteLine("Enter ID of the Product!");
             product = Database.getProduct(int.Parse(Console.ReadLine()));
             products.Remove(product);
-            Database.deleteProductFromCart(userName, product.id.ToString());
+            Database.deleteProductFromCart( product.id.ToString());
             Console.WriteLine("Removed Successfully.\n Press any button to go back.");
             Console.ReadKey();
         }
-        public void clearCart(string userName)
+        public void clearCart()
         {
             products.Clear();
-            Database.clearCart(userName);
+            Database.clearCart();
         }
         public string load()
         {
