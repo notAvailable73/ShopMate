@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Xml;
 
 namespace SPL_PROJECT
 {
@@ -15,66 +18,80 @@ namespace SPL_PROJECT
             Console.WriteLine($"-------------------Electronic Products---------------------");
             Console.WriteLine();
 
-            foreach (IProduct item in Database.ElectronicProductList)
+            List<string> products = new List<string>();
+
+            foreach(IProduct item in Database.ElectronicProductList) 
             {
-                Console.WriteLine($"{item.id} {item.name}");
+               products.Add(item.name);
             }
 
-            Console.WriteLine();
-            Console.WriteLine("Enter Product Id To See Details");
+            products.Add("GO Back");
 
-            int input = int.Parse(Console.ReadLine());
-            int index = input - (Database.ElectronicProductList.First().id);
-            Console.Clear();
-            Console.WriteLine("---------------------Product Details------------------------");
-            Console.WriteLine();
+            string[] ElectronicProducts = products.ToArray();
 
-            try
+            Menu menu = new Menu(ElectronicProducts);
+
+            int index = menu.Run();
+
+            if (index == products.Count - 1)
             {
-                if (Database.ElectronicProductList[index] == null)
-                {
-                    throw new Exception();
-                }
-                IProduct product = Database.ElectronicProductList[index];
-                product.DisplayDetails();
-
+                Database.browseProduct();
             }
-            catch (Exception e)
+            else
             {
-                Console.WriteLine(e.Message);
+                Console.Clear();
+                Console.WriteLine("---------------------Product Details------------------------");
                 Console.WriteLine();
-                DisplayProducts();
-            }
-            string[] options = { "Add to Cart", "Go Back", "Dashboard" };
 
-            Menu menu1 = new Menu(options);
+                try
+                {
+                    if (Database.ElectronicProductList[index] == null)
+                    {
+                        throw new Exception();
+                    }
+                    IProduct product = Database.ElectronicProductList[index];
+                    product.DisplayDetails();
 
-            int inp = menu1.Run(Database.ElectronicProductList[index]);
-
-
-            switch (inp)
-            {
-                case 0:
-                    Console.Clear();
-                    Database.addProductToCart(Database.ElectronicProductList[index]);
-                    Console.WriteLine("Product Added To Cart Successfully");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
                     Console.WriteLine();
-                    Console.WriteLine("Press any key to go back.");
-                    Console.ReadKey();
                     DisplayProducts();
-                    return;
-                case 1:
-                    Console.Clear();
-                    DisplayProducts();
-                     
-                    return;
-                case 2:
-                    Console.Clear();
-                    Session.CurrentUser.dashboard();
-                    return;
-                default:
-                    Console.WriteLine("invalid input");
-                    break;
+                }
+                string[] options = { "Add to Cart", "Go Back", "Dashboard" };
+
+                Menu menu1 = new Menu(options);
+
+                int inp = menu1.Run(Database.ElectronicProductList[index]);
+
+
+                switch (inp)
+                {
+                    case 0:
+                        Console.Clear();
+                        Database.addProductToCart(Database.ElectronicProductList[index]);
+                        string s = "Product Added To Cart Successfully";
+                        string[] options1 = { "GO Back" };
+
+                        Menu menu2 = new Menu(options1);
+                        int inp1 = menu2.Run(s);
+
+                        DisplayProducts();
+                        return;
+                    case 1:
+                        Console.Clear();
+                        DisplayProducts();
+
+                        return;
+                    case 2:
+                        Console.Clear();
+                        Session.CurrentUser.dashboard();
+                        return;
+                    default:
+                        Console.WriteLine("invalid input");
+                        break;
+                }
             }
         }
     }
@@ -85,69 +102,83 @@ namespace SPL_PROJECT
             Console.WriteLine($"-------------------Clothing Products---------------------");
             Console.WriteLine();
 
-            foreach (IProduct item in Database.clothList)
+            List<string> products = new List<string>();
+
+            foreach(IProduct item in Database.clothList)
             {
-                Console.WriteLine($"{item.id} {item.name}");
+                products.Add(item.name);
             }
 
-            Console.WriteLine();
-            Console.WriteLine("Enter Product Id To See Details");
+            products.Add("GO Back");
+            string[] clothingProducts=products.ToArray();
 
-            int input = int.Parse(Console.ReadLine());
-            int index = input - (Database.clothList.First().id);
-            Console.Clear();
-            Console.WriteLine("---------------------Product Details------------------------");
-            Console.WriteLine();
+            Menu menu = new Menu(clothingProducts);
 
-            try
+
+            int index = menu.Run();
+
+            if (index == products.Count - 1)
             {
-                if (Database.clothList[index] != null)
-                {
-                    IProduct product = Database.clothList[index];
-                    product.DisplayDetails();
-                }
-                else
-                {
-                    throw new Exception();
-                }
+                Database.browseProduct();
             }
-            catch (Exception e)
+            else
             {
-                Console.WriteLine(e.Message);
+                Console.Clear();
+                Console.WriteLine("---------------------Product Details------------------------");
                 Console.WriteLine();
-                DisplayProducts();
-            }
-            string[] options = { "Add to Cart", "Go Back", "Dashboard" };
 
-            Menu menu1 = new Menu(options);
-
-            int inp = menu1.Run(Database.clothList[index]);
-
-
-            switch (inp)
-            {
-                case 0:
-                    Console.Clear();
-                    Database.addProductToCart(Database.clothList[index]);
-                    Console.WriteLine("Product Added To Cart Successfully");
+                try
+                {
+                    if (Database.clothList[index] != null)
+                    {
+                        IProduct product = Database.clothList[index];
+                        product.DisplayDetails();
+                    }
+                    else
+                    {
+                        throw new Exception();
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
                     Console.WriteLine();
-                    Console.WriteLine("Press any key to go back.");
-                    Console.ReadKey();
                     DisplayProducts();
-                    return;
-                case 1:
-                    Console.Clear();
-                    DisplayProducts();
+                }
+                string[] options = { "Add to Cart", "Go Back", "Dashboard" };
 
-                    return;
-                case 2:
-                    Console.Clear();
-                    Session.CurrentUser.dashboard();
+                Menu menu1 = new Menu(options);
 
-                    return;
-                default:
-                    Console.WriteLine("invalid input");
-                    break;
+                int inp = menu1.Run(Database.clothList[index]);
+
+
+                switch (inp)
+                {
+                    case 0:
+                        Console.Clear();
+                        Database.addProductToCart(Database.clothList[index]);
+                        string s = "Product Added To Cart Successfully";
+                        string[] options1 = { "GO Back" };
+
+                        Menu menu2 = new Menu(options1);
+                        int inp1 = menu2.Run(s);
+
+                        DisplayProducts();
+                        return;
+                    case 1:
+                        Console.Clear();
+                        DisplayProducts();
+
+                        return;
+                    case 2:
+                        Console.Clear();
+                        Session.CurrentUser.dashboard();
+
+                        return;
+                    default:
+                        Console.WriteLine("invalid input");
+                        break;
+                }
             }
         }
     }
@@ -158,66 +189,81 @@ namespace SPL_PROJECT
             Console.WriteLine($"-------------------Home Applience Product---------------------");
             Console.WriteLine();
 
+            List<string> products=new List<string>();
+
             foreach (IProduct item in Database.HomeApplienceList)
             {
-                Console.WriteLine($"{item.id} {item.name}");
+                products.Add(item.name);
             }
 
-            Console.WriteLine();
-            Console.WriteLine("Enter Product Id To See Details");
+            products.Add("GO Back");
 
-            int input = int.Parse(Console.ReadLine());
-            int index = input - (Database.HomeApplienceList.First().id);
-            Console.Clear();
-            Console.WriteLine("---------------------Product Details------------------------");
-            Console.WriteLine();
+            string[] HomeAppliencesProduct = products.ToArray();
 
-            try
+            Menu menu=new Menu(HomeAppliencesProduct);
+
+
+            int index = menu.Run();
+
+            if (index == products.Count - 1)
             {
-                if (Database.HomeApplienceList[index] != null)
-                {
-                    IProduct product = Database.HomeApplienceList[index];
-                    product.DisplayDetails();
-                }
-                else
-                {
-                    throw new Exception();
-                }
+                Database.browseProduct();
             }
-            catch (Exception e)
+            else
             {
-                Console.WriteLine(e.Message);
+                Console.Clear();
+                Console.WriteLine("---------------------Product Details------------------------");
                 Console.WriteLine();
-                DisplayProducts();
-            }
-            string[] options = { "Add to Cart", "Go Back", "Dashboard" };
-            Menu menu1 = new Menu(options);
 
-            int inp = menu1.Run(Database.HomeApplienceList[index]);
-
-
-            switch (inp)
-            {
-                case 0:
-                    Console.Clear();
-                    Database.addProductToCart(Database.HomeApplienceList[index]);
-                    Console.WriteLine("Product Added To Cart Successfully");
+                try
+                {
+                    if (Database.HomeApplienceList[index] != null)
+                    {
+                        IProduct product = Database.HomeApplienceList[index];
+                        product.DisplayDetails();
+                    }
+                    else
+                    {
+                        throw new Exception();
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
                     Console.WriteLine();
-                    Console.WriteLine("Press any key to go back.");
-                    Console.ReadKey();
                     DisplayProducts();
-                    return;
-                case 1:
-                    Console.Clear();
-                    DisplayProducts();
-                    return;
-                case 2:
-                    Console.Clear();
-                    Session.CurrentUser.dashboard();
-                    return;
-                default:
-                    Console.WriteLine("invalid input");
-                    break;
+                }
+                string[] options = { "Add to Cart", "Go Back", "Dashboard" };
+                Menu menu1 = new Menu(options);
+
+                int inp = menu1.Run(Database.HomeApplienceList[index]);
+
+
+                switch (inp)
+                {
+                    case 0:
+                        Console.Clear();
+                        Database.addProductToCart(Database.HomeApplienceList[index]);
+                        string s = "Product Added To Cart Successfully";
+                        string[] options1 = { "GO Back" };
+
+                        Menu menu2 = new Menu(options1);
+                        int inp1=menu2.Run(s);
+          
+                        DisplayProducts();
+                        return;
+                    case 1:
+                        Console.Clear();
+                        DisplayProducts();
+                        return;
+                    case 2:
+                        Console.Clear();
+                        Session.CurrentUser.dashboard();
+                        return;
+                    default:
+                        Console.WriteLine("invalid input");
+                        break;
+                }
             }
         }
     }

@@ -27,14 +27,41 @@ namespace SPL_PROJECT
         public void deleteProduct(string fullList)
         {
             Console.Clear();
-            Console.WriteLine(fullList);
+            string s = "Select The Product To Remove";
+
+            string[] options = fullList.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            
+            //for (int i = 0; i < options.Length; i++)
+            //{
+            //    options[i] = options[i].Trim(); // Trim extra spaces
+            //}
+
+            Menu menu=new Menu(options);
+
+            int inp=menu.Run(s);
+            
+            //Console.WriteLine(fullList);
+
             IProduct product;
-            Console.WriteLine("Enter ID of the Product!");
-            product = Database.getProduct(int.Parse(Console.ReadLine()));
+
+            //Console.WriteLine("Enter ID of the Product!");
+
+            string productinfo = options[inp];
+            string productID = productinfo.Split(' ')[0];
+            //productID = productID.Trim();
+
+            int ID=Convert.ToInt32(productID);
+
+            product = Database.getProduct(ID);
             products.Remove(product);
             Database.deleteProductFromCart( product.id.ToString());
-            Console.WriteLine("Removed Successfully.\n Press any button to go back.");
-            Console.ReadKey();
+
+            string message = "Product Removed Successfully.";
+            string[] options1 = { "GO Back" };
+            Menu menu1 = new Menu(options1);
+
+            int inp1=menu1.Run(message);
+            Session.CurrentUser.loadCart();
         }
         public void clearCart()
         {
@@ -43,6 +70,7 @@ namespace SPL_PROJECT
         }
         public string load()
         {
+            //products.Sort();
             string s=""; 
             foreach (var item in products)
             {

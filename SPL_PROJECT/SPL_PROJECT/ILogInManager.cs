@@ -88,7 +88,8 @@ namespace SPL_PROJECT
                     if (Temp_user.userName == username && password == Temp_user.password)
                     {
                         Console.Clear();
-                        Console.WriteLine($"------------------Logged In As {username}----------------------");
+                        string s = $"------------------Logged In As {username}----------------------";
+                        Console.WriteLine(s);
                         Console.WriteLine();
                         Session.CurrentUser = Temp_user;
                         Session.CurrentUser.dashboard();
