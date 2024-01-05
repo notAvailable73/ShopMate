@@ -22,12 +22,12 @@ namespace SPL_PROJECT
 
         public void dashboard()
         {
-            
+            string s = $"------------------Logged In As {Session.CurrentUser.name}----------------------";
             cart = Database.getCart(userName);
-            string[] userDashboardOption = { "Browse Products", "Edit Profile", "Cart", "Log Out" };
+            string[] userDashboardOption = { "Browse Products", "Change Password", "Cart", "Log Out" };
             Menu menu = new Menu(userDashboardOption);
 
-            int input = menu.Run(); 
+            int input = menu.Run(s); 
             switch (input)
             {
                 case 0:
@@ -36,7 +36,7 @@ namespace SPL_PROJECT
                     break;
                 case 1:
                     Console.Clear();
-                    Console.WriteLine("--------------Did Not Implement Edit Profile------------------");
+                    Database.changePassword();
                     Console.ReadKey();
                     dashboard();
                     break;
@@ -49,7 +49,8 @@ namespace SPL_PROJECT
                     logOut();
                     break;
                 default:
-                    Console.WriteLine("Invalid input."); dashboard();
+                    Console.WriteLine("Invalid input."); 
+                    dashboard();
                     break;
 
             }
@@ -72,7 +73,8 @@ namespace SPL_PROJECT
             switch (input)
             {
                 case 0:
-                    cart.deleteProduct(cartlist); loadCart();
+                    cart.deleteProduct(cartlist); 
+                    loadCart();
                     break;
                 case 1:
                     cart.clearCart(); loadCart();

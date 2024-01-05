@@ -22,6 +22,34 @@ namespace SPL_PROJECT
             Console.WriteLine($"User Created Successfully with username:{username}");
             return newUser;
         }
+
+        public static void DeleteUser(user u)
+        {
+            foreach(user user in userList) 
+            {
+                if(user.userName == u.userName)
+                {
+                    userList.Remove(user);
+                    break;
+                }
+            }
+
+            string path = $@"C:\ShopMate\user.txt.txt";
+            StreamReader sr = new StreamReader(path);
+            string line;
+            string info = "";
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] infoOfUser = line.Split(',');
+                if (infoOfUser[0]==u.userName)
+                {
+                    continue;
+                }
+                info += $"{line}\n";
+            }
+            sr.Close();
+            File.WriteAllText(path, info);
+        }
         public static void addProduct(IProductAdder adder)
         {
             string name, description;
@@ -137,9 +165,18 @@ namespace SPL_PROJECT
             StreamReader sr = new StreamReader(path);
             string line;
 
+            List<int> productId = new List<int>();
+
             while ((line = sr.ReadLine()) != null)
             {
-                int id = Convert.ToInt32(line);
+                int id=Convert.ToInt32(line);
+                productId.Add(id);
+            }
+
+            productId.Sort();
+
+            foreach(int id in productId)
+            {
                 IProduct product = getProduct(id);
 
                 newCart.AddProductToThisCart(product);
@@ -174,6 +211,59 @@ namespace SPL_PROJECT
                 default: return;
             }
             productDisplay.DisplayProducts();
+        }
+
+        public static void changePassword()
+        {
+            string userName = Session.CurrentUser.userName;
+            string name = Session.CurrentUser.name; 
+            string password = Session.CurrentUser.password;
+            string email = Session.CurrentUser.email;
+            string date_of_birth = Session.CurrentUser.date_of_birth;
+
+            Console.WriteLine("Enter Old PassWord: ");
+            string oldPassWord=Console.ReadLine();
+            string newPassWord;
+
+            if(utility.hashing(oldPassWord)==password)
+            {
+                Console.WriteLine("Enter New PassWord: ");
+                newPassWord = Console.ReadLine();
+
+                newPassWord=utility.hashing(newPassWord);
+
+                if(newPassWord==password)
+                {
+                    string s = "Your New PassWord Cannot be same as your Previous PassWord";
+
+                    string[] options = { "Continue" };
+                    Menu menu = new Menu(options);
+                    int inp = menu.Run(s);
+                    Session.CurrentUser.dashboard();
+                }
+                else
+                {
+                    DeleteUser(Session.CurrentUser);
+                    CreateUser(userName,name,newPassWord,email,date_of_birth);
+                    string s = "Password Changed Successfully";
+
+                    string[] options = { "Continue" };
+                    Menu menu = new Menu(options);
+                    int inp=menu.Run(s);
+                    utility.mainMenu();
+                }
+            }
+            else 
+            {
+                
+                string s = "Incorrect PassWord!";
+
+                string[] options = { "Continue" };
+                Menu menu = new Menu(options);
+                int inp = menu.Run(s);
+                Session.CurrentUser.dashboard();
+            }
+
         }
     }
 }
