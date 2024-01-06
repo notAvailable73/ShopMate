@@ -48,6 +48,7 @@
     <Compile Include="Cart.cs" />
     <Compile Include="EmailSender.cs" />
     <Compile Include="IAccount.cs" />
+    <Compile Include="inbox.cs" />
     <Compile Include="IProductAdder.cs" />
     <Compile Include="ILogInManager.cs" />
     <Compile Include="Iproduct.cs" />
