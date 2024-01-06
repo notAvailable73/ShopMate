@@ -52,7 +52,7 @@ namespace SPL_PROJECT
 
         public void dashboard()
         {
-            string[] adminDashBoardOptions = { "Add Product", "Log Out" };
+            string[] adminDashBoardOptions = { "Add New Product","Add Quantity Of Existing Product", "Log Out" };
             Menu menu=new Menu(adminDashBoardOptions);
 
             //Console.WriteLine("Enter 1 to add product");
@@ -65,7 +65,31 @@ namespace SPL_PROJECT
             switch (input)
             {
                 case 0: AddProduct(); break;
-                case 1: logOut(); break;
+                case 1:
+                    Console.WriteLine("Enter Product Id: ");
+                    int id= Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("How Many More Product Do You Want To Add?");
+                    int add= Convert.ToInt32(Console.ReadLine());
+                    IProduct product= Database.getProduct(id);
+
+                    if (product.id > 10000 && product.id < 20000)
+                    {
+                        Database.EditElectronicProductQuantity(product, add);
+                    }
+                    else if (product.id > 20000 && product.id < 30000)
+                    {
+                        Database.EditClothingProductQuantity(product, add);
+                    }
+                    else
+                    {
+                        Database.EditHomeProductQuantity(product, add);
+                    }
+                    Console.WriteLine("Quantity Increased Successfully\nPress Any Key To Contimue");
+                    Console.ReadLine();
+                    dashboard();
+
+                    break;
+                case 2: logOut(); break;
                 default: Console.WriteLine("Invalid Input"); break;
             }
         }

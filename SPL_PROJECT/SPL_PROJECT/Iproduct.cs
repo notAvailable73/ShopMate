@@ -14,6 +14,7 @@ namespace SPL_PROJECT
         string name { get; set; }
         double price { get; set; }
         string description { get; set; }
+        int quantity { get; set; }
         void DisplayDetails();
     }
 
@@ -23,18 +24,21 @@ namespace SPL_PROJECT
         public string name { get; set; }
         public double price { get; set; }
         public string description { get; set; }
-        public ElectronicProducts(int id, string name, double price, string description)
+        public int quantity { get; set; }
+        public ElectronicProducts(int id, string name, double price, string description,int quantity)
         {
             this.id = id;
             this.name = name;
             this.price = price;
             this.description = description;
+            this.quantity = quantity;
         }
 
         public void DisplayDetails()
         {
             Console.WriteLine($"Name: {name}");
             Console.WriteLine($"Price: {price}");
+            Console.WriteLine($"Quantity: {quantity}");
             Console.WriteLine($"Description: {description}");
             Console.WriteLine();
         }
@@ -46,17 +50,21 @@ namespace SPL_PROJECT
         public string name { get; set; }
         public double price { get; set; }
         public string description { get; set; }
-        public Cloth(int id, string name, double price, string description)
+
+        public int quantity { get; set; }
+        public Cloth(int id, string name, double price, string description, int quantity)
         {
             this.id = id;
             this.name = name;
             this.price = price;
             this.description = description;
+            this.quantity = quantity;
         }
         public void DisplayDetails()
         {
             Console.WriteLine($"Name: {name}");
             Console.WriteLine($"Price: {price}");
+            Console.WriteLine($"Quantity: {quantity}");
             Console.WriteLine($"Description: {description}");
             Console.WriteLine();
         }
@@ -68,19 +76,22 @@ namespace SPL_PROJECT
         public string name { get; set; }
         public double price { get; set; }
         public string description { get; set; }
-        public HomeAppliences(int id, string name, double price, string description)
+
+        public int quantity { get; set; }
+        public HomeAppliences(int id, string name, double price, string description, int quantity)
         {
             this.id = id;
             this.name = name;
             this.price = price;
             this.description = description;
+            this.quantity = quantity;
         }
         public void DisplayDetails()
         {
             Console.WriteLine($"Name: {name}");
             Console.WriteLine($"Price: {price}");
+            Console.WriteLine($"Quantity: {quantity}");
             Console.WriteLine($"Description: {description}");
-            Console.WriteLine();
         }
     }
 }

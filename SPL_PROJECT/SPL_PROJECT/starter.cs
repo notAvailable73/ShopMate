@@ -50,9 +50,10 @@ namespace SPL_PROJECT
                     int id = Convert.ToInt32(s[0]);
                     string name = s[1];
                     double price = Convert.ToDouble(s[2]);
-                    string description = s[3];
+                    int quantity= Convert.ToInt32(s[3]);
+                    string description = s[4];
 
-                    ElectronicProducts temp = new ElectronicProducts(id, name, price, description);
+                    ElectronicProducts temp = new ElectronicProducts(id, name, price, description, quantity);
                     Database.ElectronicProductList.Add(temp);
                 }
 
@@ -79,9 +80,10 @@ namespace SPL_PROJECT
                     int id = Convert.ToInt32(s[0]);
                     string name = s[1];
                     double price = Convert.ToDouble(s[2]);
-                    string description = s[3];
+                    int quantity = Convert.ToInt32(s[3]);
+                    string description = s[4];
 
-                    Cloth temp = new Cloth(id, name, price, description);
+                    Cloth temp = new Cloth(id, name, price, description, quantity);
                     Database.clothList.Add(temp);
                 }
 
@@ -108,9 +110,10 @@ namespace SPL_PROJECT
                     int id = Convert.ToInt32(s[0]);
                     string name = s[1];
                     double price = Convert.ToDouble(s[2]);
-                    string description = s[3];
+                    int quantity = Convert.ToInt32(s[3]);
+                    string description = s[4];
 
-                    HomeAppliences temp = new HomeAppliences(id, name, price, description);
+                    HomeAppliences temp = new HomeAppliences(id, name, price, description, quantity);
                     Database.HomeApplienceList.Add(temp);
                 }
 

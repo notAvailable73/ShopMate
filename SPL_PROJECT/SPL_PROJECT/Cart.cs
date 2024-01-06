@@ -5,7 +5,7 @@ namespace SPL_PROJECT
 {
     public class Cart
     {
-        List<IProduct> products = new List<IProduct>();
+        public List<IProduct> products = new List<IProduct>();
         public void AddProductToCart(IProduct product)
         {
             AddProductToThisCart(product);
@@ -79,5 +79,25 @@ namespace SPL_PROJECT
             return s;
         }
 
+        public void confirmOrder()
+        {
+            foreach(IProduct product in products)
+            {
+                if(product.id>10000 && product.id<20000)
+                {
+                    Database.EditElectronicProductQuantity(product,-1);
+                }
+                else if(product.id>20000 && product.id<30000)
+                {
+                    Database.EditClothingProductQuantity(product,-1);
+                }
+                else
+                {
+                    Database.EditHomeProductQuantity(product,-1);
+                }
+            }
+            products.Clear();
+            Database.clearCart();
+        }
     }
 }

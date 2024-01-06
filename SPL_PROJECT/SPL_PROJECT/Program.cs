@@ -14,6 +14,8 @@ namespace SPL_PROJECT
         {
 
             Starter starter = new Starter();
+            //Console.WriteLine(Database.HomeApplienceList.Count);
+            //Console.ReadLine();
 
             utility.mainMenu();
             //CustomerLogIn logIn = new CustomerLogIn();

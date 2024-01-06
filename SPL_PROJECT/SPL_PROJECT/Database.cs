@@ -54,6 +54,7 @@ namespace SPL_PROJECT
         {
             string name, description;
             double price = 0;
+            int quantity = 0;
 
             Console.WriteLine("Enter Name of the product:");
             name = Console.ReadLine();
@@ -68,9 +69,22 @@ namespace SPL_PROJECT
                 Console.WriteLine("Invalid input.");
                 addProduct(adder);
             }
+
+            Console.WriteLine("Enter Quantity of the product");
+            try
+            {
+                quantity = Convert.ToInt32(Console.ReadLine());
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input.");
+                addProduct(adder);
+            }
+
             Console.WriteLine("Enter Description of the product");
             description = Console.ReadLine();
-            adder.addProduct(name, price, description);
+
+            adder.addProduct(name, price, description, quantity);
 
         }
         public static IProduct getProduct(int id)
@@ -290,6 +304,85 @@ namespace SPL_PROJECT
             }
 
         }
+
+        public static void EditElectronicProductQuantity(IProduct product,int add)
+        {
+            ElectronicProductList[product.id - 10001].quantity += add;
+            int newQuantity = ElectronicProductList[product.id - 10001].quantity;
+
+            string productfile = @"C:\ShopMate\electronicproduct.txt";
+            StreamReader sr = new StreamReader(productfile);
+            string line;
+            string info = "";
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] productInfo = line.Split(',');
+                int productId = Convert.ToInt32(productInfo[0]);
+                if(productId==product.id) 
+                {
+                    string newLine= $"{product.id},{product.name},{product.price},{newQuantity},{product.description}\n";
+                    info += newLine;
+                    continue;
+                }
+                
+                info += $"{line}\n";
+            }
+            sr.Close();
+            File.WriteAllText(productfile, info);
+        }
+
+        public static void EditClothingProductQuantity(IProduct product, int add)
+        {
+            clothList[product.id - 20001].quantity+= add;
+            int newQuantity = clothList[product.id - 20001].quantity;
+
+            string productfile = @"C:\ShopMate\clothingproduct.txt";
+            StreamReader sr = new StreamReader(productfile);
+            string line;
+            string info = "";
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] productInfo = line.Split(',');
+                int productId = Convert.ToInt32(productInfo[0]);
+                if (productId == product.id)
+                {
+                    string newLine = $"{product.id},{product.name},{product.price},{newQuantity},{product.description}\n";
+                    info += newLine;
+                    continue;
+                }
+
+                info += $"{line}\n";
+            }
+            sr.Close();
+            File.WriteAllText(productfile, info);
+        }
+
+        public static void EditHomeProductQuantity(IProduct product, int add)
+        {
+            HomeApplienceList[product.id - 30001].quantity += add;
+            int newQuantity = HomeApplienceList[product.id - 30001].quantity;
+
+            string productfile = @"C:\ShopMate\homeapplienceproduct.txt";
+            StreamReader sr = new StreamReader(productfile);
+            string line;
+            string info = "";
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] productInfo = line.Split(',');
+                int productId = Convert.ToInt32(productInfo[0]);
+                if (productId == product.id)
+                {
+                    string newLine = $"{product.id},{product.name},{product.price},{newQuantity},{product.description}\n";
+                    info += newLine;
+                    continue;
+                }
+
+                info += $"{line}\n";
+            }
+            sr.Close();
+            File.WriteAllText(productfile, info);
+        }
+
         public static string GetTime()
         {            
             DateTime currentDateTime = DateTime.Now;
