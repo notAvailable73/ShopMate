@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace SPL_PROJECT
         {
             messages.Add(message);
         }
-
+       
         public void SendWelcomeMessage(string userName)
         {
             string Message = $"* Welcome To ShopMate {userName} ";            
@@ -34,9 +35,7 @@ namespace SPL_PROJECT
             string formattedDateTime = Database.GetTime();
             Message += $"({formattedDateTime})";
             Database.addMessage(Message, userName);
-        }
-
-
+        }     
         public string load()
         {
             string s = "";

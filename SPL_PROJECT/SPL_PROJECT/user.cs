@@ -21,6 +21,11 @@ namespace SPL_PROJECT
             cart = Database.getCart(userName);
             inbox = new inbox();
         }
+        public user(string userName)
+        {
+            inbox = new inbox();
+            this.userName =userName;
+        }
 
         public void dashboard()
         {
@@ -151,7 +156,7 @@ namespace SPL_PROJECT
                         Console.WriteLine("Ordered Successfully!\n\nPress any key to visit dashboard.");
                         inbox.sendPurchaseMessage(userName);
                         inbox.emptyList();
-                        Database.GetInbox(Session.CurrentUser);
+                        Database.GetInbox(Session.CurrentUser);                        
                         Console.ReadKey();
                         dashboard();
                         return;
@@ -178,8 +183,20 @@ namespace SPL_PROJECT
             {
                 if(product.quantity == 0)
                 {
-                    CheckProduct=product;
+                    
+                   
+                   CheckProduct =product;
                     return false;
+                }
+                if(product.quantity == 5)
+                {
+                   
+                    AdminInbox.sendQuantityWarning(product);
+                }
+                if(product.quantity == 1)
+                {
+
+                    AdminInbox.sendEmptyInventoryWarning(product);
                 }
             }
            

@@ -388,18 +388,7 @@ namespace SPL_PROJECT
             DateTime currentDateTime = DateTime.Now;
             string formattedDateTime = currentDateTime.ToString("yyyy-MM-dd HH:mm");
             return formattedDateTime;
-        } public static string ConvertString(string s)
-        {
-            string[] lines = s.Split('\n');
-
-            // Extract values after numbers
-            List<string> values = lines
-                .Select(line => line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).LastOrDefault())
-                .ToList();
-
-            // Convert values to a comma-separated string
-            string resultString = string.Join(",", values);
-            return resultString;
         }
+    
     }
 }
