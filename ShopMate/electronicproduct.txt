@@ -1,5 +1,0 @@
-10001,Smartphone XYZ,699.99,High-performance smartphone with advanced features
-10002,Laptop ABC,1299.99,Sleek and powerful laptop for productivity on the go
-10003,Wireless Earbuds Pro,149.99,Immersive audio experience with noise-canceling technology
-10004,4K Ultra HD Smart TV,899.99,Stunning picture quality and smart features for entertainment
-10005,Gaming Console Elite,499.99,Next-gen gaming console with cutting-edge graphics and performance
