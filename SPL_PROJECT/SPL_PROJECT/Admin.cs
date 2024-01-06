@@ -52,7 +52,7 @@ namespace SPL_PROJECT
 
         public void dashboard()
         {
-            string[] adminDashBoardOptions = { "Add New Product","Add Quantity Of Existing Product", "Log Out" };
+            string[] adminDashBoardOptions = { "Add New Product","Add Quantity Of Existing Product", "Inbox", "Log Out" };
             Menu menu=new Menu(adminDashBoardOptions);
 
             //Console.WriteLine("Enter 1 to add product");
@@ -89,7 +89,13 @@ namespace SPL_PROJECT
                     dashboard();
 
                     break;
-                case 2: logOut(); break;
+                case 2:
+                    Console.Clear();
+                    
+                    AdminInbox.GetAdminInbox();
+                    AdminInbox.loadinbox();
+                    break;
+                case 3: logOut(); break;
                 default: Console.WriteLine("Invalid Input"); break;
             }
         }

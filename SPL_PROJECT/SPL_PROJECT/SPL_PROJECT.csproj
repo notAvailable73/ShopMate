@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.cs" />
+    <Compile Include="AdminInbox.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Cart.cs" />
     <Compile Include="EmailSender.cs" />
