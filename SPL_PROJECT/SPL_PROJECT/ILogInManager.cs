@@ -14,7 +14,7 @@ namespace SPL_PROJECT
         public void logIn()
         {
             Console.WriteLine("-----------------Admin Login-------------------");
-            Console.WriteLine();
+            Console.WriteLine();            
             Console.WriteLine("Enter password:");
             string admin_file = @"C:\ShopMate\adminpassword.txt";
             string pass = utility.EncryptPassword();
@@ -75,7 +75,6 @@ namespace SPL_PROJECT
             Console.WriteLine("-----------------------User Login----------------------");
             Console.WriteLine("Enter UserName:");
             string username =  Console.ReadLine().ToLower();
-
             Console.WriteLine("Enter Password:");
             string password = utility.EncryptPassword();
             Console.WriteLine();
@@ -92,6 +91,7 @@ namespace SPL_PROJECT
                         Console.WriteLine(s);
                         Console.WriteLine();
                         Session.CurrentUser = Temp_user;
+                        Database.GetInbox(Temp_user);
                         Session.CurrentUser.dashboard();
                     }
                     else if (Temp_user.userName == username && password != Temp_user.password)
