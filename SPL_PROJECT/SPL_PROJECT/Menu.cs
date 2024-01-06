@@ -116,8 +116,12 @@ namespace SPL_PROJECT
             do
             {
                 Console.Clear();
+                Console.WriteLine("---------------------Product Details------------------------");
+                Console.WriteLine();
+
                 Console.WriteLine("Name: " +product.name);
                 Console.WriteLine("Price: " + product.price);
+                Console.WriteLine("Quantity: " + product.quantity);
                 Console.WriteLine("Description: " + product.description);
                 Console.WriteLine();
                 Displayoptions();

@@ -114,11 +114,22 @@ namespace SPL_PROJECT
             switch (input)
             {
                 case 0:
-                    cart.clearCart();
-                    Console.WriteLine("Ordered Successfully!\n\nPress any key to visit dashboard.");
-                    Console.ReadKey();
-                    dashboard();
-                    return; 
+                    IProduct product=null;
+                    bool status = checkoutStatus(ref product);
+                    if (status)
+                    {
+                        cart.confirmOrder();
+                        Console.WriteLine("Ordered Successfully!\n\nPress any key to visit dashboard.");
+                        Console.ReadKey();
+                        dashboard();
+                        return;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Product {product.id} is out of Stock");
+                        loadCart();
+                        return;
+                    }
                 case 1:
                     loadCart();
                     break; 
@@ -127,6 +138,20 @@ namespace SPL_PROJECT
                     break;
 
             }
+        }
+
+        public bool checkoutStatus(ref IProduct CheckProduct)
+        {
+            foreach (IProduct product in cart.products) 
+            {
+                if(product.quantity == 0)
+                {
+                    CheckProduct=product;
+                    return false;
+                }
+            }
+           
+            return true;
         }
     }
 }
