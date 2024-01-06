@@ -144,6 +144,13 @@ namespace SPL_PROJECT
             string info = $"{product.id}\n";
             File.AppendAllText(path, info);
         }
+        public static void addMessage(string message,string userName)
+        {
+            string path = $@"C:\ShopMate\Inbox\{userName}_inbox.txt";
+            string info = $"{message}\n";
+            File.AppendAllText(path, info);
+        }
+
         public static void deleteProductFromCart(string productId)
         {
             string path = $@"C:\ShopMate\Carts\{Session.CurrentUser.userName}_cart.txt";
@@ -198,6 +205,24 @@ namespace SPL_PROJECT
 
             sr.Close();
             return newCart;
+        }
+        public static void GetInbox(user u)
+        {
+            string path = $@"C:\ShopMate\Inbox\{u.userName}_inbox.txt";
+            if (!File.Exists(path))
+            {
+                createInbox(u.userName);
+            }            
+            StreamReader sr = new StreamReader(path);
+            string line;
+
+            while ((line = sr.ReadLine()) != null)
+            {
+                u.inbox.addMessage(line);
+            }
+            sr.Close();
+         
+            
         }
         public static void browseProduct()
         {
@@ -332,7 +357,7 @@ namespace SPL_PROJECT
             File.WriteAllText(productfile, info);
         }
 
-        public static void EditHomeProductQuantity(IProduct product,int add)
+        public static void EditHomeProductQuantity(IProduct product, int add)
         {
             HomeApplienceList[product.id - 30001].quantity += add;
             int newQuantity = HomeApplienceList[product.id - 30001].quantity;
@@ -356,6 +381,25 @@ namespace SPL_PROJECT
             }
             sr.Close();
             File.WriteAllText(productfile, info);
+        }
+
+        public static string GetTime()
+        {            
+            DateTime currentDateTime = DateTime.Now;
+            string formattedDateTime = currentDateTime.ToString("yyyy-MM-dd HH:mm");
+            return formattedDateTime;
+        } public static string ConvertString(string s)
+        {
+            string[] lines = s.Split('\n');
+
+            // Extract values after numbers
+            List<string> values = lines
+                .Select(line => line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).LastOrDefault())
+                .ToList();
+
+            // Convert values to a comma-separated string
+            string resultString = string.Join(",", values);
+            return resultString;
         }
     }
 }
