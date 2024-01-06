@@ -10,15 +10,10 @@ namespace SPL_PROJECT
             string[] addProductOptions = { "Electronic Product", "Clothing Product", "Home Appliences", "Menu" };
             IProductAdder productAdder;
 
-            Menu menu=new Menu(addProductOptions);
-
-            //Console.WriteLine("Enter 1 to add Electronic Product");
-            //Console.WriteLine("Enter 2 to add Cloth Product");
-            //Console.WriteLine("Enter 3 to add HomeAppliences");
-            //Console.WriteLine("Enter 4 to return to menu");
+            Menu menu = new Menu(addProductOptions);
 
             int input = menu.Run();
-            
+
             switch (input)
             {
                 case 0:
@@ -50,13 +45,47 @@ namespace SPL_PROJECT
             }
         }
 
+        public void InventoryAdder()
+        {
+            string[] addInventoryOptions = { "Electronic Product", "Clothing Product", "Home Appliences", "Menu" };
+
+            IInventoryAdder inventoryAdder;
+
+            Menu menu = new Menu(addInventoryOptions);
+       
+            int input = menu.Run();
+
+            switch (input)
+            {
+                case 0:
+                    inventoryAdder = new ElectronicInventoryAdder();
+                    inventoryAdder.AddToInventory();
+                    Console.WriteLine();
+                    dashboard();
+                    break;
+                case 1:
+                    inventoryAdder = new ClothingInventoryAdder();
+                    inventoryAdder.AddToInventory();
+                    Console.WriteLine();
+                    dashboard();
+                    break;
+                case 2:
+                    inventoryAdder = new HomeApplienceInventoryAdder();
+                    inventoryAdder.AddToInventory();
+                    Console.WriteLine();
+                    dashboard();
+                    break;                  
+                default:
+                    Console.WriteLine("Invalid Input");
+                    dashboard();
+                    return;
+            }
+        }
+
         public void dashboard()
         {
             string[] adminDashBoardOptions = { "Add New Product","Add Quantity Of Existing Product", "Inbox", "Log Out" };
-            Menu menu=new Menu(adminDashBoardOptions);
-
-            //Console.WriteLine("Enter 1 to add product");
-            //Console.WriteLine("Enter 2 to Log out");
+            Menu menu=new Menu(adminDashBoardOptions);          
 
             int input = menu.Run();
 
@@ -65,36 +94,11 @@ namespace SPL_PROJECT
             switch (input)
             {
                 case 0: AddProduct(); break;
-                case 1:
-                    Console.WriteLine("Enter Product Id: ");
-                    int id= Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("How Many More Product Do You Want To Add?");
-                    int add= Convert.ToInt32(Console.ReadLine());
-                    IProduct product= Database.getProduct(id);
-
-                    if (product.id > 10000 && product.id < 20000)
-                    {
-                        Database.EditElectronicProductQuantity(product, add);
-                    }
-                    else if (product.id > 20000 && product.id < 30000)
-                    {
-                        Database.EditClothingProductQuantity(product, add);
-                    }
-                    else
-                    {
-                        Database.EditHomeProductQuantity(product, add);
-                    }
-                    Console.WriteLine("Quantity Increased Successfully\nPress Any Key To Contimue");
-                    Console.ReadLine();
-                    dashboard();
-
-                    break;
-                case 2:
-                    Console.Clear();
-                    
-                    AdminInbox.GetAdminInbox();
-                    AdminInbox.loadinbox();
-                    break;
+                case 1: InventoryAdder();break;
+                case 2:Console.Clear();                    
+                       AdminInbox.GetAdminInbox();
+                       AdminInbox.loadinbox();
+                       break;
                 case 3: logOut(); break;
                 default: Console.WriteLine("Invalid Input"); break;
             }
