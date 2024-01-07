@@ -29,6 +29,14 @@ namespace SPL_PROJECT
             products.Add("GO Back");
 
             string[] ElectronicProducts = products.ToArray();
+            int i = 0;
+            foreach (IProduct item in Database.ElectronicProductList)
+            {
+                ElectronicProducts[i] += $"  (Available :{item.quantity})";
+                i++;
+            }
+
+
 
             Menu menu = new Menu(ElectronicProducts);
 
@@ -94,6 +102,12 @@ namespace SPL_PROJECT
             products.Add("GO Back");
 
             string[] ClothProducts = products.ToArray();
+            int i = 0;
+            foreach (IProduct item in Database.clothList)
+            {
+                ClothProducts[i] += $"  (Available :{item.quantity})";
+                i++;
+            }
 
             Menu menu = new Menu(ClothProducts);
 
@@ -159,6 +173,12 @@ namespace SPL_PROJECT
             products.Add("GO Back");
 
             string[] HomeApplienceProducts = products.ToArray();
+            int i = 0;
+            foreach (IProduct item in Database.HomeApplienceList)
+            {
+                HomeApplienceProducts[i] += $"  (Available :{item.quantity})";
+                i++;
+            }
 
             Menu menu = new Menu(HomeApplienceProducts);
 
