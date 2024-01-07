@@ -69,16 +69,33 @@ namespace SPL_PROJECT
                 switch (inp)
                 {
                     case 0:
-                        Console.Clear();
-                        Database.addProductToCart(Database.ElectronicProductList[index]);
-                        string s = "Product Added To Cart Successfully";
-                        string[] options1 = { "GO Back" };
+                       
+                        if (Database.ElectronicProductList[index].quantity > 0)
+                        {
+                            Console.Clear();
+                            Database.addProductToCart(Database.ElectronicProductList[index]);
+                            string s = "Product Added To Cart Successfully";
+                            string[] options1 = { "GO Back" };
 
-                        Menu menu2 = new Menu(options1);
-                        int inp1 = menu2.Run(s);
+                            Menu menu2 = new Menu(options1);
+                            int inp1 = menu2.Run(s);
 
-                        DisplayProducts();
-                        return;
+                            DisplayProducts();
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Product Out Of Stock!!");
+                            Console.WriteLine();
+                            Console.WriteLine("Press Any Key To Go Back");
+                            Console.ReadKey(true);
+                            DisplayProducts();
+                            return;
+
+                        }
+                    
+
                     case 1:
                         Console.Clear();
                         DisplayProducts();
@@ -155,16 +172,30 @@ namespace SPL_PROJECT
                 switch (inp)
                 {
                     case 0:
-                        Console.Clear();
-                        Database.addProductToCart(Database.clothList[index]);
-                        string s = "Product Added To Cart Successfully";
-                        string[] options1 = { "GO Back" };
+                        if (Database.clothList[index].quantity > 0)
+                        {
+                            Console.Clear();
+                            Database.addProductToCart(Database.clothList[index]);
+                            string s = "Product Added To Cart Successfully";
+                            string[] options1 = { "GO Back" };
 
-                        Menu menu2 = new Menu(options1);
-                        int inp1 = menu2.Run(s);
+                            Menu menu2 = new Menu(options1);
+                            int inp1 = menu2.Run(s);
 
-                        DisplayProducts();
-                        return;
+                            DisplayProducts();
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Product Out Of Stock!!");
+                            Console.WriteLine();
+                            Console.WriteLine("Press Any Key To Go Back");
+                            Console.ReadKey(true);
+                            DisplayProducts();
+                            return;
+
+                        }                       
                     case 1:
                         Console.Clear();
                         DisplayProducts();
@@ -242,16 +273,30 @@ namespace SPL_PROJECT
                 switch (inp)
                 {
                     case 0:
-                        Console.Clear();
-                        Database.addProductToCart(Database.HomeApplienceList[index]);
-                        string s = "Product Added To Cart Successfully";
-                        string[] options1 = { "GO Back" };
+                        if (Database.HomeApplienceList[index].quantity > 0)
+                        {
+                            Console.Clear();
+                            Database.addProductToCart(Database.HomeApplienceList[index]);
+                            string s = "Product Added To Cart Successfully";
+                            string[] options1 = { "GO Back" };
 
-                        Menu menu2 = new Menu(options1);
-                        int inp1=menu2.Run(s);
-          
-                        DisplayProducts();
-                        return;
+                            Menu menu2 = new Menu(options1);
+                            int inp1 = menu2.Run(s);
+
+                            DisplayProducts();
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Product Out Of Stock!!");
+                            Console.WriteLine();
+                            Console.WriteLine("Press Any Key To Go Back");
+                            Console.ReadKey(true);
+                            DisplayProducts();
+                            return;
+
+                        }                       
                     case 1:
                         Console.Clear();
                         DisplayProducts();
