@@ -211,9 +211,9 @@ namespace SPL_PROJECT
             return;
         }
         public void addToCart(IProduct product)
-        {
-            cart.AddProductToCart(product);
-        }
+        {          
+         cart.AddProductToCart(product);             
+         }
         public void checkout()
         {
             string cartlist = cart.load();
@@ -225,25 +225,17 @@ namespace SPL_PROJECT
             switch (input)
             {
                 case 0:
-                    IProduct product=null;
-                    bool status = checkoutStatus(ref product);
-                    if (status)
-                    {
+                    
+                        MessageToAdmin();
                         cart.confirmOrder();
                         Console.WriteLine("Ordered Successfully!\n\nPress any key to visit dashboard.");
                         inbox.sendPurchaseMessage(userName);
                         inbox.emptyList();
-                        Database.GetInbox(Session.CurrentUser);                        
+                        Database.GetInbox(Session.CurrentUser); 
                         Console.ReadKey();
                         dashboard();
-                        return;
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Product {product.id} is out of Stock");
-                        loadCart();
-                        return;
-                    }
+                    break;
+                                     
                 case 1:
                     loadCart();
                     break; 
@@ -253,31 +245,21 @@ namespace SPL_PROJECT
 
             }
         }
-
-        public bool checkoutStatus(ref IProduct CheckProduct)
+        public void MessageToAdmin()
         {
-            foreach (IProduct product in cart.products) 
+            foreach (IProduct product in cart.products)
             {
-                if(product.quantity == 0)
+                if (product.quantity == 5)
                 {
-                    
-                   
-                   CheckProduct =product;
-                    return false;
-                }
-                if(product.quantity == 5)
-                {
-                   
                     AdminInbox.sendQuantityWarning(product);
                 }
-                if(product.quantity == 1)
+                if (product.quantity == 1)
                 {
-
                     AdminInbox.sendEmptyInventoryWarning(product);
                 }
+
             }
            
-            return true;
         }
     }
 }

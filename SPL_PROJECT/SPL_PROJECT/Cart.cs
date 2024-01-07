@@ -19,7 +19,7 @@ namespace SPL_PROJECT
         {
             double price = 0;
             foreach (IProduct product in products)
-            {
+            {              
                 price += product.price;
             }
             return price;
