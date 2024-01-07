@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.IO;
 namespace SPL_PROJECT
 {
     public class Admin : IAccount
@@ -13,7 +13,7 @@ namespace SPL_PROJECT
             Menu menu = new Menu(addProductOptions);
 
             int input = menu.Run();
-
+              
             switch (input)
             {
                 case 0:
@@ -81,10 +81,82 @@ namespace SPL_PROJECT
                     return;
             }
         }
+        public void changePassword()
+        {
+            string path = @"C:\ShopMate\adminpassword.txt";
+            string[] pass = File.ReadAllLines(path);
+            string password = pass[0];
+
+            Console.WriteLine("Enter Old PassWord: ");
+            string oldPassWord = Console.ReadLine();
+            string newPassWord;
+
+            if (utility.hashing(oldPassWord) == password)
+            {
+                Console.WriteLine("Enter New PassWord: ");
+                newPassWord = Console.ReadLine();
+
+                newPassWord = utility.hashing(newPassWord);
+
+                if (newPassWord == password)
+                {
+                    string s = "Your New PassWord Cannot be same as your Previous PassWord";
+
+                    string[] options = { "Continue" };
+                    Menu menu = new Menu(options);
+                    int inp = menu.Run(s);
+                    dashboard();
+                }
+                else
+                    
+                {
+                    File.WriteAllText(path, newPassWord);
+                    string s = "Password Changed Successfully";
+                    string[] options = { "Continue" };
+                    Menu menu = new Menu(options);
+                    int inp = menu.Run(s);
+                    utility.mainMenu();
+                }
+            }
+            else
+            {
+
+                string s = "Incorrect PassWord!";
+                Console.WriteLine(password);
+                string[] options = { "Continue" };
+                Menu menu = new Menu(options);   
+                int inp = menu.Run(s);
+                dashboard();
+            }
+            
+        }
+        public void loadinbox() {
+            string messagetlist = AdminInbox.load();
+            if (messagetlist == "")
+            {
+                Console.Clear();
+                Console.WriteLine("Inbox Empty!\nPress any key to go to dashboard.");
+                Console.ReadKey(true);
+                Admin admin = new Admin();
+                AdminInbox.emptyList();
+                admin.dashboard();
+                return;
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine(messagetlist);
+                Console.WriteLine("\nPress any key to go to dashboard.");
+                Console.ReadKey(true);
+                Admin admin = new Admin();
+                AdminInbox.emptyList();
+                admin.dashboard();
+            }
+        }
 
         public void dashboard()
         {
-            string[] adminDashBoardOptions = { "Add New Product","Add Quantity Of Existing Product", "Inbox", "Log Out" };
+            string[] adminDashBoardOptions = { "Add New Product","Add Quantity Of Existing Product", "Inbox", "Change Password", "Log Out" };
             Menu menu=new Menu(adminDashBoardOptions);          
 
             int input = menu.Run();
@@ -97,9 +169,10 @@ namespace SPL_PROJECT
                 case 1: InventoryAdder();break;
                 case 2:Console.Clear();                    
                        AdminInbox.GetAdminInbox();
-                       AdminInbox.loadinbox();
+                       loadinbox();
                        break;
-                case 3: logOut(); break;
+                case 3: changePassword();  break;
+                case 4: logOut(); break;
                 default: Console.WriteLine("Invalid Input"); break;
             }
         }

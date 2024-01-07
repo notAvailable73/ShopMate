@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace SPL_PROJECT
 {
@@ -31,7 +32,7 @@ namespace SPL_PROJECT
         {
             string s = $"------------------Logged In As {Session.CurrentUser.name}----------------------";
             cart = Database.getCart(userName);
-            string[] userDashboardOption = { "Browse Products", "Edit Profile", "Inbox", "Cart", "Log Out" };
+            string[] userDashboardOption = { "Browse Products", "Change Password", "Inbox", "Cart", "Log Out" };
             Menu menu = new Menu(userDashboardOption);
 
             int input = menu.Run(s); 
@@ -43,7 +44,8 @@ namespace SPL_PROJECT
                     break;
                 case 1:
                     Console.Clear();
-                    Console.WriteLine("--------------Did Not Implement Edit Profile------------------");
+                    Console.WriteLine();
+                    changePassword();
                     Console.ReadKey();
                     dashboard();
                     break;
@@ -124,6 +126,81 @@ namespace SPL_PROJECT
             Console.WriteLine("\nPress any key to go to dashboard.");
             Console.ReadKey(true);
             dashboard();
+        }
+        public  void changePassword()
+        {
+            string userName = Session.CurrentUser.userName;           
+            string password = Session.CurrentUser.password;           
+
+            Console.WriteLine("Enter Old PassWord: ");
+            string oldPassWord = Console.ReadLine();
+            string newPassWord;
+
+            if (utility.hashing(oldPassWord) == password)
+            {
+                Console.WriteLine("Enter New PassWord: ");
+                newPassWord = Console.ReadLine();
+
+                newPassWord = utility.hashing(newPassWord);
+
+                if (newPassWord == password)
+                {
+                    string s = "Your New PassWord Cannot be same as your Previous PassWord";
+
+                    string[] options = { "Continue" };
+                    Menu menu = new Menu(options);
+                    int inp = menu.Run(s);
+                    Session.CurrentUser.dashboard();
+                }
+                else
+                {
+                    Session.CurrentUser.password = newPassWord;
+                    UpdatePasswordInFile(userName, newPassWord);
+                    string s = "Password Changed Successfully";
+                    string[] options = { "Continue" };
+                    Menu menu = new Menu(options);
+                    int inp = menu.Run(s);
+                    utility.mainMenu();
+                }
+            }
+            else
+            {
+
+                string s = "Incorrect PassWord!";
+
+                string[] options = { "Continue" };
+                Menu menu = new Menu(options);
+                int inp = menu.Run(s);
+                Session.CurrentUser.dashboard();
+            }
+
+        }
+        private void UpdatePasswordInFile(string userName, string newPassword)
+        {
+            string path = @"C:\ShopMate\user.txt.txt";
+
+            try
+            {                
+                string[] lines = File.ReadAllLines(path);
+                                
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    string[] userParts = lines[i].Split(',');
+                                        
+                    if (userParts.Length > 0 && userParts[0] == userName)
+                    {
+                        
+                        lines[i] = $"{userName},{userParts[1]},{newPassword},{userParts[3]},{userParts[4]}";
+                        break; 
+                    }
+                }
+                
+                File.WriteAllLines(path, lines);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Error updating password in the file: " + ex.Message);
+            }
         }
 
         public void logOut()

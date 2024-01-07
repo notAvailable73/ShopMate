@@ -251,60 +251,6 @@ namespace SPL_PROJECT
             }
             productDisplay.DisplayProducts();
         }
-
-        public static void changePassword()
-        {
-            string userName = Session.CurrentUser.userName;
-            string name = Session.CurrentUser.name; 
-            string password = Session.CurrentUser.password;
-            string email = Session.CurrentUser.email;
-            string date_of_birth = Session.CurrentUser.date_of_birth;
-
-            Console.WriteLine("Enter Old PassWord: ");
-            string oldPassWord=Console.ReadLine();
-            string newPassWord;
-
-            if(utility.hashing(oldPassWord)==password)
-            {
-                Console.WriteLine("Enter New PassWord: ");
-                newPassWord = Console.ReadLine();
-
-                newPassWord=utility.hashing(newPassWord);
-
-                if(newPassWord==password)
-                {
-                    string s = "Your New PassWord Cannot be same as your Previous PassWord";
-
-                    string[] options = { "Continue" };
-                    Menu menu = new Menu(options);
-                    int inp = menu.Run(s);
-                    Session.CurrentUser.dashboard();
-                }
-                else
-                {
-                    DeleteUser(Session.CurrentUser);
-                    CreateUser(userName,name,newPassWord,email,date_of_birth);
-                    string s = "Password Changed Successfully";
-
-                    string[] options = { "Continue" };
-                    Menu menu = new Menu(options);
-                    int inp=menu.Run(s);
-                    utility.mainMenu();
-                }
-            }
-            else 
-            {
-                
-                string s = "Incorrect PassWord!";
-
-                string[] options = { "Continue" };
-                Menu menu = new Menu(options);
-                int inp = menu.Run(s);
-                Session.CurrentUser.dashboard();
-            }
-
-        }
-
         public static void EditElectronicProductQuantity(IProduct product,int add)
         {
             ElectronicProductList[product.id - 10001].quantity += add;
