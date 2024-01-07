@@ -10,6 +10,8 @@ namespace SPL_PROJECT
     {
         void dashboard();
         void logOut();
+        void loadinbox();
+        void changePassword();
         //void editProfile();
     }
 }

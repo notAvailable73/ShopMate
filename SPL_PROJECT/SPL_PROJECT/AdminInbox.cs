@@ -43,32 +43,7 @@ namespace SPL_PROJECT
             Message += $"({formattedDateTime})";
             Database.addMessage(Message, "Admin");
         }
-        public static void loadinbox()
-        {
-            string messagetlist = load();
-            if (messagetlist == "")
-            {
-                Console.Clear();
-                Console.WriteLine("Inbox Empty!\nPress any key to go to dashboard.");
-                Console.ReadKey(true);
-                Admin admin = new Admin();
-                emptyList();
-                admin.dashboard();
-                return;
-            }
-            else
-            {
-                Console.Clear();
-                Console.WriteLine(messagetlist);
-                Console.WriteLine("\nPress any key to go to dashboard.");
-                Console.ReadKey(true);
-                Admin admin = new Admin();
-                emptyList();
-                admin.dashboard();
-            }
-        }
-
-
+       
         public static string load()
         {
             string s = "";
