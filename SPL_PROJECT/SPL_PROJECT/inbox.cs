@@ -50,5 +50,11 @@ namespace SPL_PROJECT
         {
             messages.Clear();
         }
+        public void MessageFromAdmin(string message,string userName)
+        {
+            string formattedDateTime = Database.GetTime();
+            message = $"* {message} ({formattedDateTime})";
+            Database.addMessage(message,userName);
+        }
     }
 }
