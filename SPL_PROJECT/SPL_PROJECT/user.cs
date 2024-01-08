@@ -224,9 +224,7 @@ namespace SPL_PROJECT
             int input = menu.Run(s);
             switch (input)
             {
-                case 0:
-                    
-                        MessageToAdmin();
+                case 0:                                          
                         cart.confirmOrder();
                         Console.WriteLine("Ordered Successfully!\n\nPress any key to visit dashboard.");
                         inbox.sendPurchaseMessage(userName);
@@ -245,10 +243,10 @@ namespace SPL_PROJECT
 
             }
         }
-        public void MessageToAdmin()
+        
+        public void MessageToAdmin(IProduct product)
         {
-            foreach (IProduct product in cart.products)
-            {
+           
                 if (product.quantity == 5)
                 {
                     AdminInbox.sendQuantityWarning(product);
@@ -256,10 +254,9 @@ namespace SPL_PROJECT
                 if (product.quantity == 1)
                 {
                     AdminInbox.sendEmptyInventoryWarning(product);
-                }
-
-            }
+                }            
            
         }
+       
     }
 }

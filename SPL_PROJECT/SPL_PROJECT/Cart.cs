@@ -85,14 +85,17 @@ namespace SPL_PROJECT
             {
                 if(product.id>10000 && product.id<20000)
                 {
+                    Session.CurrentUser.MessageToAdmin(product);
                     Database.EditElectronicProductQuantity(product,-1);
                 }
                 else if(product.id>20000 && product.id<30000)
                 {
+                    Session.CurrentUser.MessageToAdmin(product);
                     Database.EditClothingProductQuantity(product,-1);
                 }
                 else
                 {
+                    Session.CurrentUser.MessageToAdmin(product);
                     Database.EditHomeProductQuantity(product,-1);
                 }
             }
