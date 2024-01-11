@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using System;
 using System.IO;
 
 namespace SPL_PROJECT
@@ -32,7 +33,7 @@ namespace SPL_PROJECT
         {
             string s = $"------------------Logged In As {Session.CurrentUser.name}----------------------";
             cart = Database.getCart(userName);
-            string[] userDashboardOption = { "Browse Products", "Change Password", "Inbox", "Cart", "Log Out" };
+            string[] userDashboardOption = { "Browse Products", "Change Password", "Inbox", "Cart","Previous Orders", "Log Out" };
             Menu menu = new Menu(userDashboardOption);
 
             int input = menu.Run(s); 
@@ -58,6 +59,12 @@ namespace SPL_PROJECT
                     loadCart();
                     break;
                 case 4:
+                    Console.Clear();
+                    Console.WriteLine();
+                    loadOrders();
+                    break;                   
+
+                case 5:
                     Console.Clear();
                     string cartlist = cart.load();
                     if (!(cartlist == ""))
@@ -117,6 +124,24 @@ namespace SPL_PROJECT
             {
                 Console.Clear();
                 Console.WriteLine("Inbox Empty!\nPress any key to go to dashboard.");
+                Console.ReadKey(true);
+                dashboard();
+                return;
+            }
+            Console.Clear();
+            Console.WriteLine(messagetlist);
+            Console.WriteLine("\nPress any key to go to dashboard.");
+            Console.ReadKey(true);
+            dashboard();
+        }
+        public void loadOrders()
+        {
+            string messagetlist = Database.GetOrders(Session.CurrentUser);
+            if (messagetlist == "")
+            {
+                Console.Clear();
+                Console.WriteLine("No Orders Yet.Get Your First order Now\nPress any key to go to dashboard.");
+                Console.WriteLine();
                 Console.ReadKey(true);
                 dashboard();
                 return;
@@ -227,6 +252,7 @@ namespace SPL_PROJECT
                 case 0:                                          
                         cart.confirmOrder();
                         Console.WriteLine("Ordered Successfully!\n\nPress any key to visit dashboard.");
+                        ExtractProductNames(cartlist);
                         inbox.sendPurchaseMessage(userName);
                         inbox.emptyList();
                         Database.GetInbox(Session.CurrentUser); 
@@ -257,6 +283,27 @@ namespace SPL_PROJECT
                 }            
            
         }
-       
+        static void ExtractProductNames(string cartlist)
+        {
+            // Split the input string into lines
+            string[] lines = cartlist.Split('\n');
+
+            // Extract product names and print them
+            foreach (string line in lines)
+            {
+                string productName = GetProductName(line);
+                Database.addProductToOrders(productName);
+            }
+        }
+
+        static string GetProductName(string input)
+        {
+            // Split the input string by space and get the last part
+            string[] parts = input.Split(' ');
+            string productName = parts[parts.Length - 1];
+
+            return productName;
+        }
+
     }
 }

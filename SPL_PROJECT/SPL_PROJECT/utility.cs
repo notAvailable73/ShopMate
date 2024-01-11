@@ -65,6 +65,7 @@ namespace SPL_PROJECT
 
             user Current_User = Database.CreateUser(username, Name, password, mail, date);
             Console.WriteLine();
+            Database.createOrder(username);
             inbox newUser = new inbox();
             newUser.SendWelcomeMessage(Current_User.userName);
             utility.mainMenu();

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace SPL_PROJECT
 {
@@ -138,11 +139,33 @@ namespace SPL_PROJECT
             StreamWriter sw = File.CreateText(path);
             sw.Close();
         }
+        public static void createOrder(string userName)
+        {
+            string path = $@"C:\ShopMate\Orders\{userName}_orders.txt";
+            StreamWriter sw = File.CreateText(path);           
+            sw.Close();
+        }
         public static void addProductToCart(IProduct product)
         {
             string path = $@"C:\ShopMate\Carts\{Session.CurrentUser.userName}_cart.txt";
             string info = $"{product.id}\n";
             File.AppendAllText(path, info);
+        }
+        public static void addProductToOrders(string s)
+        {
+            
+            string path = $@"C:\ShopMate\Orders\{Session.CurrentUser.userName}_orders.txt";
+            if (s == "")
+            {
+
+            }
+            else
+            {
+                s += $"    Bought on ({GetTime()})\n";
+            }
+            
+         /*   string info = $" Product:{name} Price:{price}\n";*/
+            File.AppendAllText(path, s);
         }
         public static void addMessage(string message,string userName)
         {
@@ -221,9 +244,24 @@ namespace SPL_PROJECT
                 u.inbox.addMessage(line);
             }
             sr.Close();
-         
-            
+
+
         }
+        public static string GetOrders(user u)
+        {                        
+            string path = $@"C:\ShopMate\Orders\{u.userName}_orders.txt";
+            StreamReader sr = new StreamReader(path);
+            string line;
+            string st = "";
+
+            while ((line = sr.ReadLine()) != null)
+            {
+                st += $"{line}\n";
+            }
+            sr.Close();
+            return st;
+        }
+      
         public static void browseProduct()
         {
             string[] browseProductOptions = { "Electronic Products", "Clothing products", "Home Appliences", "Go Back to dashboard" };
@@ -332,7 +370,7 @@ namespace SPL_PROJECT
         public static string GetTime()
         {            
             DateTime currentDateTime = DateTime.Now;
-            string formattedDateTime = currentDateTime.ToString("yyyy-MM-dd HH:mm");
+            string formattedDateTime = currentDateTime.ToString("dd-MM-yyyy HH:mm");
             return formattedDateTime;
         }
     
