@@ -1,0 +1,12 @@
+20001,cProduct1,138.59,9,Description of Product1
+20002,cProduct2,417.12,36,Description of Product2
+20003,cProduct3,292.41,4,Description of Product3
+20004,cProduct4,64.27,5,Description of Product4
+20005,cProduct5,477.38,5,Description of Product5
+20006,cProduct6,91.72,5,Description of Product6
+20007,cProduct7,357.81,5,Description of Product7
+20008,cProduct8,203.49,5,Description of Product8
+20009,cProduct9,128.55,5,Description of Product9
+20010,cProduct10,56.83,5,Description of Product10
+20011,cJacket,39.99,99,leather
+20012,cproduct3,22.22,12,description
