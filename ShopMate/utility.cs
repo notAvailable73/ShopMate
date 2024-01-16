@@ -15,7 +15,7 @@ namespace ShopMate
     {
         public static void mainMenu()
         {
-            Intro();        
+            Intro();
             string[] mainmenuOptions = { "Sign Up", "Sign In", "Admin Sign In", "Quit" };
 
             Menu menu = new Menu(mainmenuOptions);
@@ -51,7 +51,7 @@ namespace ShopMate
             Console.WriteLine(GenerateShopMateArt());
             Console.WriteLine();
             Console.Write("\t\t\t\t    ");
-            string Introduction1 = "Welcome to ShopMate – Your Ultimate E-Commerce Experience!\n";           
+            string Introduction1 = "Welcome to ShopMate – Your Ultimate E-Commerce Experience!\n";
             PrintLettersOneByOne(Introduction1);
             Console.Write("\t\t\t\t\t\t    ");
             Console.WriteLine("PRESS ENTER TO OPEN THE APP");
@@ -75,44 +75,10 @@ namespace ShopMate
             foreach (char letter in input)
             {
                 Console.Write(letter);
-                Thread.Sleep(50); // Adjust the sleep duration as needed
+                Thread.Sleep(50);
             }
         }
-        //public static void createAcc()
-        //{
 
-
-        //    Console.WriteLine("Enter UserName:");
-        //    string username = Console.ReadLine();
-        //    //if (Database.DoesUserExist(username))
-        //    //{
-        //    //    Console.WriteLine("Username already exist. Try a new userName.");
-
-        //    //    createAcc();
-        //    //    return;
-        //    //}
-        //    Console.WriteLine("Enter Name:");
-        //    string Name = Console.ReadLine();
-
-        //    //Console.WriteLine("Enter Password:");
-        //    string password = utility.EncryptPassword();
-        //    Console.WriteLine();
-        //    password = utility.hashing(password);
-
-        //    Console.WriteLine("Enter E-mail:");
-        //    string mail = Console.ReadLine();
-
-        //    Console.WriteLine("Enter Date of Birth(DD-MM-YYYY)");
-        //    string date = Console.ReadLine();
-        //    Console.Clear();
-
-        //    //user Current_User = Database.CreateUser(username, Name, password, mail, date);
-        //    //Console.WriteLine();
-        //    //Database.createOrder(username);
-        //    //inbox newUser = new inbox();
-        //    //newUser.SendWelcomeMessage(Current_User.userName);
-        //    //utility.mainMenu();
-        //}
 
         public static string EncryptPassword()
         {
@@ -151,26 +117,24 @@ namespace ShopMate
             return hashedPassword;
         }
 
-        public static void ExtractProductNames(string cartlist)
-        {
-            string[] lines = cartlist.Split('\n');
+        //public static void ExtractProductNames(string cartlist)
+        //{
+        //    string[] lines = cartlist.Split('\n');
+             
+        //    foreach (string line in lines)
+        //    {
+        //        string productName = GetProductName(line); 
+        //    }
+        //}
 
-            // Extract product names and print them
-            foreach (string line in lines)
-            {
-                string productName = GetProductName(line);
-                //Database.addProductToOrders(productName);
-            }
-        }
+        //public static string GetProductName(string input)
+        //{
+        //    // Split the input string by space and get the last part
+        //    string[] parts = input.Split(' ');
+        //    string productName = parts[parts.Length - 1];
 
-        public static string GetProductName(string input)
-        {
-            // Split the input string by space and get the last part
-            string[] parts = input.Split(' ');
-            string productName = parts[parts.Length - 1];
-
-            return productName;
-        }
+        //    return productName;
+        //}
         public static bool DoesUserExist(string username)
         {
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
@@ -237,11 +201,10 @@ namespace ShopMate
         }
         public static bool IsValidEmail(string email)
         {
-            // Define a regular expression for a simple email validation
-            string pattern = @"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+            //string pattern = @"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
 
-            // Use Regex.IsMatch to check if the email matches the pattern
-            return Regex.IsMatch(email, pattern);
+            //return Regex.IsMatch(email, pattern);
+            return true;
         } 
         public static List<Product> getProductList(string path)
         {

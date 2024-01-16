@@ -5,7 +5,7 @@ namespace ShopMate
 {
     public class sessionManager
     {
-        public IAccount CurrentAccount;
+        public static IAccount CurrentAccount;
         public void AdminLogin()
         {
             Console.WriteLine("-----------------Admin Login-------------------");
