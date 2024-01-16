@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -14,6 +15,7 @@ namespace ShopMate
     {
         public static void mainMenu()
         {
+            Intro();        
             string[] mainmenuOptions = { "Sign Up", "Sign In", "Admin Sign In", "Quit" };
 
             Menu menu = new Menu(mainmenuOptions);
@@ -42,6 +44,38 @@ namespace ShopMate
                     Console.WriteLine("Invalid input.");
                     mainMenu();
                     break;
+            }
+        }
+        static void Intro()
+        {
+            Console.WriteLine(GenerateShopMateArt());
+            Console.WriteLine();
+            Console.Write("\t\t\t\t    ");
+            string Introduction1 = "Welcome to ShopMate – Your Ultimate E-Commerce Experience!\n";           
+            PrintLettersOneByOne(Introduction1);
+            Console.Write("\t\t\t\t\t\t    ");
+            Console.WriteLine("PRESS ENTER TO OPEN THE APP");
+            Console.ReadKey(true);
+        }
+        static string GenerateShopMateArt()
+        {
+            string[] artLines = {
+            "\t\t\t\t\t SSS   H   H   ooo   pppp   M   M   aa   tttt  eeee ",
+            "\t\t\t\t\tS      H   H  o   o  p   p  MM MM  a  a   tt   e     ",
+            "\t\t\t\t\t SSS   HHHHH  o   o  pppp   M M M  aaaa   tt   eee  ",
+            "\t\t\t\t\t    S  H   H  o   o  p      M   M  a  a   tt   e     ",
+            "\t\t\t\t\tSSSS   H   H   ooo   p      M   M  a  a   tt   eeee ",
+            "\t\t\t\t-------------------------------------------------------------------"
+        };
+
+            return string.Join(Environment.NewLine, artLines);
+        }
+        static void PrintLettersOneByOne(string input)
+        {
+            foreach (char letter in input)
+            {
+                Console.Write(letter);
+                Thread.Sleep(50); // Adjust the sleep duration as needed
             }
         }
         //public static void createAcc()
