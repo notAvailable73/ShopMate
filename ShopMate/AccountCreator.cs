@@ -64,6 +64,10 @@ namespace ShopMate
             path = Path.Combine(baseDirectory, $"Database\\inbox\\{username}inbox.txt");
             StreamWriter sw2 = File.CreateText(path);
             sw2.Close();
+            // Create new orderList for him
+            path = Path.Combine(baseDirectory, $"Database\\inbox\\{username}_Orders.txt");
+            StreamWriter sw3 = File.CreateText(path);
+            sw2.Close();
 
         }
     }

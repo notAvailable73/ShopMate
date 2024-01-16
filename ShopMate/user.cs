@@ -194,7 +194,7 @@ namespace ShopMate
                 default: return;
             }
             int choosenProductIndex;
-            do
+            while (true)
             {
                 choosenProductIndex = productManager.DisplayProducts();
                 if (choosenProductIndex == -1)
@@ -208,7 +208,11 @@ namespace ShopMate
                 Menu menu1 = new Menu(options);
 
                 inp = menu1.Run(choosenProductDescription);
-            } while (!(inp != 0 || inp != 2));
+                if (inp != 1)
+                {
+                    break;
+                }
+            }
             switch (inp)
             {
                 case 0:
@@ -220,12 +224,13 @@ namespace ShopMate
                     DashBoard();
                     return;
                 default:
-                    Console.WriteLine("invalid input");
+                    Console.WriteLine("invalid input!!!!");
                     break;
             }
         }
         void AddToCart(Product product)
         {
+
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string path = Path.Combine(baseDirectory, $"Database\\cart\\{userName}_cart.txt");
             bool alreadyInCart = false;
@@ -240,19 +245,34 @@ namespace ShopMate
                     string name = userParts[1];
                     string price = userParts[2];
                     string quantity = userParts[3];
-
+                    int newQuantity = Convert.ToInt32(quantity) + 1; 
                     if (id == product.id)
                     {
-                        int newQuantity = Convert.ToInt32(quantity) + 1;
-                        quantity = newQuantity.ToString(); alreadyInCart = true;
-                        lines[i] = $"{id},{name},{price},{quantity}";
-                        File.WriteAllLines(path, lines);
+                        if (newQuantity <= product.qty)
+                        {
+                            quantity = newQuantity.ToString(); alreadyInCart = true;
+                            lines[i] = $"{id},{name},{price},{quantity}";
+                            File.WriteAllLines(path, lines);
+                            
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Sorry,  This product has low inventory. You have already added {quantity} unit of this product.");
+                        Console.ReadKey();
+                            return;
+                        }
                         break;
                     }
 
                 }
                 if (!alreadyInCart)
                 {
+                    if (product.qty<=0)
+                    {
+                        Console.WriteLine("Stock out.");
+                        Console.ReadKey();
+                        return;
+                    }
                     File.AppendAllText(path, $"{product.id},{product.name},{product.price},1\n");
                 }
             }
@@ -305,7 +325,7 @@ namespace ShopMate
                 Console.ReadLine();
                 DashBoard();
                 return;
-            } 
+            }
             string[] cartOptions = { "Remove item from cart", "Clear cart", "Proceed to checkout", "Goto Dashboard" };
             Menu menu = new Menu(cartOptions);
             int input = menu.Run(cartItemPreview);
@@ -314,33 +334,151 @@ namespace ShopMate
                 case 0:
                     removeProductFromCart(cartItemPreview);
                     loadCart();
-                    break;
-                    //case 1:
-                    //    cart.clearCart(); loadCart();
-                    //    break;
-                    //case 2:
-                    //    checkout();
+                    return;
+                case 1:
+                    clearCart(path);
+                    Console.WriteLine("Successfully Cleared your cart.");
+                    Console.ReadKey();
 
-                    //    break;
-                    //case 3:
-                    //    DashBoard();
-                    //    break;
-                    //default:
-                    //    Console.WriteLine("Invalid input."); loadCart();
-                    //    break;
+                    DashBoard();
+                    return;
+                case 2:
+                    checkout(path, cartItemPreview);
+                    DashBoard();
+
+                    break;
+                case 3:
+                    DashBoard();
+                    return;
+                default:
+                    Console.WriteLine("Invalid input."); loadCart();
+                    return;
 
             }
 
         }
+        void checkout(string path, string cartList)
+        {
+            productInventoryUpdater updater = new productInventoryUpdater(path);
+            string[] lines = File.ReadAllLines(path);
+
+            if (!updater.isAllProductAvailable())
+            {
+                Console.WriteLine("\nYou may have to remove some item from stock.\n");
+                Console.ReadKey();
+                return;
+            }
+            double totalPrice = 0;
+            try
+            {
+
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    string[] userParts = lines[i].Split(',');
+                    string id = userParts[0];
+                    string name = userParts[1];
+                    string price = userParts[2];
+                    string quantity = userParts[3];
+
+                    double Price = Convert.ToDouble(price) * Convert.ToInt32(quantity);
+                    totalPrice += Price;
+                }
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Error : " + ex.Message);
+                Console.ReadLine();
+                return;
+            }
+            string[] checkoutOptions = { "Confirm Order", "Go Back" };
+            Menu menu = new Menu(checkoutOptions);
+            int input = menu.Run(cartList + "\n\nTotal Price : " + totalPrice);
+            switch (input)
+            {
+                case 0:
+                    updater.update();
+                    Order newOrder = new Order(userName);
+                    newOrder.createOrder(lines);
+                    Console.WriteLine("Order Complete!");
+                    Console.ReadKey();
+                    clearCart(path);
+                    return;
+                case 1:
+                    loadCart();
+                    return;
+                default:
+                    Console.WriteLine("Invalid input."); loadCart();
+                    return;
+            }
+        }
         void removeProductFromCart(string cartList)
         {
+            if (cartList == "")
+            {
+                Console.WriteLine("Empty Cart!\nPress any key to go to dashboard.");
+                Console.ReadKey();
+                DashBoard();
+                return;
+            }
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string path = Path.Combine(baseDirectory, $"Database\\cart\\{userName}_cart.txt"); 
-            //Menu menu = new Menu(cartList);
-            //int input = menu.Run("Choose the product you want to remove!\n\n");
+            string path = Path.Combine(baseDirectory, $"Database\\cart\\{userName}_cart.txt");
+            string[] options = cartList.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            Menu menu = new Menu(options);
+            int index = menu.Run("Which Product do you want to remove from the cart?\n\n");
+            try
+            {
+                string[] lines = File.ReadAllLines(path);
+
+                string[] userParts = lines[index].Split(',');
+                string id = userParts[0];
+                string name = userParts[1];
+                string price = userParts[2];
+                string quantity = userParts[3];
+                int newQuantity = Convert.ToInt32(quantity) - 1;
+                quantity = newQuantity.ToString();
+                if (newQuantity == 0)
+                {
+                    StreamReader sr = new StreamReader(path);
+                    string line;
+                    string info = "";
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        string[] productInfos = line.Split(',');
+                        string Productid = productInfos[0];
+
+                        if (Productid == id)
+                        {
+                            continue;
+                        }
+                        info += $"{line}\n";
+                    }
+                    sr.Close();
+                    File.WriteAllText(path, info);
+                }
+                else
+                {
+                    lines[index] = $"{id},{name},{price},{quantity}";
+                    File.WriteAllLines(path, lines);
+                }
+                Console.WriteLine($"Successfully Removed a unit of {name} from your cart.");
+                Console.ReadKey();
+                loadCart();
+                return;
+
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Error : " + ex.Message);
+                Console.ReadLine();
+                loadCart();
+                return;
+            }
 
         }
-
+        void clearCart(string path)
+        {
+            File.WriteAllText(path, String.Empty);
+        }
     }
 
 }
