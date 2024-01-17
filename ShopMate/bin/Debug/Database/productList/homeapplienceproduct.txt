@@ -1,11 +1,10 @@
-30001,hProduct1,138.59,67,Description of Product1
-30002,hProduct2,417.12,0,Description of Product2
-30003,hProduct3,292.41,15,Description of Product3
-30004,hProduct4,64.27,4,Description of Product4
-30005,hProduct5,477.38,5,Description of Product5
-30006,hProduct6,91.72,5,Description of Product6
-30007,hProduct7,357.81,4,Description of Product7
-30008,hProduct8,203.49,5,Description of Product8
-30009,hProduct9,128.55,5,Description of Product9
-30010,hProduct10,56.83,4,Description of Product10
-30011,hproduct99,33.99,3,desaf
+30001,Smart Coffee Maker,79.99,25,Smart programmable coffee maker for the perfect cup every time
+30002,Robot Vacuum Cleaner,199.95,15,Intelligent robot vacuum for effortless home cleaning
+30003,Instant Pot Duo 6-Quart,129.99,20,Multi-functional electric pressure cooker for quick and convenient cooking
+30004,Compact Air Purifier,59.95,30,Compact and efficient air purifier for small spaces
+30005,Convection Toaster Oven,89.99,18,Versatile toaster oven for baking toasting and broiling
+30006,Portable Air Conditioner,249.99,12,Portable and easy-to-use air conditioner for on-the-go cooling
+30007,Smart Doorbell Camera,149.95,22,Wi-Fi-enabled smart doorbell camera for enhanced home security
+30008,Steam Iron with Auto Shut-Off,34.99,35,Efficient steam iron for wrinkle-free clothes with safety auto shut-off
+30009,Countertop Blender,49.95,28,Powerful and compact countertop blender for smoothies and more
+30010,Electric Kettle with Temperature Control,39.99,25,Temperature-controlled electric kettle for precise water boiling

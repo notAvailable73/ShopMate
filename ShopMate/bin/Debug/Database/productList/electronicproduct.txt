@@ -1,18 +1,10 @@
-10001,eProduct1,138.59,0,Description of Product1
-10002,eProduct2,417.12,0,Description of Product2
-10003,eProduct3,292.41,16,Description of Product3
-10004,eProduct4,64.27,4,Description of Product4
-10005,eProduct5,477.38,5,Description of Product5
-10006,eProduct6,91.72,5,Description of Product6
-10007,eProduct7,357.81,5,Description of Product7
-10008,eProduct8,203.49,5,Description of Product8
-10009,eProduct9,128.55,5,Description of Product9
-10010,eProduct10,56.83,4,Description of Product10
-10011,ehudai,500,5,jhvjhfjv
-10012,eSmartPhone,199.9,10,Foldable
-10013,e12,13,4,awf
-10014,e1234,0,2,sdg
-10015,eproductinf,11.99,0,asfa
-10016,eproduct99,99.99,2,description
-10017,Samsung Galaxy Note 10,199,1,SmartPhone
-smartWatch,smartWatch,49.99,6,asfagf
+10001,Smart WiFi Thermostat,89.99,15,Advanced thermostat for smart home climate control
+10002,Logitech MX Master 3,99.95,20,Wireless ergonomic mouse with customizable buttons
+10003,Philips Hue Smart Bulb,19.99,30,Color-changing LED bulb for smart lighting solutions
+10004,Canon EOS Rebel T7i,649,8,High-performance DSLR camera for photography enthusiasts
+10005,Samsung 55-inch 4K Smart TV,699.99,12,Immersive 4K UHD TV with smart features for home entertainment
+10006,Bose QuietComfort 35 II,299.95,25,Wireless noise-canceling headphones for premium audio experience
+10007,Fitbit Charge 4,129.95,18,Advanced fitness tracker with built-in GPS and heart rate monitor
+10008,DJI Mavic Air 2,799,6,Compact drone with 4K camera for stunning aerial photography
+10009,Amazon Echo Dot (4th Gen),49.99,40,Smart speaker with Alexa for voice-controlled smart home devices
+10010,Apple Watch Series 6,399,10,Feature-packed smartwatch with health and fitness tracking capabilities
