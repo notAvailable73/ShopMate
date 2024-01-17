@@ -26,3 +26,10 @@ C:\Users\User\Desktop\new\ShopMate\obj\Debug\ShopMate.csproj.AssemblyReference.c
 C:\Users\User\Desktop\new\ShopMate\obj\Debug\ShopMate.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\new\ShopMate\obj\Debug\ShopMate.exe
 C:\Users\User\Desktop\new\ShopMate\obj\Debug\ShopMate.pdb
+C:\Users\SANI\Desktop\new\new\ShopMate\bin\Debug\ShopMate.exe.config
+C:\Users\SANI\Desktop\new\new\ShopMate\bin\Debug\ShopMate.exe
+C:\Users\SANI\Desktop\new\new\ShopMate\bin\Debug\ShopMate.pdb
+C:\Users\SANI\Desktop\new\new\ShopMate\obj\Debug\ShopMate.csproj.AssemblyReference.cache
+C:\Users\SANI\Desktop\new\new\ShopMate\obj\Debug\ShopMate.csproj.CoreCompileInputs.cache
+C:\Users\SANI\Desktop\new\new\ShopMate\obj\Debug\ShopMate.exe
+C:\Users\SANI\Desktop\new\new\ShopMate\obj\Debug\ShopMate.pdb

@@ -1,5 +1,5 @@
-30001,Smart Coffee Maker,79.99,25,Smart programmable coffee maker for the perfect cup every time
-30002,Robot Vacuum Cleaner,199.95,15,Intelligent robot vacuum for effortless home cleaning
+30001,Smart Coffee Maker,79.99,5,Smart programmable coffee maker for the perfect cup every time
+30002,Robot Vacuum Cleaner,199.95,1,Intelligent robot vacuum for effortless home cleaning
 30003,Instant Pot Duo 6-Quart,129.99,20,Multi-functional electric pressure cooker for quick and convenient cooking
 30004,Compact Air Purifier,59.95,30,Compact and efficient air purifier for small spaces
 30005,Convection Toaster Oven,89.99,18,Versatile toaster oven for baking toasting and broiling

@@ -1,5 +1,5 @@
-20001,Classic Denim Jeans,39.99,50,Timeless and comfortable denim jeans for everyday wear
-20002,Cozy Knit Sweater,29.95,35,Stay warm in style with this soft and cozy knit sweater
+20001,Classic Denim Jeans,39.99,5,Timeless and comfortable denim jeans for everyday wear
+20002,Cozy Knit Sweater,29.95,1,Stay warm in style with this soft and cozy knit sweater
 20003,Active Performance Leggings,24.99,40,Versatile leggings for workouts or casual activities with moisture-wicking technology
 20004,Stylish Leather Jacket,89.99,15,Elevate your look with this trendy and timeless leather jacket
 20005,Formal Men's Dress Shirt,49.95,25,Crisp and classic dress shirt for formal occasions or professional settings

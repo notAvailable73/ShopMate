@@ -24,7 +24,7 @@ namespace ShopMate
                 string[] part = messageinfo.Split(';');
                 string message = part[0];
                 string time = part[1];
-                Console.WriteLine("*" + message + " " + time + "\n\n");
+                Console.WriteLine("* " + message + "  " + "("+time+")"  + "\n\n");
             }
 
 
