@@ -12,7 +12,7 @@ namespace ShopMate
         public string name { get; set; }
         public double price { get; set; }
         public string description { get; set; } 
-        public int qty { get; set; }
+        public int quantiTy { get; set; }
         public Product(string name, double price, string description)
         {
             
@@ -26,7 +26,7 @@ namespace ShopMate
             this.name = name;
             this.price = price;
             this.description = description;
-            this.qty = qntity;
+            this.quantiTy = qntity;
         }
         public Product(string id,string name, double price, int qntity, string description)
         {
@@ -35,7 +35,7 @@ namespace ShopMate
             this.name = name;
             this.price = price;
             this.description = description;
-            this.qty = qntity;
+            this.quantiTy = qntity;
         }
         public void DisplayDetails()
         {

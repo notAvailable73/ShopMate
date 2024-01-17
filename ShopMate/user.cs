@@ -250,7 +250,7 @@ namespace ShopMate
                     int newQuantity = Convert.ToInt32(quantity) + 1;
                     if (id == product.id)
                     {
-                        if (newQuantity <= product.qty)
+                        if (newQuantity <= product.quantiTy)
                         {
                             quantity = newQuantity.ToString(); alreadyInCart = true;
                             lines[i] = $"{id},{name},{price},{quantity}";
@@ -269,7 +269,7 @@ namespace ShopMate
                 }
                 if (!alreadyInCart)
                 {
-                    if (product.qty <= 0)
+                    if (product.quantiTy <= 0)
                     {
                         Console.WriteLine("Stock out.");
                         Console.ReadKey();
@@ -532,9 +532,7 @@ namespace ShopMate
             }
         }
         void loadInbox()
-        {
-            //string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            //string path = Path.Combine(baseDirectory, $"Database\\cart\\{userName}_cart.txt");
+        { 
             Messenger messenger = new Messenger();
             messenger.watchMessage(userName);
         }

@@ -110,46 +110,6 @@ namespace ShopMate
 
             return selectedIndex;
         }
-        //public int Run(IProduct product)
-        //{
-        //    ConsoleKey keypressed;
-        //    do
-        //    {
-        //        Console.Clear();
-        //        Console.WriteLine("---------------------Product Details------------------------");
-        //        Console.WriteLine();
-
-        //        Console.WriteLine("Name: " + product.name);
-        //        Console.WriteLine("Price: " + product.price);
-        //        Console.WriteLine("Quantity: " + product.quantity);
-        //        Console.WriteLine("Description: " + product.description);
-        //        Console.WriteLine();
-        //        Displayoptions();
-
-        //        ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-        //        keypressed = keyInfo.Key;
-
-        //        if (keypressed == ConsoleKey.UpArrow)
-        //        {
-        //            selectedIndex--;
-        //            if (selectedIndex == -1)
-        //            {
-        //                selectedIndex = options.Length - 1;
-        //            }
-        //        }
-
-        //        else if (keypressed == ConsoleKey.DownArrow)
-        //        {
-        //            selectedIndex++;
-        //            if (selectedIndex == options.Length)
-        //            {
-        //                selectedIndex = 0;
-        //            }
-        //        }
-
-        //    } while (keypressed != ConsoleKey.Enter);
-
-        //    return selectedIndex;
-        //}
+        
     }
 }

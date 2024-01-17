@@ -4,7 +4,21 @@ using System.IO;
 
 namespace ShopMate
 {
-    public class Admin : IAccount
+    public interface IMessegeSendable
+    {
+        void sendMessageToAll();
+    }
+    public interface IInventoryManagable
+    {
+        void manageInventory();
+    }
+
+    public interface ICouponGenerable
+    {
+        void generateCoupon();
+    }
+
+    public class Admin : IAccount, IMessegeSendable, IInventoryManagable, ICouponGenerable
     {
         public void DashBoard()
         {
@@ -423,7 +437,7 @@ namespace ShopMate
                         messenger.sendMessage(username, msg);
                     }
                     break;
-                default: 
+                default:
                     coupnManager.generateCoupon(options[input - 2], coupon, discount);
                     messenger.sendMessage(options[input - 2], msg);
 
@@ -432,5 +446,6 @@ namespace ShopMate
             Console.WriteLine("Coupon generated Successfully.");
             Console.ReadKey();
         }
+         
     }
 }

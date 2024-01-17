@@ -3,7 +3,11 @@ using System.IO;
 
 namespace ShopMate
 {
-    public class productInventoryUpdater
+    public interface inventoryUpdatable
+    {
+        void update();
+    }
+    public class productInventoryUpdater : inventoryUpdatable
     {
         string cartPath;
         public productInventoryUpdater(string cartPath)
@@ -81,12 +85,12 @@ namespace ShopMate
                     string productDescription = userParts[4];
                     if (id == productId)
                     {
-                        int newQty = productQuantity - quantity;
-                        lines[i] = $"{productId},{productName},{price},{newQty},{productDescription}";
+                        int newquantiTy = productQuantity - quantity;
+                        lines[i] = $"{productId},{productName},{price},{newquantiTy},{productDescription}";
                         File.WriteAllLines(path, lines);
-                        if (newQty < 5)
+                        if (newquantiTy < 5)
                         {
-                            stockAlert(productId,newQty);
+                            stockAlert(productId, newquantiTy);
                         }
                         return true;
                     }
@@ -119,7 +123,7 @@ namespace ShopMate
                         //string price = userParts[2];
                         //string quantity = userParts[3];
                         int availableQuantity = Convert.ToInt32(userParts[3]);
-                        if (id == userParts[0] )
+                        if (id == userParts[0])
                         {
                             if (quantity <= availableQuantity)
                             {
@@ -143,9 +147,9 @@ namespace ShopMate
             }
             return false;
         }
-        private void stockAlert(string ProductID, int newQty)
+        private void stockAlert(string ProductID, int newquantiTy)
         {
-            string msg = $"Product  ID:{ProductID} has low inventory. Available unit: {newQty}";
+            string msg = $"Product  ID:{ProductID} has low inventory. Available unit: {newquantiTy}";
             Messenger messenger = new Messenger();
             messenger.sendMessage("admin", msg);
         }

@@ -1,99 +1,220 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="ShopMate.AccountCreator">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+  <Class Name="ShopMate.AccountCreator" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>AccountCreator.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShopMate.Admin" BaseTypeListCollapsed="true">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+  <Class Name="ShopMate.Admin" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAAAAAAAAAAAAAQAAACAAAAAAAAgAAAAAQAAA=</HashCode>
+      <HashCode>AAAAAACIAAAAAAAAgIAAQCAACAAAAAAAAgAAAAAQAAE=</HashCode>
       <FileName>admin.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="ShopMate.ElectronicProductsManager" BaseTypeListCollapsed="true">
-    <Position X="5.75" Y="0.5" Width="2.25" />
+  <Class Name="ShopMate.couponManager" Collapsed="true">
+    <Position X="18" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAAAAAAAAAEAAAAAAAAEQAAAAAAAAQAAAAAAg=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>couponManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopMate.ElectronicProductsManager" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ARAAAAAAAAAAAAAAEAAAAAAAAEQAAAAAAAAQAAAAAAg=</HashCode>
       <FileName>IProductManager.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="ShopMate.Menu">
-    <Position X="5.75" Y="2.5" Width="2" />
+  <Class Name="ShopMate.Menu" Collapsed="true">
+    <Position X="16.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAAAAAAAAAAAAAIAAAAAAAAAAAgAAAAAAAAAAAAAI=</HashCode>
       <FileName>menu.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShopMate.Product">
-    <Position X="2.25" Y="2.75" Width="1.5" />
+  <Class Name="ShopMate.Messenger" Collapsed="true">
+    <Position X="18" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAAABAIAAAAAAAAAAEAIAAAAAAAAAAAgA=</HashCode>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Messenger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopMate.OrderManager" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>OrderManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShopMate.Product" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAABAIAAAAAAAAAAEAAAAAAAAgAAAAgA=</HashCode>
       <FileName>Product.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="ShopMate.productInventoryUpdater" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAACAAAgAAAAAAQAgAAAAAIEAAA=</HashCode>
+      <FileName>productInventoryUpdater.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
   <Class Name="ShopMate.Program" Collapsed="true">
-    <Position X="0.5" Y="1.75" Width="1.5" />
+    <Position X="18" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShopMate.sessionManager">
-    <Position X="0.5" Y="2.5" Width="1.5" />
+  <Class Name="ShopMate.sessionManager" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAQAQAAAAAAAAAAA=</HashCode>
       <FileName>sessionManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ShopMate.User" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="4" Y="0.5" Width="1.5" />
+    <Position X="14.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAAQAEgAAgAAAAAAAAAAgEAAAAAgAAEgEQACA=</HashCode>
+      <HashCode>AAAAAACEAQAEgAAgAAAAAAAAAAgEAAgAAggAEgEQACA=</HashCode>
       <FileName>user.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="ShopMate.utility">
-    <Position X="4" Y="1.75" Width="1.5" />
+  <Class Name="ShopMate.utility" Collapsed="true">
+    <Position X="16.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ADACAAAAAAAAAAAAAAAAIAAAgAAAGAAAAABABAAAAAA=</HashCode>
+      <HashCode>AkACAAAAAAAAAAAAAAAgIAAAgAAAEAAAAABABAAAAAA=</HashCode>
       <FileName>utility.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ClothingProductsManager" BaseTypeListCollapsed="true">
-    <Position X="11" Y="0.5" Width="2.5" />
+  <Class Name="ClothingProductsManager" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAAAAAAAAAEAAAAAAAAEQAAAAAAAAQAAAAAAg=</HashCode>
+      <HashCode>ARAAAAAAAAAAAAAAEAAAAAAAAEQAAAAAAAAQAAAAAAg=</HashCode>
       <FileName>IProductManager.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="HomeAppliencesManager" BaseTypeListCollapsed="true">
-    <Position X="8.25" Y="0.5" Width="2.5" />
+  <Class Name="HomeAppliencesManager" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAAAAAAAAAEAAAAAAAAEQAAAAAAAAQAAAAAAg=</HashCode>
+      <HashCode>ARAAAAAAAAAAAAAAEAAAAAAAAEQAAAAAAAAQAAAAAAg=</HashCode>
       <FileName>IProductManager.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Interface Name="ShopMate.IAccount">
-    <Position X="0.5" Y="4.5" Width="1.5" />
+  <Interface Name="ShopMate.IMessegeSendable" Collapsed="true">
+    <Position X="18" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>admin.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShopMate.IInventoryManagable" Collapsed="true">
+    <Position X="16.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>admin.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShopMate.ICouponGenerable" Collapsed="true">
+    <Position X="14.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>admin.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShopMate.passwordChangable" Collapsed="true">
+    <Position X="12.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IAccount.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="ShopMate.IProductManager">
-    <Position X="14" Y="0.5" Width="1.5" />
+  <Interface Name="ShopMate.InboxLoadable" Collapsed="true">
+    <Position X="12.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IAccount.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShopMate.IAccount" Collapsed="true">
+    <Position X="12.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>IAccount.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShopMate.IproductAdder" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IProductManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShopMate.IProductFinder" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>IProductManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShopMate.IProductDisplay" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IProductManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShopMate.IProductDesicription" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>IProductManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShopMate.IInventoryManager" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IProductManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShopMate.IProductManager" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IProductManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShopMate.IOrderStatusChanger" Collapsed="true">
+    <Position X="18" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OrderManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShopMate.IOrderCreator" Collapsed="true">
+    <Position X="16.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>OrderManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShopMate.inventoryUpdatable" Collapsed="true">
+    <Position X="14.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>productInventoryUpdater.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

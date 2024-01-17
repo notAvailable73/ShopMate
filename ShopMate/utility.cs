@@ -213,31 +213,6 @@ namespace ShopMate
 
             return isValidDomain;
         }
-        public static List<Product> getProductList(string path)
-        {
-            List<Product> products = new List<Product>();
-            try
-            {
-                string[] lines = File.ReadAllLines(path);
-
-                for (int i = 0; i < lines.Length; i++)
-                {
-                    string[] userParts = lines[i].Split(',');
-                    string id = userParts[0];
-                    string productName = userParts[1];
-                    double price = Convert.ToDouble(userParts[2]);
-                    int quantity = Convert.ToInt32(userParts[3]);
-                    string productDescription = userParts[4];
-                    products.Add(new Product(id,productName,price,quantity,productDescription));
-                }
-
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine("Error : " + ex.Message);
-                Console.ReadLine();
-            }
-            return products;
-        }
+        
     }
 }

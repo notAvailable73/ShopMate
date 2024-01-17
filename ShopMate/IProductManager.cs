@@ -32,6 +32,7 @@ namespace ShopMate
         //int DisplayProducts();
         //string getProductDescription(int index);
         //Product getProduct(int index);
+        List<Product> getProductList(string path);
     }
     public class ElectronicProductsManager : IProductManager
     {
@@ -81,7 +82,7 @@ namespace ShopMate
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string path = Path.Combine(baseDirectory, $"Database\\productList\\electronicproduct.txt");
             int id = 10001 + File.ReadAllLines(path).Length;
-            string info = $"{id},{newProduct.name},{newProduct.price},{newProduct.qty},{newProduct.description}\n";
+            string info = $"{id},{newProduct.name},{newProduct.price},{newProduct.quantiTy},{newProduct.description}\n";
             File.AppendAllText(path, info);
             Console.WriteLine($"Product added Successfully.");
         }
@@ -132,7 +133,7 @@ namespace ShopMate
         {
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string path = Path.Combine(baseDirectory, $"Database\\productList\\electronicproduct.txt");
-            List<Product> products = utility.getProductList(path);
+            List<Product> products = getProductList(path);
             return products[index];
         }
 
@@ -143,10 +144,10 @@ namespace ShopMate
             Console.WriteLine();
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string path = Path.Combine(baseDirectory, $"Database\\productList\\electronicproduct.txt");
-            List<Product> products = utility.getProductList(path);
+            List<Product> products = getProductList(path);
             string description = $"Name: {products[index].name}\n"
                               + $"Price: {products[index].price}\n"
-                              + $"Quantity: {products[index].qty}\n"
+                              + $"Quantity: {products[index].quantiTy}\n"
                               + $"Description: {products[index].description}";
 
             return description;
@@ -190,6 +191,32 @@ namespace ShopMate
             }
             return index;
         }
+        public List<Product> getProductList(string path)
+        {
+            List<Product> products = new List<Product>();
+            try
+            {
+                string[] lines = File.ReadAllLines(path);
+
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    string[] userParts = lines[i].Split(',');
+                    string id = userParts[0];
+                    string productName = userParts[1];
+                    double price = Convert.ToDouble(userParts[2]);
+                    int quantity = Convert.ToInt32(userParts[3]);
+                    string productDescription = userParts[4];
+                    products.Add(new Product(id, productName, price, quantity, productDescription));
+                }
+
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Error : " + ex.Message);
+                Console.ReadLine();
+            }
+            return products;
+        }
     }
 }
 public class ClothingProductsManager : IProductManager
@@ -199,7 +226,7 @@ public class ClothingProductsManager : IProductManager
         string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
         string path = Path.Combine(baseDirectory, $"Database\\productList\\clothingproduct.txt");
         int id = 20001 + File.ReadAllLines(path).Length;
-        string info = $"{id},{newProduct.name},{newProduct.price},{newProduct.qty},{newProduct.description}\n";
+        string info = $"{id},{newProduct.name},{newProduct.price},{newProduct.quantiTy},{newProduct.description}\n";
 
         File.AppendAllText(path, info);
         Console.WriteLine($"Product added Successfully.");
@@ -251,10 +278,10 @@ public class ClothingProductsManager : IProductManager
         Console.WriteLine();
         string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
         string path = Path.Combine(baseDirectory, $"Database\\productList\\clothingproduct.txt");
-        List<Product> products = utility.getProductList(path);
+        List<Product> products = getProductList(path);
         string description = $"Name: {products[index].name}\n"
                           + $"Price: {products[index].price}\n"
-                          + $"Quantity: {products[index].qty}\n"
+                          + $"Quantity: {products[index].quantiTy}\n"
                           + $"Description: {products[index].description}";
 
         return description;
@@ -263,7 +290,7 @@ public class ClothingProductsManager : IProductManager
     {
         string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
         string path = Path.Combine(baseDirectory, $"Database\\productList\\clothingproduct.txt");
-        List<Product> products = utility.getProductList(path);
+        List<Product> products = getProductList(path);
         return products[index];
     }
 
@@ -308,6 +335,32 @@ public class ClothingProductsManager : IProductManager
         }
     }
 
+    public List<Product> getProductList(string path)
+    {
+        List<Product> products = new List<Product>();
+        try
+        {
+            string[] lines = File.ReadAllLines(path);
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string[] userParts = lines[i].Split(',');
+                string id = userParts[0];
+                string productName = userParts[1];
+                double price = Convert.ToDouble(userParts[2]);
+                int quantity = Convert.ToInt32(userParts[3]);
+                string productDescription = userParts[4];
+                products.Add(new Product(id, productName, price, quantity, productDescription));
+            }
+
+        }
+        catch (IOException ex)
+        {
+            Console.WriteLine("Error : " + ex.Message);
+            Console.ReadLine();
+        }
+        return products;
+    }
 
     public int showInventory()
     {
@@ -351,12 +404,39 @@ public class ClothingProductsManager : IProductManager
 }
 public class HomeAppliencesManager : IProductManager
 {
+    public List<Product> getProductList(string path)
+    {
+        List<Product> products = new List<Product>();
+        try
+        {
+            string[] lines = File.ReadAllLines(path);
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string[] userParts = lines[i].Split(',');
+                string id = userParts[0];
+                string productName = userParts[1];
+                double price = Convert.ToDouble(userParts[2]);
+                int quantity = Convert.ToInt32(userParts[3]);
+                string productDescription = userParts[4];
+                products.Add(new Product(id, productName, price, quantity, productDescription));
+            }
+
+        }
+        catch (IOException ex)
+        {
+            Console.WriteLine("Error : " + ex.Message);
+            Console.ReadLine();
+        }
+        return products;
+    }
+
     public void addProduct(Product newProduct)
     {
         string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
         string path = Path.Combine(baseDirectory, $"Database\\productList\\homeapplienceproduct.txt");
         int id = 30001 + File.ReadAllLines(path).Length;
-        string info = $"{id},{newProduct.name},{newProduct.price},{newProduct.qty},{newProduct.description}\n";
+        string info = $"{id},{newProduct.name},{newProduct.price},{newProduct.quantiTy},{newProduct.description}\n";
         File.AppendAllText(path, info);
         Console.WriteLine($"Product added Successfully.");
     }
@@ -408,10 +488,10 @@ public class HomeAppliencesManager : IProductManager
         Console.WriteLine();
         string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
         string path = Path.Combine(baseDirectory, $"Database\\productList\\homeapplienceproduct.txt");
-        List<Product> products = utility.getProductList(path);
+        List<Product> products = getProductList(path);
         string description = $"Name: {products[index].name}\n"
                           + $"Price: {products[index].price}\n"
-                          + $"Quantity: {products[index].qty}\n"
+                          + $"Quantity: {products[index].quantiTy}\n"
                           + $"Description: {products[index].description}";
 
         return description;
@@ -420,7 +500,7 @@ public class HomeAppliencesManager : IProductManager
     {
         string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
         string path = Path.Combine(baseDirectory, $"Database\\productList\\homeapplienceproduct.txt");
-        List<Product> products = utility.getProductList(path);
+        List<Product> products = getProductList(path);
         return products[index];
     }
 
