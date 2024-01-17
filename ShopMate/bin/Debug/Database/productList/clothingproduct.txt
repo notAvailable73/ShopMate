@@ -1,12 +1,10 @@
-20001,cProduct1,138.59,1,Description of Product1
-20002,cProduct2,417.12,33,Description of Product2
-20003,cProduct3,292.41,4,Description of Product3
-20004,cProduct4,64.27,4,Description of Product4
-20005,cProduct5,477.38,4,Description of Product5
-20006,cProduct6,91.72,5,Description of Product6
-20007,cProduct7,357.81,5,Description of Product7
-20008,cProduct8,203.49,5,Description of Product8
-20009,cProduct9,128.55,5,Description of Product9
-20010,cProduct10,56.83,4,Description of Product10
-20011,cJacket,39.99,98,leather
-20012,cproduct3,22.22,12,description
+20001,Classic Denim Jeans,39.99,50,Timeless and comfortable denim jeans for everyday wear
+20002,Cozy Knit Sweater,29.95,35,Stay warm in style with this soft and cozy knit sweater
+20003,Active Performance Leggings,24.99,40,Versatile leggings for workouts or casual activities with moisture-wicking technology
+20004,Stylish Leather Jacket,89.99,15,Elevate your look with this trendy and timeless leather jacket
+20005,Formal Men's Dress Shirt,49.95,25,Crisp and classic dress shirt for formal occasions or professional settings
+20006,Casual Graphic T-Shirt,14.99,30,Express your style with this comfortable and trendy graphic t-shirt
+20007,Flowy Summer Dress,34.95,20,Light and breezy dress for a chic summer look
+20008,Running Shoes with Arch Support,59.99,15,Comfortable and supportive running shoes for an active lifestyle
+20009,Knitted Winter Beanie,19.99,45,Keep warm in the winter with this stylish and cozy knitted beanie
+20010,Designer Sunglasses,79.95,10,Complete your look with these fashionable and UV-protective sunglasses
