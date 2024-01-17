@@ -1,5 +1,0 @@
-1000020,khalid,10002,eProduct2,417.12,1,Pending
-1000021,khalid,10003,eProduct3,292.41,1,Pending
-1000022,khalid,20005,cProduct5,477.38,1,Pending
-1000023,khalid,30007,hProduct7,357.81,1,Pending
-1000024,khalid,20010,cProduct10,56.83,1,Pending

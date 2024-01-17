@@ -1,3 +1,0 @@
-khalid,khalid,678,hasankhalid441@gmail.com,Zigatola,06-11-2002
-mainul,mainul hasan,6789,mhsiam121@gmail.com,Gazipur,31-01-2004
-siam,mainul hasan siam,6789,moinulhasan121@gmail.com,IUT,31-02-03

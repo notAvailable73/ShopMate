@@ -116,12 +116,8 @@ namespace ShopMate
                     string[] lines = File.ReadAllLines(path);
                     for (int i = 0; i < lines.Length; i++)
                     {
-                        string[] userParts = lines[i].Split(',');
-
-                        //string productId = userParts[0];
-                        string name = userParts[1];
-                        //string price = userParts[2];
-                        //string quantity = userParts[3];
+                        string[] userParts = lines[i].Split(',');                       
+                        string name = userParts[1];                      
                         int availableQuantity = Convert.ToInt32(userParts[3]);
                         if (id == userParts[0])
                         {

@@ -47,7 +47,7 @@ namespace ShopMate
                     generateCoupon();
                     DashBoard();
                     break;
-                case 6: changePassword(); break;
+                case 6: Console.Clear(); changePassword(); break;
                 case 7: logOut(); break;
                 default: Console.WriteLine("Invalid Input"); break;
             }
@@ -66,7 +66,8 @@ namespace ShopMate
             password = sr.ReadLine();
             sr.Close();
             Console.WriteLine("Enter Old PassWord: ");
-            string oldPassWord = Console.ReadLine();
+            string oldPassWord = utility.EncryptPassword();
+            Console.WriteLine();
             if (utility.hashing(oldPassWord) == password)
             {
                 Console.WriteLine("Enter New PassWord: ");
@@ -203,7 +204,17 @@ namespace ShopMate
             double price;
             int quantity;
             Console.WriteLine("Enter Name of the product:");
-            name = Console.ReadLine();
+            try
+            {
+                name = Console.ReadLine();
+                if (name == "")
+                    throw new Exception();
+            }
+            catch
+            {
+                Console.WriteLine("Name Can not be empty. Press Any key to try again.."); Console.ReadKey(); return FillProductDetails();
+            }
+            
 
             Console.WriteLine("Enter Price of the product");
             try

@@ -7,8 +7,11 @@ namespace ShopMate
     {
         static void Main(string[] args)
         {
+            Console.Title = "SHOPMATE";
+            utility.Intro();
             utility.mainMenu();
             Console.ReadLine();
+
         }
 
     }

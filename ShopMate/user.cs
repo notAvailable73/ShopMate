@@ -54,13 +54,7 @@ namespace ShopMate
                     watchPreviousOrderList();
                     break;
 
-                case 5:
-                    //Console.Clear();
-                    //string cartlist = cart.load();
-                    //if (!(cartlist == ""))
-                    //{
-                    //    inbox.sendRemindProduct(userName);
-                    //}
+                case 5:                   
                     logOut();
                     break;
                 default:
@@ -73,7 +67,8 @@ namespace ShopMate
         {
 
             Console.WriteLine("Enter Old PassWord: ");
-            string oldPassWord = Console.ReadLine();
+            string oldPassWord = utility.EncryptPassword();
+            Console.WriteLine();
 
             if (utility.hashing(oldPassWord) == password)
             {
@@ -320,8 +315,7 @@ namespace ShopMate
                 }
                 for (int i = 0; i < lines.Length; i++)
                 {
-                    string[] userParts = lines[i].Split(',');
-                    //string id = userParts[0];
+                    string[] userParts = lines[i].Split(',');                   
                     string name = userParts[1];
                     string price = userParts[2];
                     string quantity = userParts[3];
@@ -507,12 +501,8 @@ namespace ShopMate
                 foreach (var item in lines)
                 {
                     string[] userParts = item.Split(','); 
-                    string orderID = userParts[0];
-                    //string userName = userParts[1];
-                    //string productId = userParts[2];
-                    string productName = userParts[3];
-                    //string productPrice = userParts[4];
-                    //string productQuantity = userParts[5];
+                    string orderID = userParts[0];                   
+                    string productName = userParts[3];               
                     string orderStatus = userParts[6];
                     Console.WriteLine($"ID:{orderID}\tProduct Name :{productName}\t\tStatus : {orderStatus}");  
 

@@ -45,7 +45,7 @@ namespace ShopMate
             }
             Console.WriteLine("Enter your present adress");
             string adress = Console.ReadLine();
-            Console.WriteLine("Enter Date of Birth(DD-MM-YYYY)");
+            Console.WriteLine("Enter Date of Birth(YYYY-MM-DD)");
             string date  = Console.ReadLine();
             try
             { 
