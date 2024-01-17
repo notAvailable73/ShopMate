@@ -46,28 +46,43 @@ namespace ShopMate
             Console.WriteLine("Enter your present adress");
             string adress = Console.ReadLine();
             Console.WriteLine("Enter Date of Birth(DD-MM-YYYY)");
-            string date = Console.ReadLine();
+            string date  = Console.ReadLine();
+            try
+            { 
+                DateTime demoDate = Convert.ToDateTime(date);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error: " + ex.Message+"\nTry again from beginning.");
+                Console.ReadKey(true);
+                createAcc();
+                return;
+            } 
             Console.Clear();
 
-            // Insert new user info into user file
+
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string path = Path.Combine(baseDirectory, $"Database\\userInfos\\user.txt");
             string info = $"{username},{Name},{password},{mail},{adress},{date}\n";
             File.AppendAllText(path, info);
             Console.WriteLine($"User Created Successfully with username:{username}");
 
-            // Create new cart for him
+
             path = Path.Combine(baseDirectory, $"Database\\cart\\{username}_cart.txt");
             StreamWriter sw = File.CreateText(path);
             sw.Close();
-            // Create new inbox for him
+
             path = Path.Combine(baseDirectory, $"Database\\inbox\\{username}inbox.txt");
             StreamWriter sw2 = File.CreateText(path);
             sw2.Close();
-            // Create new orderList for him
-            path = Path.Combine(baseDirectory, $"Database\\inbox\\{username}_Orders.txt");
+
+            Messenger welcomeMessageSender = new Messenger();
+            string msg = $"Hello, {Name}.Welcome to ShopMate. Enjoy your shopping with us.";
+            welcomeMessageSender.sendMessage(username, msg);
+
+            path = Path.Combine(baseDirectory, $"Database\\OrderInfo\\{username}_Orders.txt");
             StreamWriter sw3 = File.CreateText(path);
-            sw2.Close();
+            sw3.Close();
 
         }
     }

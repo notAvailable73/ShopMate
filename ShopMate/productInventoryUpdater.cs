@@ -81,8 +81,13 @@ namespace ShopMate
                     string productDescription = userParts[4];
                     if (id == productId)
                     {
-                        lines[i] = $"{productId},{productName},{price},{productQuantity - quantity},{productDescription}";
+                        int newQty = productQuantity - quantity;
+                        lines[i] = $"{productId},{productName},{price},{newQty},{productDescription}";
                         File.WriteAllLines(path, lines);
+                        if (newQty < 5)
+                        {
+                            stockAlert(productId,newQty);
+                        }
                         return true;
                     }
                 }
@@ -137,6 +142,12 @@ namespace ShopMate
                 Console.ReadLine();
             }
             return false;
+        }
+        private void stockAlert(string ProductID, int newQty)
+        {
+            string msg = $"Product  ID:{ProductID} has low inventory. Available unit: {newQty}";
+            Messenger messenger = new Messenger();
+            messenger.sendMessage("admin", msg);
         }
     }
 }

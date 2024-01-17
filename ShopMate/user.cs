@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace ShopMate
@@ -40,7 +41,8 @@ namespace ShopMate
                     break;
                 case 2:
                     Console.Clear();
-                    //loadinbox();
+                    loadInbox();
+                    DashBoard();
                     break;
                 case 3:
                     Console.Clear();
@@ -49,7 +51,7 @@ namespace ShopMate
                 case 4:
                     Console.Clear();
                     Console.WriteLine();
-                    //loadOrders();
+                    watchPreviousOrderList();
                     break;
 
                 case 5:
@@ -245,7 +247,7 @@ namespace ShopMate
                     string name = userParts[1];
                     string price = userParts[2];
                     string quantity = userParts[3];
-                    int newQuantity = Convert.ToInt32(quantity) + 1; 
+                    int newQuantity = Convert.ToInt32(quantity) + 1;
                     if (id == product.id)
                     {
                         if (newQuantity <= product.qty)
@@ -253,12 +255,12 @@ namespace ShopMate
                             quantity = newQuantity.ToString(); alreadyInCart = true;
                             lines[i] = $"{id},{name},{price},{quantity}";
                             File.WriteAllLines(path, lines);
-                            
+
                         }
                         else
                         {
                             Console.WriteLine($"Sorry,  This product has low inventory. You have already added {quantity} unit of this product.");
-                        Console.ReadKey();
+                            Console.ReadKey();
                             return;
                         }
                         break;
@@ -267,7 +269,7 @@ namespace ShopMate
                 }
                 if (!alreadyInCart)
                 {
-                    if (product.qty<=0)
+                    if (product.qty <= 0)
                     {
                         Console.WriteLine("Stock out.");
                         Console.ReadKey();
@@ -287,7 +289,17 @@ namespace ShopMate
         }
         void logOut()
         {
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string path = Path.Combine(baseDirectory, $"Database\\cart\\{userName}_cart.txt");
+            string[] lines = File.ReadAllLines(path);
+            if (lines.Length != 0)
+            {
+                string message = $"Hey {name}! Maybe you forgot something in your cart.";
+                Messenger messenger = new Messenger();
+                messenger.sendMessage(userName, message);
+            }
             utility.mainMenu();
+
         }
         public void loadCart()
         {
@@ -314,7 +326,7 @@ namespace ShopMate
                     string price = userParts[2];
                     string quantity = userParts[3];
 
-                    cartItemPreview += $"{name}\tPrice :  {price}\tQuantity :  {quantity}\n";
+                    cartItemPreview += $"{name}\tPrice : {price}\tQuantity :  {quantity}\n";
 
                 }
 
@@ -326,27 +338,25 @@ namespace ShopMate
                 DashBoard();
                 return;
             }
-            string[] cartOptions = { "Remove item from cart", "Clear cart", "Proceed to checkout", "Goto Dashboard" };
+            string[] cartOptions = { "Proceed to checkout", "Remove item from cart", "Clear cart",  "Goto Dashboard" };
             Menu menu = new Menu(cartOptions);
             int input = menu.Run(cartItemPreview);
             switch (input)
             {
                 case 0:
+                    checkout(path, cartItemPreview);
+                    DashBoard(); 
+                    break;
+                case 1:
                     removeProductFromCart(cartItemPreview);
                     loadCart();
                     return;
-                case 1:
+                case 2:
                     clearCart(path);
                     Console.WriteLine("Successfully Cleared your cart.");
-                    Console.ReadKey();
-
+                    Console.ReadKey(); 
                     DashBoard();
                     return;
-                case 2:
-                    checkout(path, cartItemPreview);
-                    DashBoard();
-
-                    break;
                 case 3:
                     DashBoard();
                     return;
@@ -397,8 +407,8 @@ namespace ShopMate
             {
                 case 0:
                     updater.update();
-                    Order newOrder = new Order(userName);
-                    newOrder.createOrder(lines);
+                    IOrderCreator orderCreator = new OrderManager(userName);
+                    orderCreator.createOrder(lines);
                     Console.WriteLine("Order Complete!");
                     Console.ReadKey();
                     clearCart(path);
@@ -422,9 +432,16 @@ namespace ShopMate
             }
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string path = Path.Combine(baseDirectory, $"Database\\cart\\{userName}_cart.txt");
+            cartList += "Go back\n";
             string[] options = cartList.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
             Menu menu = new Menu(options);
             int index = menu.Run("Which Product do you want to remove from the cart?\n\n");
+            if (index == options.Length - 1)
+            {
+                Console.Clear();
+                loadCart();
+                return;
+            }
             try
             {
                 string[] lines = File.ReadAllLines(path);
@@ -478,6 +495,48 @@ namespace ShopMate
         void clearCart(string path)
         {
             File.WriteAllText(path, String.Empty);
+        }
+        void watchPreviousOrderList()
+        {
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string path = Path.Combine(baseDirectory, $"Database\\OrderInfo\\{userName}_Orders.txt");
+
+            try
+            { 
+                string[] lines = File.ReadAllLines(path);
+                foreach (var item in lines)
+                {
+                    string[] userParts = item.Split(','); 
+                    string orderID = userParts[0];
+                    //string userName = userParts[1];
+                    //string productId = userParts[2];
+                    string productName = userParts[3];
+                    //string productPrice = userParts[4];
+                    //string productQuantity = userParts[5];
+                    string orderStatus = userParts[6];
+                    Console.WriteLine($"ID:{orderID}\tProduct Name :{productName}\t\tStatus : {orderStatus}");  
+
+                }
+                Console.WriteLine("Press any key to go back to dashboard.");
+                Console.ReadKey();
+                DashBoard();
+                return;
+
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Error : " + ex.Message);
+                Console.ReadLine();
+                DashBoard();
+                return;
+            }
+        }
+        void loadInbox()
+        {
+            //string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            //string path = Path.Combine(baseDirectory, $"Database\\cart\\{userName}_cart.txt");
+            Messenger messenger = new Messenger();
+            messenger.watchMessage(userName);
         }
     }
 

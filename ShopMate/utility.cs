@@ -15,7 +15,7 @@ namespace ShopMate
     {
         public static void mainMenu()
         {
-            Intro();
+            //Intro();
             string[] mainmenuOptions = { "Sign Up", "Sign In", "Admin Sign In", "Quit" };
 
             Menu menu = new Menu(mainmenuOptions);
@@ -28,6 +28,8 @@ namespace ShopMate
                     Console.Clear(); 
                     AccountCreator accountCreator = new AccountCreator();
                     accountCreator.createAcc();
+                    Console.ReadKey();
+                    mainMenu();
                     return;
                 case 1:
                     sessionManager UserSession = new sessionManager();
@@ -116,25 +118,6 @@ namespace ShopMate
 
             return hashedPassword;
         }
-
-        //public static void ExtractProductNames(string cartlist)
-        //{
-        //    string[] lines = cartlist.Split('\n');
-             
-        //    foreach (string line in lines)
-        //    {
-        //        string productName = GetProductName(line); 
-        //    }
-        //}
-
-        //public static string GetProductName(string input)
-        //{
-        //    // Split the input string by space and get the last part
-        //    string[] parts = input.Split(' ');
-        //    string productName = parts[parts.Length - 1];
-
-        //    return productName;
-        //}
         public static bool DoesUserExist(string username)
         {
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
@@ -198,14 +181,38 @@ namespace ShopMate
                 Console.WriteLine(ex.Message);
             }
             return false;
-        }
+        } 
         public static bool IsValidEmail(string email)
         {
-            //string pattern = @"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+            bool contains = false;
+            // if the email contains '@' symbol
+            foreach (char c in email)
+            {
+                if (c == '@') contains = true;
+            }
+            if (!contains) return false;
 
-            //return Regex.IsMatch(email, pattern);
-            return true;
-        } 
+            // if all characters are in lowercase
+            foreach (char c in email)
+            {
+                if (c >= 'A' && c <= 'Z') return false;
+            }
+
+            // if the email ends with a valid domain suffix
+            string[] validDomainSuffixes = { ".com", ".edu", ".org", ".net" };
+            bool isValidDomain = false;
+
+            int dotIndex = email.Length - 4;
+            if (email[dotIndex] != '.') { return false; }
+
+            if (email[email.Length - 1] == 'm' && email[email.Length - 2] == 'o' && email[email.Length - 3] == 'c') isValidDomain = true;
+            else if (email[email.Length - 1] == 'u' && email[email.Length - 2] == 'd' && email[email.Length - 3] == 'e') isValidDomain = true;
+            else if (email[email.Length - 1] == 'g' && email[email.Length - 2] == 'r' && email[email.Length - 3] == 'o') isValidDomain = true;
+            else if (email[email.Length - 1] == 't' && email[email.Length - 2] == 'e' && email[email.Length - 3] == 'n') isValidDomain = true;
+            else isValidDomain = false;
+
+            return isValidDomain;
+        }
         public static List<Product> getProductList(string path)
         {
             List<Product> products = new List<Product>();

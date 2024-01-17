@@ -45,10 +45,12 @@
   <ItemGroup>
     <Compile Include="AccountCreator.cs" />
     <Compile Include="admin.cs" />
+    <Compile Include="couponManager.cs" />
     <Compile Include="IAccount.cs" />
     <Compile Include="IProductManager.cs" />
     <Compile Include="menu.cs" />
-    <Compile Include="Order.cs" />
+    <Compile Include="Messenger.cs" />
+    <Compile Include="OrderManager.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="productInventoryUpdater.cs" />
     <Compile Include="Program.cs" />

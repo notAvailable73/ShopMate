@@ -1,7 +1,7 @@
-10001,eProduct1,138.59,8,Description of Product1
-10002,eProduct2,417.12,4,Description of Product2
-10003,eProduct3,292.41,19,Description of Product3
-10004,eProduct4,64.27,5,Description of Product4
+10001,eProduct1,138.59,0,Description of Product1
+10002,eProduct2,417.12,0,Description of Product2
+10003,eProduct3,292.41,16,Description of Product3
+10004,eProduct4,64.27,4,Description of Product4
 10005,eProduct5,477.38,5,Description of Product5
 10006,eProduct6,91.72,5,Description of Product6
 10007,eProduct7,357.81,5,Description of Product7
@@ -14,3 +14,5 @@
 10014,e1234,0,2,sdg
 10015,eproductinf,11.99,0,asfa
 10016,eproduct99,99.99,2,description
+10017,Samsung Galaxy Note 10,199,1,SmartPhone
+smartWatch,smartWatch,49.99,6,asfagf
