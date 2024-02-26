@@ -1,10 +1,11 @@
 10001,Smart WiFi Thermostat,89.99,5,Advanced thermostat for smart home climate control
-10002,Logitech MX Master 3,99.95,1,Wireless ergonomic mouse with customizable buttons
+10002,Logitech MX Master 3,99.95,0,Wireless ergonomic mouse with customizable buttons
 10003,Philips Hue Smart Bulb,19.99,30,Color-changing LED bulb for smart lighting solutions
 10004,Canon EOS Rebel T7i,649,8,High-performance DSLR camera for photography enthusiasts
 10005,Samsung 55-inch 4K Smart TV,699.99,12,Immersive 4K UHD TV with smart features for home entertainment
 10006,Bose QuietComfort 35 II,299.95,25,Wireless noise-canceling headphones for premium audio experience
-10007,Fitbit Charge 4,129.95,18,Advanced fitness tracker with built-in GPS and heart rate monitor
+10007,Fitbit Charge 4,129.95,16,Advanced fitness tracker with built-in GPS and heart rate monitor
 10008,DJI Mavic Air 2,799,6,Compact drone with 4K camera for stunning aerial photography
 10009,Amazon Echo Dot (4th Gen),49.99,40,Smart speaker with Alexa for voice-controlled smart home devices
 10010,Apple Watch Series 6,399,9,Feature-packed smartwatch with health and fitness tracking capabilities
+10011,Logitech G304,33,4,Gaming mouse
